@@ -1,7 +1,7 @@
 // External Modules
 import { http } from "wagmi";
 import { baseSepolia, anvil } from "wagmi/chains";
-import { darkTheme, Theme, getDefaultConfig } from "@rainbow-me/rainbowkit";
+import { darkTheme, getDefaultConfig, type Theme } from "@rainbow-me/rainbowkit";
 import merge from "lodash.merge";
 
 export const config = getDefaultConfig({

@@ -11,7 +11,6 @@ import {
 
 // External Modules
 import "@rainbow-me/rainbowkit/styles.css";
-import React from "react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiProvider } from "wagmi";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
@@ -21,9 +20,11 @@ import "./globals.css";
 import { config, rainbowKitTheme } from "./lib/wagmiConfig";
 import ErrorPage from "./components/ErrorPage";
 
+import type { ReactNode } from "react";
+
 const queryClient = new QueryClient();
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className="dark">
       <head>

@@ -1,7 +1,7 @@
 // External Modules
 import { useState } from "react";
 import { useReadTrove1, useReadTrove2, useWriteTrove1, useWriteTrove2 } from "~/generated";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
 // Internal Modules
@@ -18,7 +18,7 @@ interface BurnTokenCardProps {
 
 function BurnTokenCard({ type }: BurnTokenCardProps) {
   const { toast } = useToast();
-  const account = useAccount();
+  const account = useConnection();
 
   // Record the mint amount, used by both the slider and input
   const [burnAmount, setBurnAmount] = useState("");

@@ -1,7 +1,7 @@
 // External Modules
 import { useState } from "react";
 import { formatUnits } from "viem";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 
 // Internal Modules
@@ -45,7 +45,7 @@ interface AuctionClaimProps {
 
 export default function AuctionClaim({ bids, status, data, details }: AuctionClaimProps) {
   const { openConnectModal } = useConnectModal();
-  const account = useAccount();
+  const account = useConnection();
   const { toast } = useToast();
 
   // Write data to the contract

@@ -1,7 +1,7 @@
 // External Modules
 import { useState } from "react";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { MoveDown } from "lucide-react";
 import { format } from "mathjs";
 import { formatUnits } from "viem";
@@ -20,7 +20,7 @@ import { useToast } from "~/components/ui/use-toast";
 import ContractDetails from "~/components/ContractDetails";
 
 export default function StakeForm() {
-  const account = useAccount();
+  const account = useConnection();
   const { openConnectModal } = useConnectModal();
   const { toast } = useToast();
   const { contractAddress, matched } = useContractAddress("troveStake");

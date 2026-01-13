@@ -1,5 +1,5 @@
 // External Modules
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 
 // Internal Modules
 import { useReadTroveStake, useWriteTroveStakeWithdraw } from "~/generated";
@@ -14,7 +14,7 @@ interface StakeDetailsFormProps {
 }
 
 export default function Withdrawal({ address, id }: StakeDetailsFormProps) {
-  const account = useAccount();
+  const account = useConnection();
   const { toast } = useToast();
 
   // Write data to smart contract

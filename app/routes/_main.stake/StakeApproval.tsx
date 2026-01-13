@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatUnits } from "viem";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 
 // Internal Modules
 import { useReadTrove1, useWriteTrove1 } from "~/generated";
@@ -16,7 +16,7 @@ import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 
 export default function StakeApproval() {
-  const account = useAccount();
+  const account = useConnection();
   const { toast } = useToast();
   const { contractAddress, matched } = useContractAddress("troveStake");
 

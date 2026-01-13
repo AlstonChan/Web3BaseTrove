@@ -1,5 +1,5 @@
 // External Modules
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 
 // Internal Modules
 import { useReadTroveStake } from "~/generated";
@@ -9,7 +9,7 @@ import StakeCard from "./StakeCard";
 import LoadingPage from "~/components/LoadingPage";
 
 export default function AllStakes() {
-  const account = useAccount();
+  const account = useConnection();
   const address = account.address;
 
   const { data: stakeDetails } = useReadTroveStake({

@@ -2,7 +2,7 @@
 import { Link } from "react-router";
 
 // External Modules
-import React, { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 
 // Internal Modules
@@ -15,7 +15,7 @@ export const PinContainer = ({
   className,
   containerClassName,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   title?: string;
   href?: string;
   className?: string;

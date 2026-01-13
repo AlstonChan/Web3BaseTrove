@@ -1,11 +1,11 @@
 // External Modules
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 interface MultiplierCardProps {
-  icon: React.ReactNode;
-  effect: React.ReactNode;
-  children?: React.ReactNode;
+  icon: ReactNode;
+  effect: ReactNode;
+  children?: ReactNode;
 }
 
 export default function MultiplierCard({ icon, children, effect }: MultiplierCardProps) {

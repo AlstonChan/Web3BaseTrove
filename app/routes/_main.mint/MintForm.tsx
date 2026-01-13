@@ -1,7 +1,7 @@
 // External Modules
 import { useDeferredValue, useState } from "react";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 
 // Internal Modules
 import { useReadTrove1, useWriteTrove1 } from "~/generated";
@@ -22,7 +22,7 @@ import { Button } from "~/components/ui/button";
 import { useToast } from "~/components/ui/use-toast";
 
 export default function MintForm() {
-  const account = useAccount();
+  const account = useConnection();
   const { openConnectModal } = useConnectModal();
   const { toast } = useToast();
   const { contractAddress, matched } = useContractAddress("troveToken1");

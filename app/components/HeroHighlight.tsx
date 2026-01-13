@@ -1,6 +1,6 @@
 // External Modules
-import React from "react";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
+import type { ReactNode, MouseEvent } from "react";
 
 // Internal Modules
 import { cn } from "~/lib/utils";
@@ -10,14 +10,14 @@ export const HeroHighlight = ({
   className,
   containerClassName,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   containerClassName?: string;
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent<HTMLDivElement>) {
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent<HTMLDivElement>) {
     if (!currentTarget) return;
     const { left, top } = currentTarget.getBoundingClientRect();
 
@@ -60,13 +60,7 @@ export const HeroHighlight = ({
   );
 };
 
-export const Highlight = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
+export const Highlight = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
     <motion.span
       initial={{

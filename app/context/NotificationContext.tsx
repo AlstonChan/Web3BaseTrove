@@ -1,5 +1,6 @@
 // External Modules
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
+import type { FC, ReactNode } from "react";
 
 interface NotificationContextType {
   message: string;
@@ -9,7 +10,7 @@ interface NotificationContextType {
 
 export const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
 
-export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const NotificationProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [message, setMessage] = useState<string>("");
 
   const showNotification = (msg: string) => {

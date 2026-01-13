@@ -1,7 +1,7 @@
 // External Modules
 import { useState } from "react";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
 // Internal Modules
@@ -45,7 +45,7 @@ interface AuctionFormProps {
 }
 
 export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
-  const account = useAccount();
+  const account = useConnection();
   const { contractAddress, matched } = useContractAddress("troveAuction");
   const { openConnectModal } = useConnectModal();
   const { toast } = useToast();

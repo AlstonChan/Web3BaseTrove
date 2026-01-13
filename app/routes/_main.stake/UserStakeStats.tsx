@@ -1,5 +1,5 @@
 // External Modules
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
 // Internal Modules
@@ -10,7 +10,7 @@ import useContractAddress from "~/hooks/useContractAddress";
 import Stats from "~/components/Stats";
 
 export default function UserStakeStats() {
-  const account = useAccount();
+  const account = useConnection();
   const { contractAddress } = useContractAddress("troveStake");
 
   const { data: trv1Allowance } = useReadTrove1({

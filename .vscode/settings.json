@@ -3,6 +3,9 @@
   "[solidity]": {
     "editor.defaultFormatter": "NomicFoundation.hardhat-solidity"
   },
+  "files.associations": {
+    "**/app/**/*.css": "tailwindcss"
+  },
   "markdownlint.config": {
     "MD033": false
   },

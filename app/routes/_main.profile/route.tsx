@@ -3,7 +3,7 @@ import type { MetaFunction } from "react-router";
 
 // External Modules
 import { motion } from "framer-motion";
-import { useAccount, useBalance } from "wagmi";
+import { useConnection, useBalance } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { formatEther } from "viem";
 
@@ -29,7 +29,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Profile() {
-  const account = useAccount();
+  const account = useConnection();
   const result = useBalance({
     address: account.address,
   });

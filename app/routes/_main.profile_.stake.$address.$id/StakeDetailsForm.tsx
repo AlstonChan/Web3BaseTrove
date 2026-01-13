@@ -1,7 +1,7 @@
 // External Modules
 import { useState } from "react";
 import { formatUnits } from "viem";
-import { useAccount, useBlock } from "wagmi";
+import { useConnection, useBlock } from "wagmi";
 import { add, isAfter } from "date-fns";
 
 // Internal Modules
@@ -30,7 +30,7 @@ interface StakeDetailsFormProps {
 
 export default function StakeDetailsForm({ address, id, stake }: StakeDetailsFormProps) {
   const { toast } = useToast();
-  const account = useAccount();
+  const account = useConnection();
   const { data: blockData } = useBlock();
 
   // Record the claim amount

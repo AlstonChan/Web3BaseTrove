@@ -1,5 +1,5 @@
 // External Modules
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 
 // Components
 import { Button } from "~/components/ui/button";
@@ -12,7 +12,7 @@ interface AuctionWithdrawalProps {
 }
 
 export default function AuctionWithdrawal({ auctionId }: AuctionWithdrawalProps) {
-  const account = useAccount();
+  const account = useConnection();
   const { toast } = useToast();
 
   // Ensure that the connected user is the owner of the auction

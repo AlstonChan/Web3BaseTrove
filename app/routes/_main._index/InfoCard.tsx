@@ -1,12 +1,10 @@
-// External Modules
-import React from "react";
-
 // Components
 import { CardBody, CardContainer, CardItem } from "~/components/3dCard";
+import type { ReactNode } from "react";
 
 interface InfoCardProps {
   cardTitle: string;
-  cardIllustration: React.ReactNode;
+  cardIllustration: ReactNode;
   link: string;
   className?: string;
 }

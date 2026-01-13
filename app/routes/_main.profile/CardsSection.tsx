@@ -1,5 +1,5 @@
 // External Modules
-import { useAccount } from "wagmi";
+import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
 // Internal Modules
@@ -9,7 +9,7 @@ import { useReadTrove1, useReadTrove2, useReadTroveStake } from "~/generated";
 import Stats from "~/components/Stats";
 
 export default function CardsSection() {
-  const account = useAccount();
+  const account = useConnection();
 
   // Read data from the smart contract
   const { data: trv1Decimal } = useReadTrove1({ functionName: "decimals" });

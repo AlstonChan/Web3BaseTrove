@@ -7,7 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteError,
-} from "@remix-run/react";
+} from "react-router";
 
 // External Modules
 import "@rainbow-me/rainbowkit/styles.css";

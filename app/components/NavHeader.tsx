@@ -1,5 +1,5 @@
 // Remix Modules
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 
 // External Modules
 import { ConnectButton } from "@rainbow-me/rainbowkit";

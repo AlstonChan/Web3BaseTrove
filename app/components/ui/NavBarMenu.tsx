@@ -1,6 +1,6 @@
 // Remix Modules
-import { NavLinkProps } from "@remix-run/react";
-import { NavLink } from "@remix-run/react/dist/components";
+import { NavLinkProps } from "react-router";
+import { NavLink } from "@react-router/react/dist/components";
 
 // External Modules
 import React, { useEffect, useState } from "react";

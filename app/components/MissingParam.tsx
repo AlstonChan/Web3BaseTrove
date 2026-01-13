@@ -1,5 +1,5 @@
 // Remix Modules
-import { useLocation } from "@remix-run/react";
+import { useLocation } from "react-router";
 
 // Internal Modules
 import { cn } from "~/lib/utils";

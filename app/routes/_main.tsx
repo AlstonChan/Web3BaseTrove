@@ -1,5 +1,5 @@
 // Remix Modules
-import { Outlet, useNavigation } from "@remix-run/react";
+import { Outlet, useNavigation } from "react-router";
 
 // External Modules
 import { useEffect, useRef, useState } from "react";

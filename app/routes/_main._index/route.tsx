@@ -1,6 +1,6 @@
 // Remix Modules
-import { Link } from "@remix-run/react";
-import type { MetaFunction } from "@remix-run/node";
+import { Link } from "react-router";
+import type { MetaFunction } from "react-router";
 
 // External Modules
 import { Scale, Github } from "lucide-react";

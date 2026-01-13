@@ -1,5 +1,5 @@
 // Remix Modules
-import { MetaFunction } from "@remix-run/react";
+import { MetaFunction } from "react-router";
 
 export const meta: MetaFunction = () => {
   return [

@@ -1,6 +1,6 @@
 // Remix Modules
-import { useParams } from "@remix-run/react";
-import type { MetaFunction } from "@remix-run/node";
+import { useParams } from "react-router";
+import type { MetaFunction } from "react-router";
 
 // External Modules
 import { motion } from "framer-motion";

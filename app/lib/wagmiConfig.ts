@@ -2,7 +2,6 @@
 import { http } from "wagmi";
 import { baseSepolia, anvil } from "wagmi/chains";
 import { darkTheme, getDefaultConfig, type Theme } from "@rainbow-me/rainbowkit";
-import merge from "lodash.merge";
 
 export const config = getDefaultConfig({
   appName: "Trove",
@@ -21,11 +20,16 @@ export const config = getDefaultConfig({
         },
 });
 
-export const rainbowKitTheme = merge(darkTheme(), {
-  fonts: {
-    body: "Poppins, sans-serif",
-  },
-} as Theme);
+export const rainbowKitTheme = (() => {
+  const base = darkTheme();
+  return {
+    ...base,
+    fonts: {
+      ...(base.fonts ?? {}),
+      body: "Poppins, sans-serif",
+    },
+  } as Theme;
+})();
 
 export const supportedChains =
   process.env.NODE_ENV === "development" ? [anvil.id] : [baseSepolia.id];

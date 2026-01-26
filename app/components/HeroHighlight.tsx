@@ -5,6 +5,12 @@ import type { ReactNode, MouseEvent } from "react";
 // Internal Modules
 import { cn } from "~/lib/utils";
 
+// SVG to Data URI helper
+const createDotPattern = (color: string) => {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${color}" cx="10" cy="10" r="2.5"></circle></svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+};
+
 export const HeroHighlight = ({
   children,
   className,
@@ -24,6 +30,7 @@ export const HeroHighlight = ({
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
   }
+
   return (
     <div
       className={cn(
@@ -32,30 +39,41 @@ export const HeroHighlight = ({
       )}
       onMouseMove={handleMouseMove}
     >
-      <div className="pointer-events-none absolute inset-0 bg-dot-thick-neutral-300 dark:bg-dot-thick-neutral-800" />
-      <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 bg-dot-thick-indigo-500
-          group-hover:opacity-100 dark:bg-dot-thick-indigo-500"
+      <div
+        className="pointer-events-none absolute inset-0"
         style={{
+          backgroundImage: createDotPattern("rgb(212 212 212)"), // neutral-300
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0 hidden dark:block"
+        style={{
+          backgroundImage: createDotPattern("rgb(38 38 38)"), // neutral-800
+        }}
+      />
+      <motion.div
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          backgroundImage: createDotPattern("rgb(99 102 241)"), // indigo-500
           WebkitMaskImage: useMotionTemplate`
-          radial-gradient(
+            radial-gradient(
               200px circle at ${mouseX}px ${mouseY}px,
               black 0%,
               transparent 100%
-              )
+            )
           `,
           maskImage: useMotionTemplate`
             radial-gradient(
-                200px circle at ${mouseX}px ${mouseY}px,
-                black 0%,
+              200px circle at ${mouseX}px ${mouseY}px,
+              black 0%,
               transparent 100%
-              )
-              `,
+            )
+          `,
         }}
       />
 
       <div className={cn("relative z-20", className)}>{children}</div>
-      <div className="pointer-events-none absolute inset-0 bg-top-bottom-fade" />
+      <div className="bg-top-bottom-fade pointer-events-none absolute inset-0" />
     </div>
   );
 };

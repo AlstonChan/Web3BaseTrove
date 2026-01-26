@@ -167,7 +167,7 @@ export default function BidApproval() {
   }, [trv2Amount, trv2Decimals, showInput, account.isDisconnected]);
 
   return (
-    <article id="stake-approval" className="mx-auto my-14 flex max-w-screen-lg flex-col sm:px-4">
+    <article id="stake-approval" className="mx-auto my-14 flex max-w-(--breakpoint-lg) flex-col sm:px-4">
       <div className="w-full">
         <h2 className="text-xl font-semibold sm:text-2xl md:text-3xl">
           Approve TRV2 token before you bid

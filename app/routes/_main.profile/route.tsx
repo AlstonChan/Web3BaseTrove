@@ -40,14 +40,14 @@ export default function Profile() {
   return (
     <motion.div variants={headlineVariants} initial="hidden" animate="visible" className="flex-1">
       <h1
-        className="mx-auto mb-12 mt-10 max-w-72 text-center text-2xl font-semibold !leading-relaxed
+        className="mx-auto mb-12 mt-10 max-w-72 text-center text-2xl font-semibold leading-relaxed!
           min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
       >
         Your Profile
       </h1>
       {account.isConnected ? (
         <>
-          <article className="mx-auto mb-3 flex max-w-screen-xl flex-col rounded-2xl bg-dark-blue p-3 sm:p-5">
+          <article className="mx-auto mb-3 flex max-w-(--breakpoint-xl) flex-col rounded-2xl bg-dark-blue p-3 sm:p-5">
             <h2 className="overflow-hidden text-ellipsis text-xl sm:text-2xl md:text-3xl lg:text-4xl">
               {account.address}
             </h2>
@@ -96,7 +96,7 @@ export default function Profile() {
           {troveAuctionOwner === account.address && decimals && (
             <CreateAuction decimals={Number(decimals)} />
           )}
-          <article className="mx-auto mb-20 flex max-w-screen-xl flex-col">
+          <article className="mx-auto mb-20 flex max-w-(--breakpoint-xl) flex-col">
             <Tabs defaultValue="stakes">
               <TabsList>
                 <TabsTrigger value="stakes">Stakes</TabsTrigger>

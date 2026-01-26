@@ -185,7 +185,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mx-auto mb-8 flex max-w-screen-xl flex-col rounded-2xl bg-dark-blue p-3 sm:p-5"
+        className="mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl bg-dark-blue p-3 sm:p-5"
       >
         <h2 className="overflow-hidden text-ellipsis text-xl sm:text-2xl md:text-3xl lg:text-4xl">
           Create Auction
@@ -204,7 +204,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                 <FormControl>
                   <Input type="number" placeholder="0" {...field} />
                 </FormControl>
-                <FormMessage className="!mt-0 text-xs" />
+                <FormMessage className="mt-0! text-xs" />
               </FormItem>
             )}
           />
@@ -250,7 +250,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                     </div>
                   </PopoverContent>
                 </Popover>
-                <FormMessage className="!mt-0 text-xs" />
+                <FormMessage className="mt-0! text-xs" />
               </FormItem>
             )}
           />
@@ -297,7 +297,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                     </div>
                   </PopoverContent>
                 </Popover>
-                <FormMessage className="!mt-0 text-xs" />
+                <FormMessage className="mt-0! text-xs" />
               </FormItem>
             )}
           />
@@ -311,7 +311,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                 <FormControl>
                   <Input placeholder="1000" {...field} />
                 </FormControl>
-                <FormMessage className="!mt-0 text-xs" />
+                <FormMessage className="mt-0! text-xs" />
               </FormItem>
             )}
           />
@@ -325,7 +325,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                 <FormControl>
                   <Input placeholder="20000" {...field} />
                 </FormControl>
-                <FormMessage className="!mt-0 text-xs" />
+                <FormMessage className="mt-0! text-xs" />
               </FormItem>
             )}
           />
@@ -339,7 +339,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                 <FormControl>
                   <Input placeholder="100" {...field} />
                 </FormControl>
-                <FormMessage className="!mt-0 text-xs" />
+                <FormMessage className="mt-0! text-xs" />
               </FormItem>
             )}
           />
@@ -353,7 +353,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                 <FormControl>
                   <Input placeholder="354.png" {...field} />
                 </FormControl>
-                <FormMessage className="!mt-0 text-xs" />
+                <FormMessage className="mt-0! text-xs" />
               </FormItem>
             )}
           />

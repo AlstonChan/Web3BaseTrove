@@ -55,7 +55,7 @@ export default function Mint() {
         className="flex-1"
       >
         <h1
-          className="mx-auto mb-1 mt-10 max-w-72 text-center text-2xl font-semibold !leading-relaxed
+          className="mx-auto mb-1 mt-10 max-w-72 text-center text-2xl font-semibold leading-relaxed!
             min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
         >
           NFT Auction
@@ -63,7 +63,7 @@ export default function Mint() {
         <p className="mx-auto mb-12 text-center">
           Participate in the auction using TRV2 token to bid your NFT
         </p>
-        <div className="mx-auto w-full max-w-screen-2xl">
+        <div className="mx-auto w-full max-w-(--breakpoint-2xl)">
           <h2 className="text-xl font-semibold sm:text-2xl lg:text-3xl">Ongoing Auction</h2>
           {ongoingAuctionData !== undefined && baseURI && blockData ? (
             ongoingAuctionData.length > 0 && isValidAuctionData(ongoingAuctionData) ? (
@@ -84,7 +84,7 @@ export default function Mint() {
             <AuctionPlaceholderGrid />
           )}
         </div>
-        <div className="mx-auto w-full max-w-screen-2xl">
+        <div className="mx-auto w-full max-w-(--breakpoint-2xl)">
           <h2 className="text-xl font-semibold sm:text-2xl lg:text-3xl">History</h2>
           {historyAuctionData && baseURI && blockData ? (
             historyAuctionData.length > 0 && isValidAuctionData(historyAuctionData) ? (

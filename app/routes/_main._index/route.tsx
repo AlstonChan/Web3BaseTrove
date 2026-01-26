@@ -74,12 +74,12 @@ export default function Index() {
         >
           <AnimatedShinyText
             className="mb-4 inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600
-              hover:duration-300 hover:dark:text-neutral-400"
+              hover:duration-300 dark:hover:text-neutral-400"
           >
             <span>✨ Introducing Trove</span>
           </AnimatedShinyText>
           <h1
-            className="mx-auto max-w-72 text-2xl font-semibold !leading-relaxed min-[460px]:max-w-none sm:text-4xl
+            className="mx-auto max-w-72 text-2xl font-semibold leading-relaxed! min-[460px]:max-w-none sm:text-4xl
               lg:text-5xl lg:leading-snug"
           >
             Unlock the Treasure: Mint, Stake, and Win{" "}
@@ -104,15 +104,15 @@ export default function Index() {
       </HeroHighlight>
       <article className="mt-4 px-2 sm:mt-12 md:px-4">
         <div
-          className="relative z-10 mx-auto max-w-screen-xl rounded-2xl bg-[url('/images/home-bg.webp')] bg-cover
+          className="relative z-10 mx-auto max-w-(--breakpoint-xl) rounded-2xl bg-[url('/images/home-bg.webp')] bg-cover
             bg-center bg-no-repeat px-4 py-6 before:absolute before:left-0 before:top-0 before:z-[-1]
             before:h-full before:w-full before:rounded-2xl before:bg-bottom-top-fade sm:px-8 sm:py-10
-            before:md:bg-left-right-fade"
+            md:before:bg-left-right-fade"
         >
           <h2 className="mb-5 max-w-sm text-2xl font-bold md:text-3xl lg:text-4xl">
             Decentralized and Open Source
           </h2>
-          <div className="leading-relaxed dark:text-white md:max-w-screen-sm xl:max-w-screen-md">
+          <div className="leading-relaxed dark:text-white md:max-w-(--breakpoint-sm) xl:max-w-(--breakpoint-md)">
             <p>
               The entire project&apos;s source code is open-sourced and publicly available on
               GitHub. Our smart contracts are also published and verified on Etherscan. Anyone can
@@ -148,7 +148,7 @@ export default function Index() {
           </div>
         </div>
       </article>
-      <section className="mx-auto my-14 flex max-w-screen-xl flex-col items-center px-4 text-center">
+      <section className="mx-auto my-14 flex max-w-(--breakpoint-xl) flex-col items-center px-4 text-center">
         <Badge variant="orange">EVM compatible Layer 2</Badge>
         <h2 className="mt-12 max-w-80 text-2xl font-medium md:max-w-md md:text-3xl lg:text-4xl">
           Built on Base chain, secured by Ethereum
@@ -171,7 +171,7 @@ export default function Index() {
           </picture>
         </div>
       </section>
-      <section className="mx-auto my-20 flex max-w-screen-xl flex-col items-center px-4 text-center">
+      <section className="mx-auto my-20 flex max-w-(--breakpoint-xl) flex-col items-center px-4 text-center">
         <Badge variant="orange">How it works</Badge>
         <h2 className="mt-8 max-w-80 text-2xl font-medium md:max-w-md md:text-3xl lg:text-4xl">
           Mint, Stake, Bid within Trove ecosystem

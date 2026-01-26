@@ -49,7 +49,7 @@ export const PinContainer = ({
             transform: transform,
           }}
           className="absolute left-1/2 top-1/2 flex w-full items-start justify-start overflow-hidden rounded-3xl border
-            shadow-[0_8px_16px_rgb(0_0_0/0.4)] transition duration-700 group-hover/pin:border-white/[0.2]"
+            shadow-[0_8px_16px_rgb(0_0_0/0.4)] transition duration-700 group-hover/pin:border-white/20"
         >
           <div className={cn("relative z-50", className)}>{children}</div>
         </div>
@@ -62,7 +62,7 @@ export const PinContainer = ({
 export const PinPerspective = ({ title }: { title?: string }) => {
   return (
     <motion.div
-      className="pointer-events-none z-[60] flex h-80 w-96 items-center justify-center opacity-0 transition
+      className="pointer-events-none z-60 flex h-80 w-96 items-center justify-center opacity-0 transition
         duration-500 group-hover/pin:opacity-100"
     >
       <div className="inset-0 -mt-7 h-full w-full flex-none">
@@ -73,7 +73,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
             </span>
 
             <span
-              className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0
+              className="absolute bottom-0 left-4.5 h-px w-[calc(100%-2.25rem)] bg-linear-to-r from-emerald-400/0
                 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover/btn:opacity-40"
             ></span>
           </p>
@@ -105,7 +105,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
                 repeat: Infinity,
                 delay: 0,
               }}
-              className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-sky-500/[0.08]
+              className="absolute left-1/2 top-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8
                 shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
             ></motion.div>
             <motion.div
@@ -126,7 +126,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
                 repeat: Infinity,
                 delay: 2,
               }}
-              className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-sky-500/[0.08]
+              className="absolute left-1/2 top-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8
                 shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
             ></motion.div>
             <motion.div
@@ -147,7 +147,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
                 repeat: Infinity,
                 delay: 4,
               }}
-              className="absolute left-1/2 top-1/2 h-[11.25rem] w-[11.25rem] rounded-[50%] bg-sky-500/[0.08]
+              className="absolute left-1/2 top-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8
                 shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
             ></motion.div>
           </>
@@ -155,11 +155,11 @@ export const PinPerspective = ({ title }: { title?: string }) => {
 
         <>
           <motion.div
-            className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent
+            className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
               to-cyan-500 blur-[2px] group-hover/pin:h-40"
           />
           <motion.div
-            className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent
+            className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
               to-cyan-500 group-hover/pin:h-40"
           />
           <motion.div

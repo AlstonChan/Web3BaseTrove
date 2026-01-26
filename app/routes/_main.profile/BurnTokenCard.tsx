@@ -158,9 +158,9 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
       <Input
         type="text"
         placeholder="0"
-        className="focus !focus-visible:!shadow-none my-2 !border-none !bg-transparent pl-0 text-4xl font-medium
-          text-amber-500 outline-none !ring-transparent placeholder:text-amber-500 focus-visible:!border-none
-          focus-visible:!outline-none focus-visible:!ring-offset-0"
+        className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0 text-4xl font-medium
+          text-amber-500 outline-hidden ring-transparent! placeholder:text-amber-500 focus-visible:border-none!
+          focus-visible:outline-hidden! focus-visible:ring-offset-0!"
         max={maxAmount}
         value={burnAmount}
         onChange={handleInputChange}

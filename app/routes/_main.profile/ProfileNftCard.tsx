@@ -33,7 +33,7 @@ function NftCard({ tokenIndex, nftIndex }: NftCardProps) {
         target="_blank"
         referrerPolicy="no-referrer"
         rel="noopener noreferrer"
-        className="aspect-square h-auto w-full flex-shrink-0"
+        className="aspect-square h-auto w-full shrink-0"
       >
         <img src={tokenURI} alt={`NFT #${nftIndex}`} className="h-full w-full rounded-xl" />
       </a>

@@ -7,7 +7,7 @@ import MultiplierCard from "./MultiplierCard";
 
 export default function StakeMultiplier() {
   return (
-    <article className="mx-auto my-32 flex max-w-screen-lg flex-col sm:px-4">
+    <article className="mx-auto my-32 flex max-w-(--breakpoint-lg) flex-col sm:px-4">
       <div className="w-full">
         <h2 className="text-center text-2xl font-semibold sm:text-3xl md:text-3xl">
           Your stake is boosted

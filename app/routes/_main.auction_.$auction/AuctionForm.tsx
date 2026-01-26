@@ -242,16 +242,16 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
 
   return (
     <div className="w-full rounded-xl bg-dark-blue p-3">
-      <div className="rounded-2xl bg-accent-dark-blue shadow">
+      <div className="rounded-2xl bg-accent-dark-blue shadow-sm">
         <Stats
           title="Bid"
           value={
             <Input
               type="text"
               placeholder="0"
-              className="focus !focus-visible:!shadow-none my-2 !border-none !bg-transparent pl-0 text-4xl font-medium
-                outline-none !ring-transparent focus-visible:!border-none focus-visible:!outline-none
-                focus-visible:!ring-offset-0"
+              className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0 text-4xl font-medium
+                outline-hidden ring-transparent! focus-visible:border-none! focus-visible:outline-hidden!
+                focus-visible:ring-offset-0!"
               maxLength={buyoutBid.toString().length}
               max={buyoutBid}
               value={bidAmount}

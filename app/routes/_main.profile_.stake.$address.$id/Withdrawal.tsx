@@ -57,9 +57,9 @@ export default function Withdrawal({ address, id }: StakeDetailsFormProps) {
   };
 
   return (
-    <div className="mx-auto mt-20 w-full max-w-screen-xl">
+    <div className="mx-auto mt-20 w-full max-w-(--breakpoint-xl)">
       <h3 className="text-center text-2xl font-semibold sm:text-3xl md:text-4xl">Withdraw Stake</h3>
-      <div className="mx-auto mt-4 max-w-screen-sm rounded-3xl bg-destructive px-8 py-5">
+      <div className="mx-auto mt-4 max-w-(--breakpoint-sm) rounded-3xl bg-destructive px-8 py-5">
         <p>
           By withdrawing your stake, you will receive all your staked TRV1 token and this staked
           will be inactive, thus no longer mint TRV2 token.

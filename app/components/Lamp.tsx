@@ -13,7 +13,7 @@ export const LampContainer = ({
     <div
       className={cn(
         `relative z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden
-        rounded-md bg-slate-950 pb-32 pt-96`,
+        rounded-md bg-slate-950 pt-96 pb-32`,
         className,
       )}
     >
@@ -56,20 +56,17 @@ export const LampContainer = ({
             to-cyan-500 text-white [--conic-position:from_290deg_at_center_top]"
         >
           <div
-            className="absolute bottom-0 right-0 z-20 h-full w-40 bg-slate-950
+            className="absolute right-0 bottom-0 z-20 h-full w-40 bg-slate-950
               mask-[linear-gradient(to_left,white,transparent)]"
           />
           <div
-            className="absolute bottom-0 right-0 z-20 h-40 w-full bg-slate-950
+            className="absolute right-0 bottom-0 z-20 h-40 w-full bg-slate-950
               mask-[linear-gradient(to_top,white,transparent)]"
           />
         </motion.div>
         <div className="absolute top-1/2 h-48 w-full translate-y-12 scale-x-150 bg-slate-950 blur-2xl"></div>
         <div className="absolute top-1/2 z-50 h-48 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
-        <div
-          className="absolute inset-auto z-50 h-36 w-md -translate-y-1/2 rounded-full bg-cyan-500 opacity-50
-            blur-3xl"
-        ></div>
+        <div className="absolute inset-auto z-50 h-36 w-md -translate-y-1/2 rounded-full bg-cyan-500 opacity-50 blur-3xl"></div>
         <motion.div
           initial={{ width: "8rem" }}
           whileInView={{ width: "16rem" }}

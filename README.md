@@ -45,7 +45,6 @@ The following is a requirement if you wish to run the project locally on your ma
 
 1. If you are using Windows operating system, then [Windows WSL](https://learn.microsoft.com/en-us/windows/wsl/) is needed. This is because forge does not seems to be able to work well on Windows environment. The project should be cloned into the WSL drive instead of the windows drive and access it from wsl terminal. You should be fine if you are using either Mac os or Linux based operating system.
 2. Have foundry toolchain installed, refer to the [documentation](https://book.getfoundry.sh/) on the installation of the programs.
-
    - You should have the following commands available after your foundry installation
 
      ```bash
@@ -73,7 +72,6 @@ The following is a requirement if you wish to run the project locally on your ma
    ```
 
 3. Open up a new terminal, and change directory (`cd`) into the project's `contracts` directory to
-
    1. Run the local blockchain node (anvil)
    2. Deploy the contract to local blockchain
 

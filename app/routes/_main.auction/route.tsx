@@ -55,7 +55,7 @@ export default function Mint() {
         className="flex-1"
       >
         <h1
-          className="mx-auto mb-1 mt-10 max-w-72 text-center text-2xl font-semibold leading-relaxed!
+          className="mx-auto mt-10 mb-1 max-w-72 text-center text-2xl leading-relaxed! font-semibold
             min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
         >
           NFT Auction
@@ -68,7 +68,7 @@ export default function Mint() {
           {ongoingAuctionData !== undefined && baseURI && blockData ? (
             ongoingAuctionData.length > 0 && isValidAuctionData(ongoingAuctionData) ? (
               <div
-                className="mb-32 mt-16 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
+                className="mt-16 mb-32 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
                   xl:grid-cols-5"
               >
                 {ongoingAuctionData.map((auction, index) => (
@@ -89,7 +89,7 @@ export default function Mint() {
           {historyAuctionData && baseURI && blockData ? (
             historyAuctionData.length > 0 && isValidAuctionData(historyAuctionData) ? (
               <div
-                className="mb-32 mt-16 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
+                className="mt-16 mb-32 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
                   xl:grid-cols-5"
               >
                 {historyAuctionData.map((auction, index) => (

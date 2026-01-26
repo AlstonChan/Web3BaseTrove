@@ -81,12 +81,8 @@ export const HeroHighlight = ({
 export const Highlight = ({ children, className }: { children: ReactNode; className?: string }) => {
   return (
     <motion.span
-      initial={{
-        backgroundSize: "0% 100%",
-      }}
-      animate={{
-        backgroundSize: "100% 100%",
-      }}
+      initial={{ backgroundSize: "0% 100%" }}
+      animate={{ backgroundSize: "100% 100%" }}
       transition={{
         duration: 2,
         ease: "linear",

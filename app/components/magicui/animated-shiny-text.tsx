@@ -15,17 +15,12 @@ const AnimatedShinyText: FC<AnimatedShinyTextProps> = ({
 }) => {
   return (
     <p
-      style={
-        {
-          "--shimmer-width": `${shimmerWidth}px`,
-        } as CSSProperties
-      }
+      style={{ "--shimmer-width": `${shimmerWidth}px` } as CSSProperties}
       className={cn(
         "mx-auto max-w-md text-neutral-600/70 dark:text-neutral-400/70",
 
         // Shimmer effect
-        `animate-shimmer bg-clip-text bg-no-repeat bg-position-[0_0]
-        bg-size-[var(--shimmer-width)_100%]
+        `animate-shimmer bg-size-[var(--shimmer-width)_100%] bg-clip-text bg-position-[0_0] bg-no-repeat
         [transition:background-position_1s_cubic-bezier(.6,.6,0,1)_infinite]`,
 
         // Shimmer gradient

@@ -93,10 +93,10 @@ export const Menu = ({
     <nav
       // onMouseLeave={() => setActive(null)} // resets the state
       className={cn(
-        `fixed left-1/2 top-4 z-50 flex w-full -translate-x-1/2 justify-center space-x-2 rounded-full
-        border-2 border-transparent bg-white bg-opacity-70 px-4 py-6 shadow-input transition-[width,padding]
-        duration-1000 dark:bg-background sm:space-x-4 sm:px-8`,
-        floatTop ? "fixed-fill z-9999 mx-auto py-4 dark:border-white/20 xl:w-[1200px]" : "",
+        `bg-opacity-70 shadow-input dark:bg-background fixed top-4 left-1/2 z-50 flex w-full -translate-x-1/2
+        justify-center space-x-2 rounded-full border-2 border-transparent bg-white px-4 py-6
+        transition-[width,padding] duration-1000 sm:space-x-4 sm:px-8`,
+        floatTop ? "fixed-fill z-9999 mx-auto py-4 xl:w-[1200px] dark:border-white/20" : "",
         className,
       )}
     >

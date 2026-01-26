@@ -30,14 +30,14 @@ export default function StakeCard({
 
   return (
     <PinContainer className="w-full" title={`Stakes #${index}`} href={`stake/${address}/${index}`}>
-      <Card className={`w-full rounded-3xl bg-dark-blue ${!active && "opacity-60"}`}>
-        <CardHeader className="flex-row items-center pb-2 pt-4">
+      <Card className={`bg-dark-blue w-full rounded-3xl ${!active && "opacity-60"}`}>
+        <CardHeader className="flex-row items-center pt-4 pb-2">
           <CardDescription>Stakes #{index}</CardDescription>
           <Badge className="ml-auto" variant={active ? "success" : "destructive"}>
             {active ? "Active" : "Withdrawn"}
           </Badge>
         </CardHeader>
-        <CardContent className="mx-2 mb-2 rounded-2xl bg-accent-dark-blue p-4">
+        <CardContent className="bg-accent-dark-blue mx-2 mb-2 rounded-2xl p-4">
           <div className="text-amber-500">
             <p className="mb-1 font-light">Staked</p>
             <CardTitle className="text-5xl">

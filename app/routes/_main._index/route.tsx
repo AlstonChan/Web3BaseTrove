@@ -67,7 +67,7 @@ export default function Index() {
     <>
       <HeroHighlight>
         <motion.div
-          className="mx-auto max-w-md px-2 text-center text-neutral-700 dark:text-white sm:px-4 md:max-w-2xl lg:max-w-4xl"
+          className="mx-auto max-w-md px-2 text-center text-neutral-700 sm:px-4 md:max-w-2xl lg:max-w-4xl dark:text-white"
           variants={headlineVariants}
           initial="hidden"
           animate="visible"
@@ -79,7 +79,7 @@ export default function Index() {
             <span>✨ Introducing Trove</span>
           </AnimatedShinyText>
           <h1
-            className="mx-auto max-w-72 text-2xl font-semibold leading-relaxed! min-[460px]:max-w-none sm:text-4xl
+            className="mx-auto max-w-72 text-2xl leading-relaxed! font-semibold min-[460px]:max-w-none sm:text-4xl
               lg:text-5xl lg:leading-snug"
           >
             Unlock the Treasure: Mint, Stake, and Win{" "}
@@ -104,15 +104,15 @@ export default function Index() {
       </HeroHighlight>
       <article className="mt-4 px-2 sm:mt-12 md:px-4">
         <div
-          className="relative z-10 mx-auto max-w-(--breakpoint-xl) rounded-2xl bg-[url('/images/home-bg.webp')] bg-cover
-            bg-center bg-no-repeat px-4 py-6 before:absolute before:left-0 before:top-0 before:z-[-1]
-            before:h-full before:w-full before:rounded-2xl before:bg-bottom-top-fade sm:px-8 sm:py-10
-            md:before:bg-left-right-fade"
+          className="before:bg-bottom-top-fade md:before:bg-left-right-fade relative z-10 mx-auto max-w-(--breakpoint-xl)
+            rounded-2xl bg-[url('/images/home-bg.webp')] bg-cover bg-center bg-no-repeat px-4 py-6
+            before:absolute before:top-0 before:left-0 before:z-[-1] before:h-full before:w-full
+            before:rounded-2xl sm:px-8 sm:py-10"
         >
           <h2 className="mb-5 max-w-sm text-2xl font-bold md:text-3xl lg:text-4xl">
             Decentralized and Open Source
           </h2>
-          <div className="leading-relaxed dark:text-white md:max-w-(--breakpoint-sm) xl:max-w-(--breakpoint-md)">
+          <div className="leading-relaxed md:max-w-(--breakpoint-sm) xl:max-w-(--breakpoint-md) dark:text-white">
             <p>
               The entire project&apos;s source code is open-sourced and publicly available on
               GitHub. Our smart contracts are also published and verified on Etherscan. Anyone can
@@ -178,9 +178,9 @@ export default function Index() {
         </h2>
         <div className="my-8 flex w-full flex-col justify-center gap-4 md:flex-row lg:gap-10">
           {featureCards.map((card, index) => (
-            <Card key={index} className="flex w-full flex-col bg-dark-blue md:w-full">
+            <Card key={index} className="bg-dark-blue flex w-full flex-col md:w-full">
               <CardHeader className="gap-3 text-left">
-                <CardTitle className="font-medium leading-snug md:max-w-48">{card.title}</CardTitle>
+                <CardTitle className="leading-snug font-medium md:max-w-48">{card.title}</CardTitle>
                 <CardDescription className="max-w-xl text-white md:max-w-56">
                   {card.description}
                 </CardDescription>

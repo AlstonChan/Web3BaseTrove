@@ -42,12 +42,12 @@ const DrawerContent = React.forwardRef<
     <DrawerOverlay />
     <DrawerPrimitive.Content
       ref={ref}
-      className="fixed right-0 top-0 z-50 flex h-dvh w-72 flex-col rounded-l-xl border bg-background"
+      className="bg-background fixed top-0 right-0 z-50 flex h-dvh w-72 flex-col rounded-l-xl border"
       {...props}
     >
       <div className="flex h-full">
         {hidePush ? null : (
-          <div className="mx-auto ml-4 h-40 w-2 self-center rounded-full bg-muted" />
+          <div className="bg-muted mx-auto ml-4 h-40 w-2 self-center rounded-full" />
         )}
 
         <div className={cn("h-full flex-1", className)}>{children}</div>
@@ -73,7 +73,7 @@ const DrawerTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Title
     ref={ref}
-    className={cn("text-lg font-semibold leading-none tracking-tight", className)}
+    className={cn("text-lg leading-none font-semibold tracking-tight", className)}
     {...props}
   />
 ));
@@ -85,7 +85,7 @@ const DrawerDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DrawerPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-muted-foreground text-sm", className)}
     {...props}
   />
 ));

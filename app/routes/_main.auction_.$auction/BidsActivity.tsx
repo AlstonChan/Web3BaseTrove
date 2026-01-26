@@ -19,7 +19,7 @@ export default function BidsActivity({ className, bids, auctionDecimal }: BidApp
   const reversedBids = bids.slice().reverse();
 
   return (
-    <article className={cn("mt-3 rounded-2xl bg-dark-blue p-4", className)}>
+    <article className={cn("bg-dark-blue mt-3 rounded-2xl p-4", className)}>
       <h3 className="text-xl font-semibold lg:text-2xl">Bids Activity</h3>
       {bids.length > 0 ? (
         reversedBids.map((bid, index) => {

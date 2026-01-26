@@ -27,7 +27,7 @@ function NftCard({ tokenIndex, nftIndex }: NftCardProps) {
   });
 
   return (
-    <div className="flex flex-col items-center gap-2 rounded-2xl bg-dark-blue p-2">
+    <div className="bg-dark-blue flex flex-col items-center gap-2 rounded-2xl p-2">
       <a
         href={tokenURI}
         target="_blank"

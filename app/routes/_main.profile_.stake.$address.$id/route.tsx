@@ -72,7 +72,7 @@ export default function StakeDetails() {
         className="flex-1"
       >
         <h1
-          className="mx-auto mb-1 mt-10 max-w-72 text-center text-2xl font-semibold leading-relaxed!
+          className="mx-auto mt-10 mb-1 max-w-72 text-center text-2xl leading-relaxed! font-semibold
             min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
         >
           Stake Details
@@ -104,7 +104,7 @@ export default function StakeDetails() {
             {stake ? (
               <StakeDetailsForm stake={stake} address={params.address} id={Number(params.id)} />
             ) : (
-              <div className="flex h-full w-full items-center justify-center rounded-2xl bg-dark-blue p-3 py-20">
+              <div className="bg-dark-blue flex h-full w-full items-center justify-center rounded-2xl p-3 py-20">
                 This stake does not exist.
               </div>
             )}

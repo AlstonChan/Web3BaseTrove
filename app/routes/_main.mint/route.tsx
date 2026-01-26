@@ -29,7 +29,7 @@ export default function Mint() {
   return (
     <motion.div variants={headlineVariants} initial="hidden" animate="visible" className="flex-1">
       <h1
-        className="mx-auto mb-12 mt-10 max-w-72 text-center text-2xl font-semibold leading-relaxed!
+        className="mx-auto mt-10 mb-12 max-w-72 text-center text-2xl leading-relaxed! font-semibold
           min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
       >
         Mint TRV1 Token

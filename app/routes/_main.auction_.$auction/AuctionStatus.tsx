@@ -10,7 +10,7 @@ export default function AuctionStatus({ className, status }: AuctionStatsProps) 
   return (
     <div
       className={cn(
-        "mx-auto mb-2 flex flex-col rounded-2xl bg-dark-blue p-3 text-center",
+        "bg-dark-blue mx-auto mb-2 flex flex-col rounded-2xl p-3 text-center",
         className,
       )}
     >

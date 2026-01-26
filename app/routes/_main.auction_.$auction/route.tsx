@@ -87,7 +87,7 @@ export default function AuctionDetails() {
         className="mx-auto max-w-(--breakpoint-2xl) flex-1"
       >
         <h1
-          className="mx-auto mb-1 mt-10 max-w-72 text-center text-2xl font-semibold leading-relaxed!
+          className="mx-auto mt-10 mb-1 max-w-72 text-center text-2xl leading-relaxed! font-semibold
             min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
         >
           Trove Auction #{auctionId} - {auctionIndex}
@@ -99,12 +99,12 @@ export default function AuctionDetails() {
               alt="NFT"
               width={128}
               height={128}
-              className="mx-auto h-auto w-full max-w-72 rounded-2xl bg-dark-blue object-cover md:max-w-none"
+              className="bg-dark-blue mx-auto h-auto w-full max-w-72 rounded-2xl object-cover md:max-w-none"
             />
 
             {isPassed || isEnded ? (
               <AuctionStatus
-                className="mb-0 mt-6 flex md:hidden"
+                className="mt-6 mb-0 flex md:hidden"
                 status={isPassed ? "passed" : hasWinner ? "sold" : "ended"}
               />
             ) : (
@@ -114,7 +114,7 @@ export default function AuctionDetails() {
                 duration={troveAuction[Number(auctionIndex)].duration}
                 start={troveAuction[Number(auctionIndex)].start}
                 blockData={blockData}
-                className="mb-0 mt-6 flex md:hidden"
+                className="mt-6 mb-0 flex md:hidden"
               />
             )}
 

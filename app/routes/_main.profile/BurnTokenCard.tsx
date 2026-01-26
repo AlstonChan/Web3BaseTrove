@@ -153,14 +153,14 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
   };
 
   return (
-    <form className="rounded-xl bg-background p-4" onSubmit={handleSubmit}>
+    <form className="bg-background rounded-xl p-4" onSubmit={handleSubmit}>
       <h4>{title}</h4>
       <Input
         type="text"
         placeholder="0"
         className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0 text-4xl font-medium
-          text-amber-500 outline-hidden ring-transparent! placeholder:text-amber-500 focus-visible:border-none!
-          focus-visible:outline-hidden! focus-visible:ring-offset-0!"
+          text-amber-500 ring-transparent! outline-hidden placeholder:text-amber-500
+          focus-visible:border-none! focus-visible:ring-offset-0! focus-visible:outline-hidden!"
         max={maxAmount}
         value={burnAmount}
         onChange={handleInputChange}

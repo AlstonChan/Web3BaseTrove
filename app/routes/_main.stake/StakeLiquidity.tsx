@@ -6,7 +6,7 @@ export default function StakeLiquidity() {
           Your token is still liquid
         </h2>
         <div
-          className="mx-auto mb-1 mt-10 flex max-w-4xl grid-cols-5 grid-rows-3 flex-col gap-x-10 px-3 sm:mb-0 sm:grid
+          className="mx-auto mt-10 mb-1 flex max-w-4xl grid-cols-5 grid-rows-3 flex-col gap-x-10 px-3 sm:mb-0 sm:grid
             sm:gap-y-6"
         >
           <h3 className="col-span-2 text-xl leading-relaxed! text-amber-500 md:text-2xl">

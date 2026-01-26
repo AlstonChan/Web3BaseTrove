@@ -42,13 +42,13 @@ export const PinContainer = ({
           perspective: "1000px",
           transform: "rotateX(70deg) translateZ(0deg)",
         }}
-        className="absolute left-1/2 top-1/2 ml-[0.09375rem] mt-4 w-full -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-1/2 left-1/2 mt-4 ml-[0.09375rem] w-full -translate-x-1/2 -translate-y-1/2"
       >
         <div
           style={{
             transform: transform,
           }}
-          className="absolute left-1/2 top-1/2 flex w-full items-start justify-start overflow-hidden rounded-3xl border
+          className="absolute top-1/2 left-1/2 flex w-full items-start justify-start overflow-hidden rounded-3xl border
             shadow-[0_8px_16px_rgb(0_0_0/0.4)] transition duration-700 group-hover/pin:border-white/20"
         >
           <div className={cn("relative z-50", className)}>{children}</div>
@@ -84,7 +84,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
             perspective: "1000px",
             transform: "rotateX(70deg) translateZ(0)",
           }}
-          className="absolute left-1/2 top-1/2 ml-[0.09375rem] mt-4 -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-1/2 mt-4 ml-[0.09375rem] -translate-x-1/2 -translate-y-1/2"
         >
           <>
             <motion.div
@@ -105,8 +105,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
                 repeat: Infinity,
                 delay: 0,
               }}
-              className="absolute left-1/2 top-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8
-                shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
+              className="absolute top-1/2 left-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8 shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
             ></motion.div>
             <motion.div
               initial={{
@@ -126,8 +125,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
                 repeat: Infinity,
                 delay: 2,
               }}
-              className="absolute left-1/2 top-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8
-                shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
+              className="absolute top-1/2 left-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8 shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
             ></motion.div>
             <motion.div
               initial={{
@@ -147,27 +145,26 @@ export const PinPerspective = ({ title }: { title?: string }) => {
                 repeat: Infinity,
                 delay: 4,
               }}
-              className="absolute left-1/2 top-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8
-                shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
+              className="absolute top-1/2 left-1/2 h-45 w-45 rounded-[50%] bg-sky-500/8 shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
             ></motion.div>
           </>
         </div>
 
         <>
           <motion.div
-            className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
+            className="absolute right-1/2 bottom-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
               to-cyan-500 blur-[2px] group-hover/pin:h-40"
           />
           <motion.div
-            className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
+            className="absolute right-1/2 bottom-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
               to-cyan-500 group-hover/pin:h-40"
           />
           <motion.div
-            className="absolute bottom-1/2 right-1/2 z-40 h-[4px] w-[4px] translate-x-[1.5px] translate-y-[14px]
+            className="absolute right-1/2 bottom-1/2 z-40 h-[4px] w-[4px] translate-x-[1.5px] translate-y-[14px]
               rounded-full bg-cyan-600 blur-[3px]"
           />
           <motion.div
-            className="absolute bottom-1/2 right-1/2 z-40 h-[2px] w-[2px] translate-x-[0.5px] translate-y-[14px]
+            className="absolute right-1/2 bottom-1/2 z-40 h-[2px] w-[2px] translate-x-[0.5px] translate-y-[14px]
               rounded-full bg-cyan-300"
           />
         </>

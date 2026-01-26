@@ -47,7 +47,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="flex h-full min-h-dvh flex-col bg-background font-poppins">
+      <body className="bg-background font-poppins flex h-full min-h-dvh flex-col">
         <WagmiProvider config={config}>
           <QueryClientProvider client={queryClient}>
             <RainbowKitProvider theme={rainbowKitTheme}>{children}</RainbowKitProvider>
@@ -90,7 +90,7 @@ export function ErrorBoundary() {
         <Meta />
         <Links />
       </head>
-      <body className="flex h-full min-h-dvh flex-col bg-background font-poppins">
+      <body className="bg-background font-poppins flex h-full min-h-dvh flex-col">
         {isRouteErrorResponse(error) ? (
           <ErrorPage code={error.status} title={error.statusText} message={error.data} />
         ) : error instanceof Error ? (

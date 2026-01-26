@@ -185,9 +185,9 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl bg-dark-blue p-3 sm:p-5"
+        className="bg-dark-blue mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3 sm:p-5"
       >
-        <h2 className="overflow-hidden text-ellipsis text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+        <h2 className="overflow-hidden text-xl text-ellipsis sm:text-2xl md:text-3xl lg:text-4xl">
           Create Auction
         </h2>
         <div
@@ -245,7 +245,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                       {...field}
                     />
 
-                    <div className="border-t border-border p-3">
+                    <div className="border-border border-t p-3">
                       <TimePicker date={field.value} setDate={field.onChange} />
                     </div>
                   </PopoverContent>
@@ -292,7 +292,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                       {...field}
                     />
 
-                    <div className="border-t border-border p-3">
+                    <div className="border-border border-t p-3">
                       <TimePicker date={field.value} setDate={field.onChange} />
                     </div>
                   </PopoverContent>

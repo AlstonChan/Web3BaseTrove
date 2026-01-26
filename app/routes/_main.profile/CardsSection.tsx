@@ -50,14 +50,14 @@ export default function CardsSection() {
           title="TRV1 balance"
           value={trv1Balance}
           desc="TRV1"
-          className="w-full bg-accent-dark-blue sm:w-1/2 md:w-full"
+          className="bg-accent-dark-blue w-full sm:w-1/2 md:w-full"
           large
         />
         <Stats
           title="TRV2 balance"
           value={trv2Balance}
           desc="TRV2"
-          className="w-full bg-accent-dark-blue sm:w-1/2 md:w-full"
+          className="bg-accent-dark-blue w-full sm:w-1/2 md:w-full"
           large
         />
       </div>
@@ -66,14 +66,14 @@ export default function CardsSection() {
           title="Total active stakes"
           value={activeStakes}
           desc="TRV1"
-          className="w-full bg-accent-dark-blue sm:w-1/2 md:w-full"
+          className="bg-accent-dark-blue w-full sm:w-1/2 md:w-full"
           large
         />
         <Stats
           title="Total Claimable Rewards"
           value={claimableRewards}
           desc="TRV2"
-          className="w-full bg-accent-dark-blue sm:w-1/2 md:w-full"
+          className="bg-accent-dark-blue w-full sm:w-1/2 md:w-full"
           large
         />
       </div>

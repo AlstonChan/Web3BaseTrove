@@ -63,7 +63,7 @@ export default function AuctionWithdrawal({ auctionId }: AuctionWithdrawalProps)
   };
 
   return troveAuctionOwner && troveAuctionOwner === account.address ? (
-    <div className="mt-3 w-full rounded-xl bg-dark-blue p-3">
+    <div className="bg-dark-blue mt-3 w-full rounded-xl p-3">
       <h3 className="text-xl font-semibold lg:text-2xl">Auction Withdrawal</h3>
       <p>
         You can withdraw the auction and have all the bids refunded to all bidders. You can do this

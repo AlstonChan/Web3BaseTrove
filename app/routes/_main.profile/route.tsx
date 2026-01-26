@@ -40,15 +40,15 @@ export default function Profile() {
   return (
     <motion.div variants={headlineVariants} initial="hidden" animate="visible" className="flex-1">
       <h1
-        className="mx-auto mb-12 mt-10 max-w-72 text-center text-2xl font-semibold leading-relaxed!
+        className="mx-auto mt-10 mb-12 max-w-72 text-center text-2xl leading-relaxed! font-semibold
           min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
       >
         Your Profile
       </h1>
       {account.isConnected ? (
         <>
-          <article className="mx-auto mb-3 flex max-w-(--breakpoint-xl) flex-col rounded-2xl bg-dark-blue p-3 sm:p-5">
-            <h2 className="overflow-hidden text-ellipsis text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+          <article className="bg-dark-blue mx-auto mb-3 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3 sm:p-5">
+            <h2 className="overflow-hidden text-xl text-ellipsis sm:text-2xl md:text-3xl lg:text-4xl">
               {account.address}
             </h2>
             <div className="mt-2 flex flex-col gap-2 text-sm sm:text-base">
@@ -79,10 +79,10 @@ export default function Profile() {
             {/* cards */}
             <CardsSection />
 
-            <div className="mt-5 flex flex-col gap-5 rounded-xl bg-destructive p-3 sm:p-5 lg:flex-row lg:gap-3">
+            <div className="bg-destructive mt-5 flex flex-col gap-5 rounded-xl p-3 sm:p-5 lg:flex-row lg:gap-3">
               <div className="max-w-lg lg:max-w-72">
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">Danger Zone</h3>
-                <p className="mb-3 mt-2 text-lg">Burn your token!</p>
+                <p className="mt-2 mb-3 text-lg">Burn your token!</p>
                 <p>
                   You can burn your token here with ease. If you wonder what you will get by burning
                   your token, you actually get nothing :)

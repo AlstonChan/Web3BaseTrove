@@ -60,7 +60,7 @@ export default function AuctionCard({ data, baseURI, blockData }: AuctionCardPro
 
   return (
     <PinContainer
-      className="mx-auto w-full max-w-80 rounded-2xl bg-dark-blue p-2"
+      className="bg-dark-blue mx-auto w-full max-w-80 rounded-2xl p-2"
       title={`Stakes #${data.auctionId}`}
       href={`${Number(data.auctionId)}-${Number(data.auctionIndex)}`}
     >
@@ -71,7 +71,7 @@ export default function AuctionCard({ data, baseURI, blockData }: AuctionCardPro
         height={128}
         className="h-auto w-full rounded-2xl object-cover"
       />
-      <div className="mt-3 rounded-xl bg-accent-dark-blue p-1.5">
+      <div className="bg-accent-dark-blue mt-3 rounded-xl p-1.5">
         <div
           className={`rounded-lg p-2 text-center text-sm text-white
             ${isPassed ? "bg-slate-600" : isEnded ? "bg-destructive" : "bg-success"}`}
@@ -91,7 +91,7 @@ export default function AuctionCard({ data, baseURI, blockData }: AuctionCardPro
         <div className="mt-4 flex gap-0.5">
           <div className="flex-1 overflow-hidden text-center">
             <p className="text-xs text-white">Highest</p>
-            <p className="mt-1 overflow-hidden text-ellipsis font-bold text-white sm:text-lg">
+            <p className="mt-1 overflow-hidden font-bold text-ellipsis text-white sm:text-lg">
               {Number(formatUnits(highestBid, Number(auctionDecimal))).toLocaleString()}
             </p>
             <p className="-mt-1">
@@ -100,7 +100,7 @@ export default function AuctionCard({ data, baseURI, blockData }: AuctionCardPro
           </div>
           <div className="flex-1 overflow-hidden text-center">
             <p className="text-xs text-white">Bid</p>
-            <p className="mt-1 overflow-hidden text-ellipsis font-bold text-white sm:text-lg">
+            <p className="mt-1 overflow-hidden font-bold text-ellipsis text-white sm:text-lg">
               {Number(formatUnits(data.minimumIncrement, Number(auctionDecimal))).toLocaleString()}
             </p>
             <p className="-mt-1">
@@ -109,7 +109,7 @@ export default function AuctionCard({ data, baseURI, blockData }: AuctionCardPro
           </div>
           <div className="flex-1 overflow-hidden text-center">
             <p className="text-xs text-white">Buyout</p>
-            <p className="mt-1 overflow-hidden text-ellipsis font-bold text-white sm:text-lg">
+            <p className="mt-1 overflow-hidden font-bold text-ellipsis text-white sm:text-lg">
               {Number(formatUnits(data.buyoutPrice, Number(auctionDecimal))).toLocaleString()}
             </p>
             <p className="-mt-1">

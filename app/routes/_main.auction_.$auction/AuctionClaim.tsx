@@ -159,7 +159,7 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
   } else btnText = "Connect Wallet";
 
   return (
-    <div className="w-full rounded-xl bg-dark-blue p-3">
+    <div className="bg-dark-blue w-full rounded-xl p-3">
       <div className="rounded-2xl shadow-sm">
         <Stats
           title="Highest Bid"
@@ -170,7 +170,7 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
               ? `The winner is ${winner}`
               : `The highest bid is ${winner}`
           }
-          className="w-full bg-accent-dark-blue shadow-none"
+          className="bg-accent-dark-blue w-full shadow-none"
           large
         />
         {(status === "ended" || status === "sold") && accountIsWinner ? null : (
@@ -187,7 +187,7 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
             }
             figure="TRV2"
             desc={"Refundable amount"}
-            className="mt-2 w-full bg-accent-dark-blue shadow-none"
+            className="bg-accent-dark-blue mt-2 w-full shadow-none"
             large
           />
         )}

@@ -90,10 +90,10 @@ export default function NavHeader() {
                 <Link
                   to={route.link}
                   key={index}
-                  className="group flex items-center justify-start bg-opacity-50 pl-5 transition-colors duration-200
+                  className="group bg-opacity-50 flex items-center justify-start pl-5 transition-colors duration-200
                     hover:bg-slate-800"
                 >
-                  <p className="duration-600 mr-3 text-left transition-[margin] group-hover:mr-6">
+                  <p className="mr-3 text-left transition-[margin] duration-600 group-hover:mr-6">
                     {route.name}
                   </p>
                   <ArrowRight />

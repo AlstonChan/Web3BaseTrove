@@ -129,8 +129,8 @@ export default function MintForm() {
   };
 
   return (
-    <div className="w-full rounded-xl bg-dark-blue p-3 md:w-2/3">
-      <div className="rounded-2xl bg-accent-dark-blue shadow-sm">
+    <div className="bg-dark-blue w-full rounded-xl p-3 md:w-2/3">
+      <div className="bg-accent-dark-blue rounded-2xl shadow-sm">
         <Stats
           title="Mint"
           value={
@@ -138,8 +138,8 @@ export default function MintForm() {
               type="text"
               placeholder="0"
               className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0 text-4xl font-medium
-                outline-hidden ring-transparent! focus-visible:border-none! focus-visible:outline-hidden!
-                focus-visible:ring-offset-0!"
+                ring-transparent! outline-hidden focus-visible:border-none! focus-visible:ring-offset-0!
+                focus-visible:outline-hidden!"
               maxLength={maxTokenPerMint.toString().length}
               max={maxTokenPerMint}
               value={mintAmount}
@@ -149,9 +149,9 @@ export default function MintForm() {
           }
           desc={`${(deferredMintAmount * safeBigIntToNumber(mintCost)).toLocaleString()} Sepolia Wei`}
           figure="TRV1"
-          className="w-full bg-accent-dark-blue shadow-none"
+          className="bg-accent-dark-blue w-full shadow-none"
         />
-        <div className="px-6 pb-6 pt-3">
+        <div className="px-6 pt-3 pb-6">
           <Slider
             defaultValue={[33]}
             max={maxTokenPerMint}

@@ -180,9 +180,9 @@ export default function StakeForm() {
   };
 
   return (
-    <div className="w-full rounded-xl bg-dark-blue p-3">
+    <div className="bg-dark-blue w-full rounded-xl p-3">
       <div className="relative">
-        <div className="mb-2 rounded-2xl bg-accent-dark-blue shadow-sm">
+        <div className="bg-accent-dark-blue mb-2 rounded-2xl shadow-sm">
           <Stats
             title="Stake"
             value={
@@ -190,8 +190,8 @@ export default function StakeForm() {
                 type="text"
                 placeholder="0"
                 className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0 text-4xl font-medium
-                  outline-hidden ring-transparent! focus-visible:border-none! focus-visible:outline-hidden!
-                  focus-visible:ring-offset-0! md:h-12 md:text-5xl lg:h-14 lg:text-6xl"
+                  ring-transparent! outline-hidden focus-visible:border-none! focus-visible:ring-offset-0!
+                  focus-visible:outline-hidden! md:h-12 md:text-5xl lg:h-14 lg:text-6xl"
                 max={maxEligibleToken}
                 value={stakeAmount}
                 onChange={handleInputChange}
@@ -199,9 +199,9 @@ export default function StakeForm() {
             }
             large
             figure="TRV1"
-            className="w-full bg-accent-dark-blue shadow-none"
+            className="bg-accent-dark-blue w-full shadow-none"
           />
-          <div className="px-6 pb-6 pt-3">
+          <div className="px-6 pt-3 pb-6">
             <Slider
               defaultValue={[0]}
               max={maxEligibleToken}
@@ -227,14 +227,14 @@ export default function StakeForm() {
           <MoveDown />
         </Button>
       </div>
-      <div className="rounded-2xl bg-accent-dark-blue shadow-sm">
+      <div className="bg-accent-dark-blue rounded-2xl shadow-sm">
         <Stats
           title="Reward"
           value={<span className="font-semibold">{stakeReward}</span>}
           large
           desc={`Every Day`}
           figure="TRV2"
-          className="w-full overflow-auto bg-accent-dark-blue shadow-none"
+          className="bg-accent-dark-blue w-full overflow-auto shadow-none"
         />
       </div>
       <Button
@@ -245,7 +245,7 @@ export default function StakeForm() {
       >
         {account.isConnected ? "Stake token" : "Connect Wallet"}
       </Button>
-      <div className="mx-2 mb-4 mt-4 text-sm">
+      <div className="mx-2 mt-4 mb-4 text-sm">
         <ContractDetails
           name="Contract address"
           value={contractAddress.slice(0, 10) + "..."}

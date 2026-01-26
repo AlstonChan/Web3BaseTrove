@@ -41,10 +41,10 @@ export default function NotificationBar({ className }: NotificationBarProps) {
           exit={{ y: -10, opacity: 0, transition: { duration: 0.5 } }}
           transition={{ duration: 1.5 }}
           className={cn(
-            `fixed left-0 top-0 z-9999 flex w-full items-center bg-destructive px-3 py-2
-            text-destructive-foreground transition-[width,padding,top,left,border-radius] duration-1000`,
+            `bg-destructive text-destructive-foreground fixed top-0 left-0 z-9999 flex w-full items-center px-3
+            py-2 transition-[width,padding,top,left,border-radius] duration-1000`,
             floatTop
-              ? "fixed-fill top-1.5 mx-auto rounded-xl dark:border-white/20 min-[400px]:left-4 xl:w-[1200px]"
+              ? "fixed-fill top-1.5 mx-auto rounded-xl min-[400px]:left-4 xl:w-[1200px] dark:border-white/20"
               : "",
             className,
           )}

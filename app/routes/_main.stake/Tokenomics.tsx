@@ -28,7 +28,7 @@ export default function Tokenomics() {
       : 0;
 
   return (
-    <article className="mx-auto mt-32 flex max-w-screen-lg flex-col sm:px-4">
+    <article className="mx-auto mt-32 flex max-w-(--breakpoint-lg) flex-col sm:px-4">
       <div className="w-full">
         <h2 className="mb-12 text-right text-3xl font-semibold sm:text-4xl md:text-5xl">
           Tokenomics

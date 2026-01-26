@@ -20,9 +20,9 @@ export default function InfoCard({ className, cardIllustration, cardTitle, link 
     >
       <CardContainer containerClassName="w-full" className="w-full">
         <CardBody
-          className="group/card relative h-auto w-full rounded-xl border border-black/[0.1] bg-gray-50 p-6
-            dark:border-white/[0.2] dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1]
-            sm:w-[30rem]"
+          className="group/card relative h-auto w-full rounded-xl border border-black/10 bg-gray-50 p-6
+            dark:border-white/20 dark:bg-black dark:hover:shadow-2xl dark:hover:shadow-emerald-500/10
+            sm:w-120"
         >
           <CardItem translateZ="40" className="mt-4 w-full">
             {cardIllustration}

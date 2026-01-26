@@ -160,7 +160,7 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
 
   return (
     <div className="w-full rounded-xl bg-dark-blue p-3">
-      <div className="rounded-2xl shadow">
+      <div className="rounded-2xl shadow-sm">
         <Stats
           title="Highest Bid"
           value={Number(formatUnits(highestBid, Number(details.auctionDecimal))).toLocaleString()}

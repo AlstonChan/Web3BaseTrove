@@ -15,8 +15,8 @@ export default function MultiplierCard({ icon, children, effect }: MultiplierCar
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group/canvas-card relative flex h-[20rem] w-full max-w-sm items-center justify-center rounded-3xl
-        border border-black/[0.2] p-4 dark:border-white/[0.2]"
+      className="group/canvas-card relative flex h-80 w-full max-w-sm items-center justify-center rounded-3xl
+        border border-black/20 p-4 dark:border-white/20"
     >
       <AnimatePresence>
         {hovered && (

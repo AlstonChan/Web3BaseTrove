@@ -38,7 +38,7 @@ export default function FeatureBar({
               className={cn("relative col-span-2 flex rounded-2xl bg-right bg-no-repeat p-5", img)}
             >
               <div className="absolute left-0 top-0 h-full w-full rounded-2xl bg-left-right-bg-fade"></div>
-              <p className="relative z-10 !leading-relaxed sm:mr-20 lg:mr-32">{description}</p>
+              <p className="relative z-10 leading-relaxed! sm:mr-20 lg:mr-32">{description}</p>
             </div>
           </>
         ) : (
@@ -50,7 +50,7 @@ export default function FeatureBar({
               )}
             >
               <div className="absolute left-0 top-0 h-full w-full rounded-2xl bg-left-right-bg-fade"></div>
-              <p className="relative z-10 !leading-relaxed sm:mr-20 lg:mr-32">{description}</p>
+              <p className="relative z-10 leading-relaxed! sm:mr-20 lg:mr-32">{description}</p>
             </div>
             <h3 className="my-5 mt-5 flex text-xl sm:text-2xl md:my-0">
               <span>{itemNumber}. &nbsp;</span>

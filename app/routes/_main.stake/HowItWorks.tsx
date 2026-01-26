@@ -35,7 +35,7 @@ export default function HowItWorks() {
         duration: 0.8,
         ease: "easeInOut",
       }}
-      className="mx-auto mt-32 flex max-w-screen-lg flex-col sm:px-4"
+      className="mx-auto mt-32 flex max-w-(--breakpoint-lg) flex-col sm:px-4"
     >
       <div className="w-full">
         <h2 className="mb-12 text-center text-3xl font-semibold sm:text-4xl md:text-5xl">

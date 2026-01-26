@@ -23,7 +23,7 @@ export default function Stats({
   center = false,
 }: StatsProps) {
   return (
-    <div className={cn("daisy-stats overflow-clip bg-dark-blue shadow", className)}>
+    <div className={cn("daisy-stats overflow-clip bg-dark-blue shadow-sm", className)}>
       <div className={`daisy-stat ${center && "place-items-center"}`}>
         {figure && (
           <div className="daisy-stat-figure text-xl text-primary text-white">{figure}</div>

@@ -21,7 +21,7 @@ export default function StakeStatistics() {
   const annualApy = stakeDailyBaseRate ? parseFloat(formatUnits(stakeDailyBaseRate, 18)) * 365 : 0;
 
   return (
-    <article className="mx-auto my-14 flex max-w-screen-lg flex-col sm:px-4">
+    <article className="mx-auto my-14 flex max-w-(--breakpoint-lg) flex-col sm:px-4">
       <Badge className="mx-auto mb-14" variant="orange">
         Performance
       </Badge>

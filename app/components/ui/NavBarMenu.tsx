@@ -96,7 +96,7 @@ export const Menu = ({
         `bg-opacity-70 shadow-input dark:bg-background fixed top-4 left-1/2 z-50 flex w-full -translate-x-1/2
         justify-center space-x-2 rounded-full border-2 border-transparent bg-white px-4 py-6
         transition-[width,padding] duration-1000 sm:space-x-4 sm:px-8`,
-        floatTop ? "fixed-fill z-9999 mx-auto py-4 xl:w-[1200px] dark:border-white/20" : "",
+        floatTop ? "fixed-fill z-40 mx-auto py-4 xl:w-[1200px] dark:border-white/20" : "",
         className,
       )}
     >

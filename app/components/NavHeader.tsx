@@ -1,49 +1,43 @@
-// Remix Modules
 import { Link } from "react-router";
-
-// External Modules
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ArrowRight, MenuIcon } from "lucide-react";
 
-// Internal Modules
 import { useNotification } from "~/hooks/useNotificationBar";
-
-// Components
 import { HoveredLink, Menu } from "./ui/NavBarMenu";
 import { Drawer, DrawerContent, DrawerTrigger } from "~/components/ui/drawer";
 import { Button } from "./ui/button";
 import NotificationBar from "./NotificationBar";
 
-// Assets Imports
 import logoPng from "~/assets/logo/logo-52.png";
 import logoWebp from "~/assets/logo/logo-52.webp";
 import logoAvif from "~/assets/logo/logo-52.avif";
 
+const routes = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Mint",
+    link: "/mint",
+  },
+  {
+    name: "Stake",
+    link: "/stake",
+  },
+  {
+    name: "Auction",
+    link: "/auction",
+  },
+  {
+    name: "Profile",
+    link: "/profile",
+  },
+] as const;
+
 export default function NavHeader() {
   const { message } = useNotification();
   //   const [active, setActive] = useState<string | null>(null);
-  const routes = [
-    {
-      name: "Home",
-      link: "/",
-    },
-    {
-      name: "Mint",
-      link: "/mint",
-    },
-    {
-      name: "Stake",
-      link: "/stake",
-    },
-    {
-      name: "Auction",
-      link: "/auction",
-    },
-    {
-      name: "Profile",
-      link: "/profile",
-    },
-  ];
 
   return (
     <>
@@ -81,11 +75,15 @@ export default function NavHeader() {
 
           <Drawer direction="right">
             <DrawerTrigger asChild>
-              <Button variant="outline" size="icon" className="ml-2 min-[880px]:hidden">
+              <Button
+                variant="outline"
+                size="icon"
+                className="ml-2 cursor-pointer min-[880px]:hidden"
+              >
                 <MenuIcon />
               </Button>
             </DrawerTrigger>
-            <DrawerContent hidePush className={`grid grid-rows-${routes.length}`}>
+            <DrawerContent className={`grid grid-rows-${routes.length} z-9999`}>
               {routes.map((route, index) => (
                 <Link
                   to={route.link}

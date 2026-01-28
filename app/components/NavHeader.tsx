@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ArrowRight, MenuIcon } from "lucide-react";
 
-import { useNotification } from "~/hooks/useNotificationBar";
 import { HoveredLink, Menu } from "./ui/NavBarMenu";
 import { Drawer, DrawerContent, DrawerTrigger } from "~/components/ui/drawer";
 import { Button } from "./ui/button";
@@ -11,6 +10,7 @@ import NotificationBar from "./NotificationBar";
 import logoPng from "~/assets/logo/logo-52.png";
 import logoWebp from "~/assets/logo/logo-52.webp";
 import logoAvif from "~/assets/logo/logo-52.avif";
+import { useNotification } from "~/context/NotificationContext";
 
 const routes = [
   {

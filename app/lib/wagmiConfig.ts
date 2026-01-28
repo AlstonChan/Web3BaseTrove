@@ -33,3 +33,18 @@ export const rainbowKitTheme = (() => {
 
 export const supportedChains =
   process.env.NODE_ENV === "development" ? [anvil.id] : [baseSepolia.id];
+
+/**
+ * Check if the given chainId is supported {@link supportedChains}
+ * @param chainId The chain id to check
+ * @returns true if supported, false otherwise
+ */
+export function isSupportedChain(chainId: number) {
+  for (const supportedChain of supportedChains) {
+    if (chainId === supportedChain) {
+      return chainId;
+    }
+  }
+
+  return false;
+}

@@ -1,11 +1,9 @@
-// External Modules
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CircleX } from "lucide-react";
 
-// Internal Modules
-import { useNotification } from "~/hooks/useNotificationBar";
 import { cn } from "~/lib/utils";
+import { useNotification } from "~/context/NotificationContext";
 
 interface NotificationBarProps {
   className?: string;
@@ -44,7 +42,7 @@ export default function NotificationBar({ className }: NotificationBarProps) {
             `bg-destructive text-destructive-foreground fixed top-0 left-0 z-9999 flex w-full items-center px-3
             py-2 transition-[width,padding,top,left,border-radius] duration-1000`,
             floatTop
-              ? "fixed-fill top-1.5 mx-auto rounded-xl min-[400px]:left-4 xl:w-[1200px] dark:border-white/20"
+              ? "fixed-fill top-1.5 mx-auto rounded-xl min-[400px]:left-4 xl:w-300 dark:border-white/20"
               : "",
             className,
           )}

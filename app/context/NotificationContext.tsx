@@ -1,6 +1,5 @@
-// External Modules
-import { createContext, useState } from "react";
-import type { FC, ReactNode } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
+import type { ReactNode } from "react";
 
 interface NotificationContextType {
   message: string;
@@ -10,20 +9,28 @@ interface NotificationContextType {
 
 export const NotificationContext = createContext<NotificationContextType | undefined>(undefined);
 
-export const NotificationProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const [message, setMessage] = useState<string>("");
 
-  const showNotification = (msg: string) => {
+  const showNotification = useCallback((msg: string) => {
     setMessage(msg);
-  };
+  }, []);
 
-  const hideNotification = () => {
+  const hideNotification = useCallback(() => {
     setMessage("");
-  };
+  }, []);
 
   return (
     <NotificationContext.Provider value={{ message, showNotification, hideNotification }}>
       {children}
     </NotificationContext.Provider>
   );
+};
+
+export const useNotification = () => {
+  const context = useContext(NotificationContext);
+  if (!context) {
+    throw new Error("useNotification must be used within a NotificationProvider");
+  }
+  return context;
 };

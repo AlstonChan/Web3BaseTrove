@@ -17,13 +17,13 @@ export default function _Main() {
   const navigation = useNavigation();
 
   // Delay the loading state to prevent flickering
-  const delay = useRef<NodeJS.Timeout>();
+  const delay = useRef<number | null>(null);
   // Record the loading state of the navigation
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (navigation.state === "loading") {
-      delay.current = setTimeout(() => {
+      delay.current = window.setTimeout(() => {
         if (navigation.state === "loading") {
           setLoading(true);
         }
@@ -31,9 +31,19 @@ export default function _Main() {
     }
 
     if (navigation.state === "idle") {
-      clearTimeout(delay.current);
+      if (delay.current !== null) {
+        clearTimeout(delay.current);
+        delay.current = null;
+      }
       setLoading(false);
     }
+
+    return () => {
+      if (delay.current !== null) {
+        clearTimeout(delay.current);
+        delay.current = null;
+      }
+    };
   }, [navigation.state]);
 
   return (

@@ -1,4 +1,3 @@
-// Components
 import { CardBody, CardContainer, CardItem } from "~/components/3dCard";
 import type { ReactNode } from "react";
 

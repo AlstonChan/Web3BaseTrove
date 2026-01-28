@@ -152,20 +152,20 @@ export const PinPerspective = ({ title }: { title?: string }) => {
 
         <>
           <motion.div
-            className="absolute right-1/2 bottom-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
-              to-cyan-500 blur-[2px] group-hover/pin:h-40"
+            className="absolute right-1/2 bottom-1/2 h-20 w-px translate-y-3.5 bg-linear-to-b from-transparent to-cyan-500
+              blur-[2px] group-hover/pin:h-40"
           />
           <motion.div
-            className="absolute right-1/2 bottom-1/2 h-20 w-px translate-y-[14px] bg-linear-to-b from-transparent
-              to-cyan-500 group-hover/pin:h-40"
+            className="absolute right-1/2 bottom-1/2 h-20 w-px translate-y-3.5 bg-linear-to-b from-transparent to-cyan-500
+              group-hover/pin:h-40"
           />
           <motion.div
-            className="absolute right-1/2 bottom-1/2 z-40 h-[4px] w-[4px] translate-x-[1.5px] translate-y-[14px]
-              rounded-full bg-cyan-600 blur-[3px]"
+            className="absolute right-1/2 bottom-1/2 z-40 h-1 w-1 translate-x-[1.5px] translate-y-3.5 rounded-full
+              bg-cyan-600 blur-[3px]"
           />
           <motion.div
-            className="absolute right-1/2 bottom-1/2 z-40 h-[2px] w-[2px] translate-x-[0.5px] translate-y-[14px]
-              rounded-full bg-cyan-300"
+            className="absolute right-1/2 bottom-1/2 z-40 h-0.5 w-0.5 translate-x-[0.5px] translate-y-3.5 rounded-full
+              bg-cyan-300"
           />
         </>
       </div>

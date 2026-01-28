@@ -1,7 +1,5 @@
-// External Modules
 import { createContext, useState, useContext, useRef, useEffect } from "react";
 
-// Internal Modules
 import { cn } from "~/lib/utils";
 
 import type { ElementType, ReactNode } from "react";
@@ -82,6 +80,7 @@ export const CardItem = ({
   rotateX = 0,
   rotateY = 0,
   rotateZ = 0,
+  ref,
   ...rest
 }: {
   as?: ElementType;
@@ -93,33 +92,36 @@ export const CardItem = ({
   rotateX?: number | string;
   rotateY?: number | string;
   rotateZ?: number | string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref?: React.Ref<HTMLElement>;
   [key: string]: any;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const internalRef = useRef<HTMLElement>(null);
   const [isMouseEntered] = useMouseEnter();
 
-  useEffect(() => {
-    const handleAnimations = () => {
-      if (!ref.current) return;
-      if (isMouseEntered) {
-        ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
-      } else {
-        ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
-      }
-    };
+  // Use the passed ref or fall back to internal ref
+  const elementRef = (ref as React.RefObject<HTMLElement>) || internalRef;
 
-    handleAnimations();
-  }, [isMouseEntered]);
+  useEffect(() => {
+    if (!elementRef.current) return;
+
+    if (isMouseEntered) {
+      elementRef.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+    } else {
+      elementRef.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+    }
+  }, [isMouseEntered, translateX, translateY, translateZ, rotateX, rotateY, rotateZ]);
 
   return (
-    <Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
+    <Tag
+      ref={elementRef}
+      className={cn("w-fit transition duration-200 ease-linear", className)}
+      {...rest}
+    >
       {children}
     </Tag>
   );
 };
 
-// Create a hook to use the context
 export const useMouseEnter = () => {
   const context = useContext(MouseEnterContext);
   if (context === undefined) {

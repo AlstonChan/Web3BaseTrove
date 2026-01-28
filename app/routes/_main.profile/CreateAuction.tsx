@@ -1,12 +1,11 @@
-// External Modules
 import { add, format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { useBlock } from "wagmi";
+import { useEffect } from "react";
 
-// Internal Modules
 import {
   cn,
   formatFloatToBigInt,
@@ -18,7 +17,6 @@ import {
 } from "~/lib/utils";
 import { useWriteTroveAuction } from "~/generated";
 
-// Components
 import { TimePicker } from "~/components/TimePicker";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
@@ -34,69 +32,67 @@ import {
   FormMessage,
 } from "~/components/ui/form";
 import LoadingPage from "~/components/LoadingPage";
-import { useEffect } from "react";
 
 interface CreateAuctionProps {
   decimals: number;
 }
 
+const formSchema = z.object({
+  auctionId: z.preprocess(
+    (args) => (args === "" ? undefined : args),
+    z.coerce
+      .number({ invalid_type_error: "Auction ID must be a number" })
+      .nonnegative("Auction ID must be not be negative"),
+  ),
+  startDate: z.date(),
+  endDate: z.date(),
+  startPrice: z
+    .string()
+    .refine((val) => nonNumberValidation(val), {
+      message: "This field must be a number",
+    })
+    .refine((val) => invalidNumberFormat(val), {
+      message: "Invalid number format",
+    })
+    .refine((val) => unParsableNumber(val), {
+      message: "Invalid input",
+    })
+    .refine((val) => negativeNumberValidation(val), {
+      message: "This field must be a positive number",
+    }),
+  buyoutPrice: z
+    .string()
+    .refine((val) => nonNumberValidation(val), {
+      message: "This field must be a number",
+    })
+    .refine((val) => invalidNumberFormat(val), {
+      message: "Invalid number format",
+    })
+    .refine((val) => unParsableNumber(val), {
+      message: "Invalid input",
+    })
+    .refine((val) => negativeNumberValidation(val), {
+      message: "This field must be a positive number",
+    }),
+  minimumPrice: z
+    .string()
+    .refine((val) => nonNumberValidation(val), {
+      message: "This field must be a number",
+    })
+    .refine((val) => invalidNumberFormat(val), {
+      message: "Invalid number format",
+    })
+    .refine((val) => unParsableNumber(val), {
+      message: "Invalid input",
+    })
+    .refine((val) => negativeNumberValidation(val), {
+      message: "This field must be a positive number",
+    }),
+  troveURI: z.string(),
+});
+
 export default function CreateAuction({ decimals }: CreateAuctionProps) {
   const { data: blockData } = useBlock();
-
-  // Schema
-  const formSchema = z.object({
-    auctionId: z.preprocess(
-      (args) => (args === "" ? undefined : args),
-      z.coerce
-        .number({ invalid_type_error: "Auction ID must be a number" })
-        .nonnegative("Auction ID must be not be negative"),
-    ),
-    startDate: z.date(),
-    endDate: z.date(),
-    startPrice: z
-      .string()
-      .refine((val) => nonNumberValidation(val), {
-        message: "This field must be a number",
-      })
-      .refine((val) => invalidNumberFormat(val), {
-        message: "Invalid number format",
-      })
-      .refine((val) => unParsableNumber(val), {
-        message: "Invalid input",
-      })
-      .refine((val) => negativeNumberValidation(val), {
-        message: "This field must be a positive number",
-      }),
-    buyoutPrice: z
-      .string()
-      .refine((val) => nonNumberValidation(val), {
-        message: "This field must be a number",
-      })
-      .refine((val) => invalidNumberFormat(val), {
-        message: "Invalid number format",
-      })
-      .refine((val) => unParsableNumber(val), {
-        message: "Invalid input",
-      })
-      .refine((val) => negativeNumberValidation(val), {
-        message: "This field must be a positive number",
-      }),
-    minimumPrice: z
-      .string()
-      .refine((val) => nonNumberValidation(val), {
-        message: "This field must be a number",
-      })
-      .refine((val) => invalidNumberFormat(val), {
-        message: "Invalid number format",
-      })
-      .refine((val) => unParsableNumber(val), {
-        message: "Invalid input",
-      })
-      .refine((val) => negativeNumberValidation(val), {
-        message: "This field must be a positive number",
-      }),
-    troveURI: z.string(),
-  });
 
   const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -223,6 +219,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                         className={cn(
                           "justify-start text-left font-normal",
                           !field.value && "text-muted-foreground",
+                          "cursor-pointer",
                         )}
                         id="startDate"
                       >
@@ -235,12 +232,12 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
+                  <PopoverContent className="w-full max-w-72 p-0">
                     <Calendar
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      initialFocus
+                      autoFocus
                       disabled={{ before: new Date() }}
                       {...field}
                     />
@@ -270,6 +267,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                         className={cn(
                           "justify-start text-left font-normal",
                           !field.value && "text-muted-foreground",
+                          "cursor-pointer",
                         )}
                         id="startDate"
                       >
@@ -287,7 +285,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      initialFocus
+                      autoFocus
                       disabled={{ before: new Date() }}
                       {...field}
                     />
@@ -368,7 +366,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
             appear first and start in the future
           </li>
         </ol>
-        <Button type="submit" className="mt-5 max-w-40">
+        <Button type="submit" className="mt-5 max-w-40 cursor-pointer">
           Create Auction
         </Button>
       </form>

@@ -1,16 +1,15 @@
-// Remix Modules
 import { type MetaFunction, useParams } from "react-router";
-
-// External Modules
 import { motion } from "framer-motion";
-import { useReadTrove, useReadTroveAuction } from "~/generated";
+import {
+  useReadTrove,
+  useReadTroveAuctionDecimals,
+  useReadTroveAuctionGetAuction,
+  useReadTroveAuctionGetBids,
+} from "~/generated";
 import { useBlock } from "wagmi";
 import { add, isAfter } from "date-fns";
 
-// Internal Modules
 import { headlineVariants } from "~/lib/utils";
-
-// Components
 import LoadingPage from "~/components/LoadingPage";
 import AuctionForm from "./AuctionForm";
 import BidApproval from "./BidApproval";
@@ -39,19 +38,15 @@ export default function AuctionDetails() {
   const { data: blockData } = useBlock();
 
   // Get data from the smart contract
-  const { data: troveBids } = useReadTroveAuction({
-    functionName: "getBids",
+  const { data: troveBids } = useReadTroveAuctionGetBids({
     args: params.auction
       ? [BigInt(params.auction.split("-")[0]), BigInt(params.auction.split("-")[1])]
       : undefined,
   });
-  const { data: troveAuction } = useReadTroveAuction({
-    functionName: "getAuction",
+  const { data: troveAuction } = useReadTroveAuctionGetAuction({
     args: params.auction ? [BigInt(params.auction.split("-")[0])] : undefined,
   });
-  const { data: auctionDecimal } = useReadTroveAuction({
-    functionName: "DECIMALS",
-  });
+  const { data: auctionDecimal } = useReadTroveAuctionDecimals({});
   const { data: baseURI } = useReadTrove({ functionName: "getBaseURI" });
 
   if (!params.auction) return <MissingParam className="my-20" />;
@@ -61,14 +56,13 @@ export default function AuctionDetails() {
 
   // Check if the auction exists
   if (!troveAuction) return <AuctionNotExists auctionId={auctionId} auctionIndex={auctionIndex} />;
-  if (troveAuction[Number(auctionIndex)] === undefined)
+  if (troveAuction.length <= Number(auctionIndex))
     return <AuctionNotExists auctionId={auctionId} auctionIndex={auctionIndex} />;
   if (!blockData || !troveBids || !auctionDecimal || !baseURI) return <LoadingPage />;
 
   const currentAuction = troveAuction[Number(auctionIndex)];
   const nft = `${baseURI}${currentAuction.tokenURI}`;
-  const currentBid =
-    troveBids && troveBids.length > 0 ? troveBids[troveBids.length - 1].amount : 0n;
+  const currentBid = troveBids.length > 0 ? troveBids[troveBids.length - 1].amount : 0n;
 
   // Calculate the status of the auction
   const isPassed = currentAuction.duration === 0n;

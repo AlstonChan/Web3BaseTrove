@@ -128,7 +128,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
     try {
       const durationSeconds = (endDate.getTime() - startDate.getTime()) / 1000;
 
-      const result = await writeAuction.writeContractAsync({
+      const result = await writeAuction.mutateAsync({
         functionName: "createAuction",
         args: [
           BigInt(auctionId),
@@ -180,7 +180,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={void form.handleSubmit(onSubmit)}
         className="bg-dark-blue mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3
           sm:p-5"
       >
@@ -225,11 +225,12 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                         id="startDate"
                       >
                         <CalendarIcon className="mr-2 h-4 w-4" />
-                        {field.value ? (
+                        {format(field.value, "PPP HH:mm:ss")}
+                        {/* {field.value ? (
                           format(field.value, "PPP HH:mm:ss")
                         ) : (
                           <span>Pick a date</span>
-                        )}
+                        )} */}
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
@@ -273,11 +274,12 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                         id="startDate"
                       >
                         <CalendarIcon className="mr-2 h-4 w-4" />
-                        {field.value ? (
+                        {format(field.value, "PPP HH:mm:ss")}
+                        {/* {field.value ? (
                           format(field.value, "PPP HH:mm:ss")
                         ) : (
                           <span>Pick a date</span>
-                        )}
+                        )} */}
                       </Button>
                     </FormControl>
                   </PopoverTrigger>

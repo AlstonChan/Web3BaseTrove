@@ -55,6 +55,14 @@ export default defineConfig(
         project: "./tsconfig.json",
       },
     },
+    rules: {
+      "@typescript-eslint/restrict-template-expressions": [
+        "error",
+        {
+          allowNumber: true,
+        },
+      ],
+    },
   },
 
   // React config

@@ -1,16 +1,19 @@
-// External Modules
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatUnits } from "viem";
 import { useConnection } from "wagmi";
 
-// Internal Modules
-import { useReadTrove2, useReadTroveAuction, useWriteTrove2 } from "~/generated";
+import {
+  useReadTrove2Allowance,
+  useReadTrove2BalanceOf,
+  useReadTrove2Decimals,
+  useReadTroveAuctionScalingFactor,
+  useWriteTrove2,
+} from "~/generated";
 import { formatFloatToBigInt, isSimulateContractErrorType } from "~/lib/utils";
 import useContractAddress from "~/hooks/useContractAddress";
 
-// Components
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
@@ -22,20 +25,14 @@ export default function BidApproval() {
 
   // The smart contract handler
   const trove2Write = useWriteTrove2();
-  const { data: trv2Amount, refetch: refetchTrv2Amount } = useReadTrove2({
-    functionName: "balanceOf",
+  const { data: trv2Amount, refetch: refetchTrv2Amount } = useReadTrove2BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
-  const { data: trv2Decimals } = useReadTrove2({
-    functionName: "decimals",
-  });
-  const { data: trv2Allowance, refetch: refetchTrv2Allowance } = useReadTrove2({
-    functionName: "allowance",
+  const { data: trv2Decimals } = useReadTrove2Decimals({});
+  const { data: trv2Allowance, refetch: refetchTrv2Allowance } = useReadTrove2Allowance({
     args: account.address && [account.address, contractAddress],
   });
-  const { data: scalingFactor } = useReadTroveAuction({
-    functionName: "SCALING_FACTOR",
-  });
+  const { data: scalingFactor } = useReadTroveAuctionScalingFactor({});
   const maxApproval =
     trv2Amount && trv2Decimals ? Number(formatUnits(trv2Amount, trv2Decimals)) : 0;
 
@@ -103,7 +100,7 @@ export default function BidApproval() {
     if (trv2Amount === undefined || trv2Decimals === undefined || trv2Allowance === undefined)
       return;
 
-    if (matched === false)
+    if (!matched)
       return toast({
         title: "Invalid chain",
         description: "The current chain is not supported",
@@ -119,7 +116,7 @@ export default function BidApproval() {
       });
 
     try {
-      const result = await trove2Write.writeContractAsync({
+      const result = await trove2Write.mutateAsync({
         functionName: "approve",
         args: [contractAddress, formatFloatToBigInt(inputValue, trv2Decimals)],
       });
@@ -158,12 +155,10 @@ export default function BidApproval() {
 
   useEffect(() => {
     if (account.isDisconnected) return;
+    if (!trv2Amount || !trv2Decimals) return;
 
-    if (trv2Amount && trv2Decimals) setInputValue(formatUnits(trv2Amount, trv2Decimals));
-
-    // Reset the input value when the user closes the input field
-    if (!showInput && trv2Amount && trv2Decimals)
-      setInputValue(formatUnits(trv2Amount, trv2Decimals));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setInputValue(formatUnits(trv2Amount, trv2Decimals));
   }, [trv2Amount, trv2Decimals, showInput, account.isDisconnected]);
 
   return (
@@ -182,7 +177,7 @@ export default function BidApproval() {
           bid, but not the whole amount you approve.
         </p>
       </div>
-      <form className="mt-6" onSubmit={handleFormSubmit}>
+      <form className="mt-6" onSubmit={(e) => void handleFormSubmit(e)}>
         <div className="flex items-center">
           <Button
             disabled={account.isDisconnected}

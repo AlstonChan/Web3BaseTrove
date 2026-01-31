@@ -1,4 +1,3 @@
-// External Modules
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, type ReactNode } from "react";
 
@@ -13,8 +12,12 @@ export default function MultiplierCard({ icon, children, effect }: MultiplierCar
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => {
+        setHovered(true);
+      }}
+      onMouseLeave={() => {
+        setHovered(false);
+      }}
       className="group/canvas-card relative flex h-80 w-full max-w-sm items-center justify-center
         rounded-3xl border border-black/20 p-4 dark:border-white/20"
     >

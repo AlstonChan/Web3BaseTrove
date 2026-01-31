@@ -146,7 +146,7 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
   };
 
   return (
-    <form className="bg-background rounded-xl p-4" onSubmit={handleSubmit}>
+    <form className="bg-background rounded-xl p-4" onSubmit={(e) => void handleSubmit(e)}>
       <h4>{title}</h4>
       <Input
         type="text"

@@ -1,14 +1,11 @@
-// External Modules
 import { useState } from "react";
 import { formatUnits } from "viem";
 import { useConnection, useBlock } from "wagmi";
 import { add, isAfter } from "date-fns";
 
-// Internal Modules
 import { useReadTrove2, useReadTroveStake, useWriteTroveStakeClaim } from "~/generated";
 import { formatFloatToBigInt, isSimulateContractErrorType } from "~/lib/utils";
 
-// Components
 import ContractDetails from "~/components/ContractDetails";
 import Stats from "~/components/Stats";
 import { Button } from "~/components/ui/button";
@@ -56,7 +53,7 @@ export default function StakeDetailsForm({ address, id, stake }: StakeDetailsFor
   });
   const { data: stakeClaimableRewards, refetch: refetchStakeClaimable } = useReadTroveStake({
     functionName: "stakeClaimableRewards",
-    args: [address, BigInt(Number(id))],
+    args: [address, BigInt(id)],
   });
 
   if (blockData === undefined) return <LoadingPage />;
@@ -102,7 +99,7 @@ export default function StakeDetailsForm({ address, id, stake }: StakeDetailsFor
 
     try {
       // Write data to smart contract
-      const result = await troveStakeClaimReward.writeContractAsync({
+      const result = await troveStakeClaimReward.mutateAsync({
         args: [BigInt(id), formatFloatToBigInt(claimAmount, 18)],
       });
 
@@ -179,7 +176,10 @@ export default function StakeDetailsForm({ address, id, stake }: StakeDetailsFor
   };
 
   return (
-    <form onSubmit={handleClaimReward} className="bg-dark-blue w-full rounded-xl p-3 md:w-2/3">
+    <form
+      onSubmit={(e) => void handleClaimReward(e)}
+      className="bg-dark-blue w-full rounded-xl p-3 md:w-2/3"
+    >
       <div className="bg-accent-dark-blue rounded-2xl shadow-sm">
         <Stats
           title="Claim Rewards"

@@ -1,10 +1,6 @@
-// External Modules
 import { useConnection } from "wagmi";
 
-// Internal Modules
 import { useReadTroveStake, useWriteTroveStakeWithdraw } from "~/generated";
-
-// Components
 import { Button } from "~/components/ui/button";
 import { useToast } from "~/components/ui/use-toast";
 
@@ -37,7 +33,7 @@ export default function Withdrawal({ address, id }: StakeDetailsFormProps) {
     if (account.isDisconnected) return;
 
     try {
-      const result = await troveStakeWithdraw.writeContractAsync({ args: [BigInt(id)] });
+      const result = await troveStakeWithdraw.mutateAsync({ args: [BigInt(id)] });
       toast({
         title: "Withdraw Stake",
         description: `Stake #${id} has been withdrawn successfully. Transaction Id: ${result}`,
@@ -74,7 +70,7 @@ export default function Withdrawal({ address, id }: StakeDetailsFormProps) {
           disabled={account.isDisconnected}
           variant="white"
           className="mt-4 w-full"
-          onClick={handleWithdraw}
+          onClick={() => void handleWithdraw()}
         >
           {account.isDisconnected ? "Wallet Not Connected" : "Withdraw Stake"}
         </Button>

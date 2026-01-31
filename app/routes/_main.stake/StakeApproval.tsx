@@ -1,16 +1,17 @@
-// External Modules
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import { formatUnits } from "viem";
 import { useConnection } from "wagmi";
 
-// Internal Modules
-import { useReadTrove1, useWriteTrove1 } from "~/generated";
+import {
+  useReadTrove1Allowance,
+  useReadTrove1BalanceOf,
+  useReadTrove1Decimals,
+  useWriteTrove1,
+} from "~/generated";
 import { formatFloatToBigInt, isSimulateContractErrorType } from "~/lib/utils";
 import useContractAddress from "~/hooks/useContractAddress";
-
-// Components
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
@@ -22,17 +23,14 @@ export default function StakeApproval() {
 
   // The smart contract handler
   const trove1Write = useWriteTrove1();
-  const { data: trv1Amount, refetch: refetchTrv1Amount } = useReadTrove1({
-    functionName: "balanceOf",
+  const { data: trv1Amount, refetch: refetchTrv1Amount } = useReadTrove1BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
-  const { data: trv1Decimals } = useReadTrove1({
-    functionName: "decimals",
-  });
-  const { data: trv1Allowance, refetch: refetchTrv1Allowance } = useReadTrove1({
-    functionName: "allowance",
+  const { data: trv1Decimals } = useReadTrove1Decimals({});
+  const { data: trv1Allowance, refetch: refetchTrv1Allowance } = useReadTrove1Allowance({
     args: account.address && [account.address, contractAddress],
   });
+
   const maxApproval =
     trv1Amount && trv1Decimals ? Number(formatUnits(trv1Amount, trv1Decimals)) : 10_000;
 
@@ -99,7 +97,7 @@ export default function StakeApproval() {
     if (trv1Amount === undefined || trv1Decimals === undefined || trv1Allowance === undefined)
       return;
 
-    if (matched === false)
+    if (!matched)
       return toast({
         title: "Unsupported chain",
         description: "This chain is not supported!",
@@ -115,7 +113,7 @@ export default function StakeApproval() {
       });
 
     try {
-      const result = await trove1Write.writeContractAsync({
+      const result = await trove1Write.mutateAsync({
         functionName: "approve",
         args: [contractAddress, formatFloatToBigInt(inputValue, trv1Decimals)],
       });
@@ -133,11 +131,18 @@ export default function StakeApproval() {
       if (isSimulateContractErrorType(error)) {
         setApprovalError(error.message);
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Token Approval Failed",
-            description: "The approval transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Token Approval Failed",
+              description: "User cancelled the approval transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Token Approval Failed",
+              description: "The approval transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Token Approval Failed",
@@ -154,12 +159,10 @@ export default function StakeApproval() {
 
   useEffect(() => {
     if (account.isDisconnected) return;
+    if (!trv1Amount || !trv1Decimals) return;
 
-    if (trv1Amount && trv1Decimals) setInputValue(formatUnits(trv1Amount, trv1Decimals));
-
-    // Reset the input value when the user closes the input field
-    if (!showInput && trv1Amount && trv1Decimals)
-      setInputValue(formatUnits(trv1Amount, trv1Decimals));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setInputValue(formatUnits(trv1Amount, trv1Decimals));
   }, [trv1Amount, trv1Decimals, account.isDisconnected, showInput]);
 
   return (
@@ -182,7 +185,7 @@ export default function StakeApproval() {
           <li>Eligible stake - The amount of TRV1 token that you can stake</li>
         </ul>
       </div>
-      <form className="mt-6" onSubmit={handleFormSubmit}>
+      <form className="mt-6" onSubmit={(e) => void handleFormSubmit(e)}>
         <div className="flex items-center">
           <Button
             disabled={account.isDisconnected}

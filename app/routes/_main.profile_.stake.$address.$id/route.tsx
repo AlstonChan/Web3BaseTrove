@@ -1,16 +1,10 @@
-// Remix Modules
 import { useParams } from "react-router";
 import type { MetaFunction } from "react-router";
-
-// External Modules
 import { motion } from "framer-motion";
 import { formatUnits, isAddress } from "viem";
 
-// Internal Modules
-import { useReadTroveStake } from "~/generated";
+import { useReadTroveStakeStakeClaimableRewards, useReadTroveStakeStakeStatus } from "~/generated";
 import { headlineVariants } from "~/lib/utils";
-
-// Components
 import Stats from "~/components/Stats";
 import StakeDetailsForm from "./StakeDetailsForm";
 import Withdrawal from "./Withdrawal";
@@ -27,12 +21,10 @@ export default function StakeDetails() {
   const params = useParams();
 
   // Get data from smart contract
-  const { data: stakeDetails } = useReadTroveStake({
-    functionName: "stakeStatus",
+  const { data: stakeDetails } = useReadTroveStakeStakeStatus({
     args: params.address ? [params.address as `0x${string}`] : undefined,
   });
-  const { data: stakeClaimableRewards } = useReadTroveStake({
-    functionName: "stakeClaimableRewards",
+  const { data: stakeClaimableRewards } = useReadTroveStakeStakeClaimableRewards({
     args: params.address ? [params.address as `0x${string}`, BigInt(Number(params.id))] : undefined,
   });
 

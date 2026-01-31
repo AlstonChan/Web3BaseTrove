@@ -201,7 +201,7 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
 
     if (account.address) {
       try {
-        const result = await troveWrite.writeContractAsync({
+        const result = await troveWrite.mutateAsync({
           functionName: "bid",
           args: [BigInt(details.auctionId), finalBid],
         });

@@ -1,7 +1,5 @@
-// External Modules
 import { Clock4, Coins } from "lucide-react";
 
-// Components
 import { CanvasRevealEffect } from "~/components/CanvasRevealEffect";
 import MultiplierCard from "./MultiplierCard";
 

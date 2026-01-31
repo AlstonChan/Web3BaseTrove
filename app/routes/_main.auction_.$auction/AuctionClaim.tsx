@@ -98,7 +98,7 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
 
     try {
       if (status === "ended" && accountIsWinner && !highestBidData.claimed) {
-        const result = await writeAuctionContract.writeContractAsync({
+        const result = await writeAuctionContract.mutateAsync({
           functionName: "claimReward",
           args: [BigInt(details.auctionId)],
         });
@@ -109,7 +109,7 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
           variant: "success",
         });
       } else if ((status === "ended" || status === "sold") && latestBid && !accountIsWinner) {
-        const result = await writeAuctionContract.writeContractAsync({
+        const result = await writeAuctionContract.mutateAsync({
           functionName: "claimBid",
           args: [BigInt(details.auctionId)],
         });

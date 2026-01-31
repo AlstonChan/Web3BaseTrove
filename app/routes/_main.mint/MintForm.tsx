@@ -66,7 +66,7 @@ export default function MintForm() {
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleMintButton();
+      void handleMintButton();
     }
   };
 
@@ -81,7 +81,7 @@ export default function MintForm() {
       return;
     }
 
-    if (matched === false)
+    if (!matched)
       return toast({
         title: "Unsupported chain",
         description: "This chain is not supported!",
@@ -90,7 +90,7 @@ export default function MintForm() {
 
     if (account.address) {
       try {
-        const result = await troveWrite.writeContractAsync({
+        const result = await troveWrite.mutateAsync({
           functionName: "mint",
           value: BigInt(mintAmount * safeBigIntToNumber(mintCost)),
           args: [account.address, BigInt(mintAmount)],
@@ -166,7 +166,7 @@ export default function MintForm() {
         </div>
       </div>
       <Button
-        onClick={handleMintButton}
+        onClick={void handleMintButton}
         className="mt-2 w-full rounded-xl"
         size="lg"
         variant={mintError ? "destructive" : "orange"}

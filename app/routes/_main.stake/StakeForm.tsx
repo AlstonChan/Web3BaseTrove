@@ -1,4 +1,3 @@
-// External Modules
 import { useState } from "react";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useConnection } from "wagmi";
@@ -6,12 +5,15 @@ import { MoveDown } from "lucide-react";
 import { format } from "mathjs";
 import { formatUnits } from "viem";
 
-// Internal Modules
-import { useReadTrove1, useReadTroveStake, useWriteTroveStake } from "~/generated";
+import {
+  useReadTrove1Allowance,
+  useReadTrove1BalanceOf,
+  useReadTrove1Decimals,
+  useReadTroveStake,
+  useWriteTroveStake,
+} from "~/generated";
 import { formatFloatToBigInt, isSimulateContractErrorType } from "~/lib/utils";
 import useContractAddress from "~/hooks/useContractAddress";
-
-// Components
 import Stats from "~/components/Stats";
 import { Slider } from "~/components/ui/slider";
 import { Input } from "~/components/ui/input";
@@ -26,15 +28,13 @@ export default function StakeForm() {
   const { contractAddress, matched } = useContractAddress("troveStake");
 
   // Get the details of the user's token balance and trove1 token decimal
-  const { data: trove1Balance, refetch: refetchTrv1Balance } = useReadTrove1({
-    functionName: "balanceOf",
+  const { data: trove1Balance, refetch: refetchTrv1Balance } = useReadTrove1BalanceOf({
     args: account.address && [account.address],
   });
-  const { data: trove1Allowance, refetch: refetchTrv1Allowance } = useReadTrove1({
-    functionName: "allowance",
+  const { data: trove1Allowance, refetch: refetchTrv1Allowance } = useReadTrove1Allowance({
     args: account.address && [account.address, contractAddress],
   });
-  const { data: trove1Decimal } = useReadTrove1({ functionName: "decimals" });
+  const { data: trove1Decimal } = useReadTrove1Decimals();
   const eligibleToken =
     trove1Allowance && trove1Balance
       ? trove1Allowance > trove1Balance
@@ -123,7 +123,7 @@ export default function StakeForm() {
     if (!account.address) return;
     if (!stakeAmount) return;
 
-    if (matched === false)
+    if (!matched)
       return toast({
         title: "Unsupported chain",
         description: "This chain is not supported!",
@@ -139,7 +139,7 @@ export default function StakeForm() {
       });
 
     try {
-      const result = await troveStakeWrite.writeContractAsync({
+      const result = await troveStakeWrite.mutateAsync({
         functionName: "stake",
         args: [formatFloatToBigInt(stakeAmount, 18)],
       });
@@ -239,7 +239,7 @@ export default function StakeForm() {
         />
       </div>
       <Button
-        onClick={handleMintButton}
+        onClick={() => void handleMintButton()}
         className="mt-2 w-full rounded-xl"
         size="lg"
         variant={stakeError ? "destructive" : "orange"}
@@ -254,15 +254,15 @@ export default function StakeForm() {
         />
         <ContractDetails
           name="Daily reward rate"
-          value={stakeDailyBaseRate ? formatUnits(stakeDailyBaseRate, 18).toString() : "0"}
+          value={stakeDailyBaseRate ? formatUnits(stakeDailyBaseRate, 18) : "0"}
         />
         <ContractDetails
           name="Daily claimable quota"
-          value={stakeDailyQuota ? formatUnits(stakeDailyQuota, 18).toString() : "0"}
+          value={stakeDailyQuota ? formatUnits(stakeDailyQuota, 18) : "0"}
         />
         <ContractDetails
           name="Current claimable quota"
-          value={stakeCurrentQuota ? formatUnits(stakeCurrentQuota, 18).toString() : "0"}
+          value={stakeCurrentQuota ? formatUnits(stakeCurrentQuota, 18) : "0"}
         />
       </div>
     </div>

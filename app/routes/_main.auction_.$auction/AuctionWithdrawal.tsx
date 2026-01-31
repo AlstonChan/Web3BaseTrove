@@ -31,7 +31,7 @@ export default function AuctionWithdrawal({ auctionId }: AuctionWithdrawalProps)
   // Handle auction withdrawal on button click
   const handleAuctionWithdrawal = async () => {
     try {
-      const result = await writeAuctionContract.writeContractAsync({
+      const result = await writeAuctionContract.mutateAsync({
         functionName: "closeAuctionWithoutWinner",
         args: [BigInt(auctionId)],
       });
@@ -76,7 +76,7 @@ export default function AuctionWithdrawal({ auctionId }: AuctionWithdrawalProps)
       <p className="mt-4 text-xs text-slate-400">**This action is irreversible</p>
       <Button
         type="button"
-        onClick={handleAuctionWithdrawal}
+        onClick={() => void handleAuctionWithdrawal()}
         variant="destructive"
         className="mt-1"
       >

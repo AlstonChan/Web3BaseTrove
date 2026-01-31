@@ -29,7 +29,8 @@ contract DeployTroveAll is Script {
     TroveStake public troveStake;
     TroveAuction public troveAuction;
 
-    string public constant baseUri = "https://gateway.pinata.cloud/ipfs/QmbDtyGBcHprjwQCVRWTdgSPbUAVyb8d7EjzzLJgjX7AB7/";
+    string public constant baseUri =
+        "https://gateway.pinata.cloud/ipfs/QmbDtyGBcHprjwQCVRWTdgSPbUAVyb8d7EjzzLJgjX7AB7/";
 
     function run() external {
         vm.startBroadcast();

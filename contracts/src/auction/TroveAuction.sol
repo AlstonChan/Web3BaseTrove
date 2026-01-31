@@ -82,7 +82,7 @@ contract TroveAuction is ITroveAuction, Ownable, ReentrancyGuard {
         // then revert
         if (currentAuctions.length > 0) {
             bool auctionHasNotEnded = currentAuctions[currentAuctions.length - 1].duration
-                + currentAuctions[currentAuctions.length - 1].start > block.timestamp;
+                    + currentAuctions[currentAuctions.length - 1].start > block.timestamp;
             bool auctionNotEndedByOwner = currentAuctions[currentAuctions.length - 1].duration > 0;
 
             if (auctionHasNotEnded && auctionNotEndedByOwner) {

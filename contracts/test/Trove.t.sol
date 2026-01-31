@@ -15,7 +15,8 @@ contract TroveTest is Test {
     address bob = makeAddr("bob");
     address john = makeAddr("john");
 
-    string public constant baseUri = "https://gateway.pinata.cloud/ipfs/QmbDtyGBcHprjwQCVRWTdgSPbUAVyb8d7EjzzLJgjX7AB7/";
+    string public constant baseUri =
+        "https://gateway.pinata.cloud/ipfs/QmbDtyGBcHprjwQCVRWTdgSPbUAVyb8d7EjzzLJgjX7AB7/";
 
     function setUp() public {
         vm.startPrank(owner);

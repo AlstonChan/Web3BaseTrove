@@ -67,20 +67,21 @@ export default function Index() {
     <>
       <HeroHighlight>
         <motion.div
-          className="mx-auto max-w-md px-2 text-center text-neutral-700 sm:px-4 md:max-w-2xl lg:max-w-4xl dark:text-white"
+          className="mx-auto max-w-md px-2 text-center text-neutral-700 sm:px-4 md:max-w-2xl
+            lg:max-w-4xl dark:text-white"
           variants={headlineVariants}
           initial="hidden"
           animate="visible"
         >
           <AnimatedShinyText
-            className="mb-4 inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600
-              hover:duration-300 dark:hover:text-neutral-400"
+            className="mb-4 inline-flex items-center justify-center px-4 py-1 transition ease-out
+              hover:text-neutral-600 hover:duration-300 dark:hover:text-neutral-400"
           >
             <span>✨ Introducing Trove</span>
           </AnimatedShinyText>
           <h1
-            className="mx-auto max-w-72 text-2xl leading-relaxed! font-semibold min-[460px]:max-w-none sm:text-4xl
-              lg:text-5xl lg:leading-snug"
+            className="mx-auto max-w-72 text-2xl leading-relaxed! font-semibold
+              min-[460px]:max-w-none sm:text-4xl lg:text-5xl lg:leading-snug"
           >
             Unlock the Treasure: Mint, Stake, and Win{" "}
             <Highlight className="text-black dark:text-white">Exclusive NFTs</Highlight>
@@ -104,15 +105,18 @@ export default function Index() {
       </HeroHighlight>
       <article className="mt-4 px-2 sm:mt-12 md:px-4">
         <div
-          className="before:bg-bottom-top-fade md:before:bg-left-right-fade relative z-10 mx-auto max-w-(--breakpoint-xl)
-            rounded-2xl bg-[url('/images/home-bg.webp')] bg-cover bg-center bg-no-repeat px-4 py-6
-            before:absolute before:top-0 before:left-0 before:z-[-1] before:h-full before:w-full
-            before:rounded-2xl sm:px-8 sm:py-10"
+          className="before:bg-bottom-top-fade md:before:bg-left-right-fade relative z-10 mx-auto
+            max-w-(--breakpoint-xl) rounded-2xl bg-[url('/images/home-bg.webp')] bg-cover bg-center
+            bg-no-repeat px-4 py-6 before:absolute before:top-0 before:left-0 before:z-[-1]
+            before:h-full before:w-full before:rounded-2xl sm:px-8 sm:py-10"
         >
           <h2 className="mb-5 max-w-sm text-2xl font-bold md:text-3xl lg:text-4xl">
             Decentralized and Open Source
           </h2>
-          <div className="leading-relaxed md:max-w-(--breakpoint-sm) xl:max-w-(--breakpoint-md) dark:text-white">
+          <div
+            className="leading-relaxed md:max-w-(--breakpoint-sm) xl:max-w-(--breakpoint-md)
+              dark:text-white"
+          >
             <p>
               The entire project&apos;s source code is open-sourced and publicly available on
               GitHub. Our smart contracts are also published and verified on Etherscan. Anyone can
@@ -148,7 +152,10 @@ export default function Index() {
           </div>
         </div>
       </article>
-      <section className="mx-auto my-14 flex max-w-(--breakpoint-xl) flex-col items-center px-4 text-center">
+      <section
+        className="mx-auto my-14 flex max-w-(--breakpoint-xl) flex-col items-center px-4
+          text-center"
+      >
         <Badge variant="orange">EVM compatible Layer 2</Badge>
         <h2 className="mt-12 max-w-80 text-2xl font-medium md:max-w-md md:text-3xl lg:text-4xl">
           Built on Base chain, secured by Ethereum
@@ -171,7 +178,10 @@ export default function Index() {
           </picture>
         </div>
       </section>
-      <section className="mx-auto my-20 flex max-w-(--breakpoint-xl) flex-col items-center px-4 text-center">
+      <section
+        className="mx-auto my-20 flex max-w-(--breakpoint-xl) flex-col items-center px-4
+          text-center"
+      >
         <Badge variant="orange">How it works</Badge>
         <h2 className="mt-8 max-w-80 text-2xl font-medium md:max-w-md md:text-3xl lg:text-4xl">
           Mint, Stake, Bid within Trove ecosystem

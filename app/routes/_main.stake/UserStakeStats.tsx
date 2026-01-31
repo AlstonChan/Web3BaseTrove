@@ -33,7 +33,10 @@ export default function UserStakeStats() {
       : "0";
 
   return (
-    <div className="mx-auto mb-2 flex max-w-(--breakpoint-lg) flex-col gap-2 rounded-2xl sm:flex-row sm:gap-3">
+    <div
+      className="mx-auto mb-2 flex max-w-(--breakpoint-lg) flex-col gap-2 rounded-2xl sm:flex-row
+        sm:gap-3"
+    >
       <Stats
         title="Owned TRV1"
         value={trv1Amount && trv1Decimals ? formatUnits(trv1Amount, trv1Decimals) : "0"}

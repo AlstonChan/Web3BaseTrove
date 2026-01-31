@@ -104,7 +104,10 @@ export default function StakeDetails() {
             {stake ? (
               <StakeDetailsForm stake={stake} address={params.address} id={Number(params.id)} />
             ) : (
-              <div className="bg-dark-blue flex h-full w-full items-center justify-center rounded-2xl p-3 py-20">
+              <div
+                className="bg-dark-blue flex h-full w-full items-center justify-center rounded-2xl
+                  p-3 py-20"
+              >
                 This stake does not exist.
               </div>
             )}

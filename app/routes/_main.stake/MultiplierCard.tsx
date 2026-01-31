@@ -15,8 +15,8 @@ export default function MultiplierCard({ icon, children, effect }: MultiplierCar
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group/canvas-card relative flex h-80 w-full max-w-sm items-center justify-center rounded-3xl border
-        border-black/20 p-4 dark:border-white/20"
+      className="group/canvas-card relative flex h-80 w-full max-w-sm items-center justify-center
+        rounded-3xl border border-black/20 p-4 dark:border-white/20"
     >
       <AnimatePresence>
         {hovered && (
@@ -32,16 +32,16 @@ export default function MultiplierCard({ icon, children, effect }: MultiplierCar
 
       <div className="relative z-20 h-full w-full">
         <div
-          className="absolute top-1/2 left-1/2 mx-auto flex h-full w-full -translate-x-1/2 -translate-y-1/2 items-center
-            justify-center text-center transition duration-200 group-hover/canvas-card:-translate-y-[60%]
-            group-hover/canvas-card:opacity-0"
+          className="absolute top-1/2 left-1/2 mx-auto flex h-full w-full -translate-x-1/2
+            -translate-y-1/2 items-center justify-center text-center transition duration-200
+            group-hover/canvas-card:-translate-y-[60%] group-hover/canvas-card:opacity-0"
         >
           {icon}
         </div>
         <div
-          className="relative z-10 mt-4 flex h-full w-full items-center justify-center text-xl text-black opacity-0
-            transition duration-200 group-hover/canvas-card:-translate-y-2 group-hover/canvas-card:text-white
-            group-hover/canvas-card:opacity-100 dark:text-white"
+          className="relative z-10 mt-4 flex h-full w-full items-center justify-center text-xl
+            text-black opacity-0 transition duration-200 group-hover/canvas-card:-translate-y-2
+            group-hover/canvas-card:text-white group-hover/canvas-card:opacity-100 dark:text-white"
         >
           {children}
         </div>

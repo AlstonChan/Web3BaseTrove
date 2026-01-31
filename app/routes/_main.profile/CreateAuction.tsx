@@ -181,14 +181,15 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="bg-dark-blue mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3 sm:p-5"
+        className="bg-dark-blue mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3
+          sm:p-5"
       >
         <h2 className="overflow-hidden text-xl text-ellipsis sm:text-2xl md:text-3xl lg:text-4xl">
           Create Auction
         </h2>
         <div
-          className="my-5 grid auto-rows-auto grid-cols-1 gap-3 sm:grid-cols-2 sm:grid-rows-4 lg:grid-cols-3
-            lg:grid-rows-3"
+          className="my-5 grid auto-rows-auto grid-cols-1 gap-3 sm:grid-cols-2 sm:grid-rows-4
+            lg:grid-cols-3 lg:grid-rows-3"
         >
           {/* Auction ID */}
           <FormField

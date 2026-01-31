@@ -47,8 +47,13 @@ export default function Profile() {
       </h1>
       {account.isConnected ? (
         <>
-          <article className="bg-dark-blue mx-auto mb-3 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3 sm:p-5">
-            <h2 className="overflow-hidden text-xl text-ellipsis sm:text-2xl md:text-3xl lg:text-4xl">
+          <article
+            className="bg-dark-blue mx-auto mb-3 flex max-w-(--breakpoint-xl) flex-col rounded-2xl
+              p-3 sm:p-5"
+          >
+            <h2
+              className="overflow-hidden text-xl text-ellipsis sm:text-2xl md:text-3xl lg:text-4xl"
+            >
               {account.address}
             </h2>
             <div className="mt-2 flex flex-col gap-2 text-sm sm:text-base">
@@ -79,7 +84,10 @@ export default function Profile() {
             {/* cards */}
             <CardsSection />
 
-            <div className="bg-destructive mt-5 flex flex-col gap-5 rounded-xl p-3 sm:p-5 lg:flex-row lg:gap-3">
+            <div
+              className="bg-destructive mt-5 flex flex-col gap-5 rounded-xl p-3 sm:p-5 lg:flex-row
+                lg:gap-3"
+            >
               <div className="max-w-lg lg:max-w-72">
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">Danger Zone</h3>
                 <p className="mt-2 mb-3 text-lg">Burn your token!</p>

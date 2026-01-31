@@ -26,7 +26,8 @@ export default function FeatureBar({
   return (
     <div className="mt-6 flex flex-col gap-4">
       <div
-        className={`flex grid-cols-3 grid-rows-1 ${titleFirst ? "flex-col" : "flex-col-reverse"} gap-4 md:grid`}
+        className={`flex grid-cols-3 grid-rows-1 ${titleFirst ? "flex-col" : "flex-col-reverse"}
+          gap-4 md:grid`}
       >
         {titleFirst ? (
           <>

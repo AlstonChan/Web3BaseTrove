@@ -6,8 +6,8 @@ export default function StakeLiquidity() {
           Your token is still liquid
         </h2>
         <div
-          className="mx-auto mt-10 mb-1 flex max-w-4xl grid-cols-5 grid-rows-3 flex-col gap-x-10 px-3 sm:mb-0 sm:grid
-            sm:gap-y-6"
+          className="mx-auto mt-10 mb-1 flex max-w-4xl grid-cols-5 grid-rows-3 flex-col gap-x-10
+            px-3 sm:mb-0 sm:grid sm:gap-y-6"
         >
           <h3 className="col-span-2 text-xl leading-relaxed! text-amber-500 md:text-2xl">
             Instant Rewards, Anytime Access - Stake with Freedom!
@@ -18,7 +18,9 @@ export default function StakeLiquidity() {
             today!
           </p>
 
-          <h3 className="col-span-2 mb-1 text-xl leading-relaxed! text-amber-500 sm:mb-0 md:text-2xl">
+          <h3
+            className="col-span-2 mb-1 text-xl leading-relaxed! text-amber-500 sm:mb-0 md:text-2xl"
+          >
             Daily claimable quota
           </h3>
           <p className="col-span-3 mb-6 leading-relaxed! sm:mb-0">
@@ -27,7 +29,9 @@ export default function StakeLiquidity() {
             claim later.
           </p>
 
-          <h3 className="col-span-2 mb-1 text-xl leading-relaxed! text-amber-500 sm:mb-0 md:text-2xl">
+          <h3
+            className="col-span-2 mb-1 text-xl leading-relaxed! text-amber-500 sm:mb-0 md:text-2xl"
+          >
             Earned rewards will always be yours
           </h3>
           <div className="col-span-3 leading-relaxed!">

@@ -68,15 +68,17 @@ export default function Mint() {
           {ongoingAuctionData !== undefined && baseURI && blockData ? (
             ongoingAuctionData.length > 0 && isValidAuctionData(ongoingAuctionData) ? (
               <div
-                className="mt-16 mb-32 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
-                  xl:grid-cols-5"
+                className="mt-16 mb-32 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2
+                  sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
               >
                 {ongoingAuctionData.map((auction, index) => (
                   <AuctionCard key={index} data={auction} baseURI={baseURI} blockData={blockData} />
                 ))}
               </div>
             ) : (
-              <div className="flex min-h-40 w-full items-center justify-center text-2xl text-amber-500">
+              <div
+                className="flex min-h-40 w-full items-center justify-center text-2xl text-amber-500"
+              >
                 No ongoing auction found
               </div>
             )
@@ -89,15 +91,17 @@ export default function Mint() {
           {historyAuctionData && baseURI && blockData ? (
             historyAuctionData.length > 0 && isValidAuctionData(historyAuctionData) ? (
               <div
-                className="mt-16 mb-32 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
-                  xl:grid-cols-5"
+                className="mt-16 mb-32 grid auto-rows-auto grid-cols-1 min-[500px]:grid-cols-2
+                  sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
               >
                 {historyAuctionData.map((auction, index) => (
                   <AuctionCard key={index} data={auction} baseURI={baseURI} blockData={blockData} />
                 ))}
               </div>
             ) : (
-              <div className="flex min-h-40 w-full items-center justify-center text-2xl text-amber-500">
+              <div
+                className="flex min-h-40 w-full items-center justify-center text-2xl text-amber-500"
+              >
                 No previous auction found
               </div>
             )

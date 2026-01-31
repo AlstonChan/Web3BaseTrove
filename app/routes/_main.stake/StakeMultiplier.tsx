@@ -16,7 +16,10 @@ export default function StakeMultiplier() {
           The more you stake, the longer you stake, the more you get
         </p>
 
-        <div className="mx-auto flex w-full flex-col items-center justify-center gap-4 py-10 md:flex-row">
+        <div
+          className="mx-auto flex w-full flex-col items-center justify-center gap-4 py-10
+            md:flex-row"
+        >
           <MultiplierCard
             icon={
               <div className="flex flex-col items-center gap-2">

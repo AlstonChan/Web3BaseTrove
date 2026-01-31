@@ -137,9 +137,9 @@ export default function MintForm() {
             <Input
               type="text"
               placeholder="0"
-              className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0 text-4xl font-medium
-                ring-transparent! outline-hidden focus-visible:border-none! focus-visible:ring-offset-0!
-                focus-visible:outline-hidden!"
+              className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0
+                text-4xl font-medium ring-transparent! outline-hidden focus-visible:border-none!
+                focus-visible:ring-offset-0! focus-visible:outline-hidden!"
               maxLength={maxTokenPerMint.toString().length}
               max={maxTokenPerMint}
               value={mintAmount}

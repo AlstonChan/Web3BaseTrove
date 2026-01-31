@@ -4,7 +4,7 @@ export default {
   // Config options...
   // Server-side render by default, to enable SPA mode set this to `false`
   ssr: true,
-  // Cloudflare workers does not support prerendering
+  // React Router support for prerendering is for simple usages only.
   // @see https://github.com/remix-run/react-router/issues/13226
   // async prerender() {
   //   return ["/"];

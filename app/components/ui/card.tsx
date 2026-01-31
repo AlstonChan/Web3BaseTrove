@@ -11,7 +11,7 @@ function Card({
     <div
       data-slot="card"
       data-size={size}
-      className={cn("bg-card text-card-foreground rounded-lg border shadow-xs", className)}
+      className={cn("bg-card text-card-foreground rounded-lg shadow-xs", className)}
       {...props}
     />
   );

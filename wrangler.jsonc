@@ -10,7 +10,13 @@
   "observability": {
     "enabled": true,
   },
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    /**
+     * Enable Node.js compatibility so that react router can actually run.
+     * https://developers.cloudflare.com/workers/runtime-apis/nodejs/
+     */
+    "nodejs_compat",
+  ],
   /**
    * Smart Placement
    * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement

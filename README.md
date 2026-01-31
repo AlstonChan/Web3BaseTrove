@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-This is a web3 project that is built on the <a href="https://www.base.org/">Base Blockchain</a>, which is a <a href="https://ethereum.org/en/layer-2/">layer 2</a> chain for Ethereum blockchain using <a href="https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/">optimistic rollups</a>. The project is deployed on <a href="https://sepolia.basescan.org">Base Sepolia testnet</a> blockchain to allow easy access to the smart contract without cost, the <a href="https://trove-web3.netlify.app/">website</a> provides an interface to interact with the smart contract easily.
+This is a web3 project that is built on the <a href="https://www.base.org/">Base Blockchain</a>, which is a <a href="https://ethereum.org/en/layer-2/">layer 2</a> chain for Ethereum blockchain using <a href="https://ethereum.org/en/developers/docs/scaling/optimistic-rollups/">optimistic rollups</a>. The project is deployed on <a href="https://sepolia.basescan.org">Base Sepolia testnet</a> blockchain to allow easy access to the smart contract without cost, the <a href="https://web3basetrove.cloudflare-serverless.workers.dev/">website</a> provides an interface to interact with the smart contract easily.
 </p>
 
 <p align="center">
@@ -17,9 +17,6 @@ This is a web3 project that is built on the <a href="https://www.base.org/">Base
   <img src="https://img.shields.io/badge/Solidity-2b247c?style=for-the-badge&logo=solidity&logoColor=white" alt="Solidity">
   <img src="https://img.shields.io/badge/OpenZeppelin-4E5EE4?logo=openzeppelin&logoColor=fff&style=for-the-badge" alt="OpenZeppelin">
   <img src="https://img.shields.io/badge/Wagmi-1b1b1f?logo=wagmi&logoColor=fff&style=for-the-badge" alt="Wagmi">
-  <br />
-      <img src="https://api.netlify.com/api/v1/badges/11946043-0368-478e-8466-06f1207a44e2/deploy-status" alt="Netlify Status">
-  <br />
   <br />
   <img src="./public/images/preview.png" alt="Preview">
   <br />
@@ -113,7 +110,7 @@ This project has been marked as completed, but further improvement can be made.
 
 ## Deployment
 
-The [frontend website](https://trove-web3.netlify.app/) is deployed to Netlify (with Netlify Functions) using the `@netlify/remix-adapter` package adapter for RemixJs.
+The [frontend website](https://web3basetrove.cloudflare-serverless.workers.dev/) is deployed to Cloudflare (with wrangler worker) using the `@cloudflare/vite-plugin` package plugin for React router v7.
 
 The smart contract of the project has been deployed to the Base Sepolia testnet. All 5 contracts can be found on [BaseScan](https://sepolia.basescan.org) that is already verified on deployed.
 

@@ -4,9 +4,11 @@ export default {
   // Config options...
   // Server-side render by default, to enable SPA mode set this to `false`
   ssr: true,
-  async prerender() {
-    return ["/"];
-  },
+  // Cloudflare workers does not support prerendering
+  // @see https://github.com/remix-run/react-router/issues/13226
+  // async prerender() {
+  //   return ["/"];
+  // },
   future: {
     v8_viteEnvironmentApi: true,
   },

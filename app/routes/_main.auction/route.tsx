@@ -13,7 +13,7 @@ import { headlineVariants } from "~/lib/utils";
 import AuctionCard from "./AuctionCard";
 import AuctionPlaceholderGrid from "./AuctionPlaceholderGrid";
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
 
   return { canonical: url.href };

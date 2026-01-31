@@ -18,7 +18,7 @@ import baseWebp from "~/assets/base/base.webp";
 import baseAvif from "~/assets/base/base.avif";
 import LoadingPage from "~/components/LoadingPage";
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
 
   return { canonical: url.href };

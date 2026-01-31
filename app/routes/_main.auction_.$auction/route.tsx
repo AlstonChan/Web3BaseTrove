@@ -22,7 +22,7 @@ import AuctionClaim from "./AuctionClaim";
 import MissingParam from "~/components/MissingParam";
 import { ZERO_ADDRESS } from "~/lib/constant";
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
 
   return { canonical: url.href };

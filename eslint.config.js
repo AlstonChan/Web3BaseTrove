@@ -25,6 +25,7 @@ export default defineConfig(
     ".react-router",
     "react-router.config.*",
     ".netlify",
+    "wagmi.config.*",
   ]),
 
   // Base config for all files
@@ -53,7 +54,7 @@ export default defineConfig(
   {
     languageOptions: {
       parserOptions: {
-        project: "./tsconfig.json",
+        project: "./tsconfig.cloudflare.json",
       },
     },
     rules: {

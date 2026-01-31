@@ -1,6 +1,6 @@
 {
   "name": "web3basetrove",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "private": true,
   "sideEffects": false,
   "type": "module",

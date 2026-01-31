@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import type { MetaFunction } from "react-router";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { formatUnits, isAddress } from "viem";
 
 import { useReadTroveStakeStakeClaimableRewards, useReadTroveStakeStakeStatus } from "~/generated";

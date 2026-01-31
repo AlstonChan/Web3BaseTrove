@@ -2,7 +2,7 @@ import { NavLink, type NavLinkProps } from "react-router";
 import React, { useEffect, useState } from "react";
 
 import { cn } from "~/lib/utils";
-// import { motion } from "framer-motion";
+// import { motion } from "motion/react";
 
 // const transition = {
 //   type: "spring",

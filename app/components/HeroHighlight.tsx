@@ -1,4 +1,4 @@
-import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
+import { useMotionValue, motion, useMotionTemplate } from "motion/react";
 import type { ReactNode, MouseEvent } from "react";
 
 import { cn } from "~/lib/utils";

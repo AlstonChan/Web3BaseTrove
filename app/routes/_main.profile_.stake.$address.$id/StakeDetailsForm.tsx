@@ -119,11 +119,18 @@ export default function StakeDetailsForm({ address, id, stake }: StakeDetailsFor
       console.error(error);
       if (isSimulateContractErrorType(error)) {
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Claim Rewards Failed",
-            description: "The claim reward transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Claim Rewards Cancelled",
+              description: "User cancelled the claim transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Claim Rewards Failed",
+              description: "The claim reward transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Claim Rewards Failed",

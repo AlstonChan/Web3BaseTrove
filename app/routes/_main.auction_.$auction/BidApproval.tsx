@@ -134,11 +134,18 @@ export default function BidApproval() {
       if (isSimulateContractErrorType(error)) {
         setApprovalError(error.message);
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Token Approval Failed",
-            description: "The approval transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Token Approval Failed",
+              description: "User cancelled the approval transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Token Approval Failed",
+              description: "The approval transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Token Approval Failed",

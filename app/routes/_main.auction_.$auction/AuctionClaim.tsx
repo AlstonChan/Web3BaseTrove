@@ -128,11 +128,18 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
       if (isSimulateContractErrorType(error)) {
         setClaimError(error.message);
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Unable to claim",
-            description: "The claiming bid transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Unable to claim",
+              description: "User cancelled the bid transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Unable to claim",
+              description: "The claiming bid transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Unable to claim",

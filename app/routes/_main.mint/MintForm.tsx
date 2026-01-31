@@ -108,11 +108,18 @@ export default function MintForm() {
         if (isSimulateContractErrorType(error)) {
           setMintError(error.message);
           if (error.name === "ContractFunctionExecutionError") {
-            toast({
-              title: "Unable to mint",
-              description: "The mint transaction will most likely be reverted.",
-              variant: "destructive",
-            });
+            if (error.message.includes("User rejected the request.")) {
+              toast({
+                title: "Unable to mint",
+                description: "User cancelled the mint transaction.",
+                variant: "destructive",
+              });
+            } else
+              toast({
+                title: "Unable to mint",
+                description: "The mint transaction will most likely be reverted.",
+                variant: "destructive",
+              });
           } else {
             toast({
               title: "Unable to mint",

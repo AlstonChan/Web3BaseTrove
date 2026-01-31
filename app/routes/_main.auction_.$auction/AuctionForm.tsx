@@ -1,15 +1,18 @@
-// External Modules
 import { useState } from "react";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
-// Internal Modules
-import { useReadTrove2, useReadTroveAuction, useWriteTroveAuction } from "~/generated";
+import {
+  useReadTrove2Allowance,
+  useReadTrove2BalanceOf,
+  useReadTrove2Decimals,
+  useReadTroveAuctionGetBids,
+  useWriteTroveAuction,
+} from "~/generated";
 import { isSimulateContractErrorType } from "~/lib/utils";
 import useContractAddress from "~/hooks/useContractAddress";
 
-// Components
 import AuctionInfo from "./AuctionInfo";
 import Stats from "~/components/Stats";
 import { Slider } from "~/components/ui/slider";
@@ -52,19 +55,14 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
 
   // Get data from the smart contract
   const buyoutBid = Number(formatUnits(data.buyoutPrice, Number(details.auctionDecimal)));
-  const { refetch: refetchTroveBids } = useReadTroveAuction({
-    functionName: "getBids",
+  const { refetch: refetchTroveBids } = useReadTroveAuctionGetBids({
     args: [BigInt(details.auctionId), BigInt(details.auctionIndex)],
   });
-  const { data: trv2Amount, refetch: refetchTrv2Amount } = useReadTrove2({
-    functionName: "balanceOf",
+  const { data: trv2Amount, refetch: refetchTrv2Amount } = useReadTrove2BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
-  const { data: trv2Decimals } = useReadTrove2({
-    functionName: "decimals",
-  });
-  const { data: trv2Allowance, refetch: refetchTrv2Allowance } = useReadTrove2({
-    functionName: "allowance",
+  const { data: trv2Decimals } = useReadTrove2Decimals({});
+  const { data: trv2Allowance, refetch: refetchTrv2Allowance } = useReadTrove2Allowance({
     args: account.address && [account.address, contractAddress],
   });
 
@@ -114,7 +112,7 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      handleBidButton();
+      void handleBidButton();
     }
   };
 
@@ -220,11 +218,18 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
         if (isSimulateContractErrorType(error)) {
           setBidError(error.message);
           if (error.name === "ContractFunctionExecutionError") {
-            toast({
-              title: "Unable to bid",
-              description: "The bidding transaction will most likely be reverted.",
-              variant: "destructive",
-            });
+            if (error.message.includes("User rejected the request.")) {
+              toast({
+                title: "Unable to bid",
+                description: "User cancelled the bid transaction.",
+                variant: "destructive",
+              });
+            } else
+              toast({
+                title: "Unable to bid",
+                description: "The bidding transaction will most likely be reverted.",
+                variant: "destructive",
+              });
           } else {
             toast({
               title: "Unable to bid",
@@ -286,7 +291,7 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
       <div className="mt-2 flex gap-2">
         <Button
           type="button"
-          onClick={() => setBidAmount(minimumBid)}
+          onClick={() => void setBidAmount(minimumBid)}
           className="h-auto w-1/3 flex-col overflow-hidden"
           variant="outline-orange"
         >
@@ -298,7 +303,7 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
         </Button>
         <Button
           type="button"
-          onClick={() => setBidAmount(doubleMinimumBid)}
+          onClick={() => void setBidAmount(doubleMinimumBid)}
           className="h-auto w-1/3 flex-col overflow-hidden"
           variant="outline-orange"
         >
@@ -311,7 +316,7 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
         <Button
           type="button"
           onClick={() =>
-            setBidAmount(Number(formatUnits(data.buyoutPrice, Number(details.auctionDecimal))))
+            void setBidAmount(Number(formatUnits(data.buyoutPrice, Number(details.auctionDecimal))))
           }
           className="h-auto w-1/3 flex-col overflow-hidden"
           variant="outline-orange"
@@ -326,7 +331,7 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
         </Button>
       </div>
       <Button
-        onClick={handleBidButton}
+        onClick={() => void handleBidButton()}
         className="mt-2 w-full rounded-xl"
         size="lg"
         variant={bidError ? "destructive" : "orange"}

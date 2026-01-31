@@ -126,11 +126,18 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
       if (isSimulateContractErrorType(error)) {
         setBurnError(error.message);
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Unable to burn",
-            description: "The burn transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Unable to burn",
+              description: "User cancelled the burn transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Unable to burn",
+              description: "The burn transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Unable to burn",

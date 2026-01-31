@@ -157,11 +157,18 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
       console.error(error);
       if (isSimulateContractErrorType(error)) {
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Unable to create auction",
-            description: "The create auction transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Unable to create auction",
+              description: "User cancelled the auction creation transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Unable to create auction",
+              description: "The create auction transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Unable to create auction",

@@ -160,11 +160,18 @@ export default function StakeForm() {
       if (isSimulateContractErrorType(error)) {
         setStakeError(error.message);
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Unable to Stake",
-            description: "The stake transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Unable to Stake",
+              description: "User cancelled the stake transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Unable to Stake",
+              description: "The stake transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Unable to Stake",

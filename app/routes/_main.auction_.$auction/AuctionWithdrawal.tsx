@@ -46,11 +46,18 @@ export default function AuctionWithdrawal({ auctionId }: AuctionWithdrawalProps)
       console.error(error);
       if (isSimulateContractErrorType(error)) {
         if (error.name === "ContractFunctionExecutionError") {
-          toast({
-            title: "Auction Withdrawal Failed",
-            description: "The withdrawal transaction will most likely be reverted.",
-            variant: "destructive",
-          });
+          if (error.message.includes("User rejected the request.")) {
+            toast({
+              title: "Auction Withdrawal Cancelled",
+              description: "User cancelled the withdrawal transaction.",
+              variant: "destructive",
+            });
+          } else
+            toast({
+              title: "Auction Withdrawal Failed",
+              description: "The withdrawal transaction will most likely be reverted.",
+              variant: "destructive",
+            });
         } else {
           toast({
             title: "Auction Withdrawal Failed",

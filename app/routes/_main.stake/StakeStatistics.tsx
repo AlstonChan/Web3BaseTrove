@@ -1,15 +1,14 @@
-// External Modules
 import { extractChain, formatUnits } from "viem";
 import { anvil, baseSepolia } from "viem/chains";
 
-// Internal Modules
 import { useReadTroveStake } from "~/generated";
 import useContractAddress from "~/hooks/useContractAddress";
 
-// Components
+import { getBaseScanUrlForSepoliaBase } from "~/lib/utils";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import Stats from "~/components/Stats";
+import ExternalLink from "~/components/ExternalLink";
 
 export default function StakeStatistics() {
   const { chainId, contractAddress } = useContractAddress("troveStake");
@@ -54,14 +53,9 @@ export default function StakeStatistics() {
             </p>
 
             <Button asChild>
-              <a
-                rel="noreferrer noopener"
-                referrerPolicy="no-referrer"
-                target="_blank"
-                href={`https://sepolia.basescan.org/address/${contractAddress}`}
-              >
+              <ExternalLink noDefaultStyles href={getBaseScanUrlForSepoliaBase(contractAddress)}>
                 View Contract
-              </a>
+              </ExternalLink>
             </Button>
           </div>
         </div>

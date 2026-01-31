@@ -1,3 +1,4 @@
+import ExternalLink from "~/components/ExternalLink";
 import { useReadTrove, useReadTroveTokenUri } from "~/generated";
 
 interface ProfileNftCardProps {
@@ -26,15 +27,13 @@ function NftCard({ tokenIndex, nftIndex }: NftCardProps) {
 
   return (
     <div className="bg-dark-blue flex flex-col items-center gap-2 rounded-2xl p-2">
-      <a
-        href={tokenURI}
-        target="_blank"
-        referrerPolicy="no-referrer"
-        rel="noopener noreferrer"
+      <ExternalLink
+        noDefaultStyles
+        href={tokenURI ?? "#"}
         className="aspect-square h-auto w-full shrink-0"
       >
         <img src={tokenURI} alt={`NFT #${nftIndex}`} className="h-full w-full rounded-xl" />
-      </a>
+      </ExternalLink>
       <div className="flex flex-col gap-1 text-center">
         <p className="text-sm">Trove #{tokenIndex}</p>
         <p className="text-sm text-slate-400">Owned</p>

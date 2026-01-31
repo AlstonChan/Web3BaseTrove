@@ -1,9 +1,8 @@
-// External Modules
 import { Crown } from "lucide-react";
-
-// Internal Modules
 import { formatUnits } from "viem";
-import { cn } from "~/lib/utils";
+
+import ExternalLink from "~/components/ExternalLink";
+import { cn, getBaseScanUrlForSepoliaBase } from "~/lib/utils";
 
 interface BidApprovalProps {
   className?: string;
@@ -28,7 +27,10 @@ export default function BidsActivity({ className, bids, auctionDecimal }: BidApp
 
           return (
             <p className="my-1" key={index}>
-              {bid.bidder.slice(0, 6)}...{bid.bidder.slice(-4)}
+              <ExternalLink href={getBaseScanUrlForSepoliaBase(bid.bidder)}>
+                {bid.bidder.slice(0, 6)}...{bid.bidder.slice(-4)}
+              </ExternalLink>
+
               <span className="text-slate-400">&nbsp;bid&nbsp;</span>
               <span className="font-bold text-amber-500">
                 {formatUnits(bid.amount, auctionDecimal)} TRV2

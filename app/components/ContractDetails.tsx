@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Copy } from "lucide-react";
 
 interface ContractDetailsProps {
   name: string;
-  value: string;
+  value: React.ReactNode | string;
   copy?: string;
 }
 

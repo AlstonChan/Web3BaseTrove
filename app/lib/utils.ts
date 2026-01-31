@@ -2,6 +2,7 @@ import { twMerge } from "tailwind-merge";
 import { formatUnits } from "viem";
 import { type ClassValue, clsx } from "clsx";
 import { type SimulateContractErrorType } from "@wagmi/core";
+import { easeOut } from "motion/react";
 
 /**
  * Merge the tailwind css classes and replace the
@@ -99,7 +100,7 @@ export const headlineVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.4, 0.0, 0.2, 1],
+      easeOut,
     },
   },
 };

@@ -1,6 +1,6 @@
 // Remix Modules
 import type { MetaFunction } from "react-router";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 // Internal Modules
 import { useReadTrove1 } from "~/generated";

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 // External Modules
 import { useState, type ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 // Internal Modules
 import { cn } from "~/lib/utils";

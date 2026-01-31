@@ -1,5 +1,5 @@
 import type { MetaFunction } from "react-router";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useConnection, useBalance } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { formatEther } from "viem";
@@ -16,6 +16,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import basePng from "~/assets/base/base.png";
 import baseWebp from "~/assets/base/base.webp";
 import baseAvif from "~/assets/base/base.avif";
+import LoadingPage from "~/components/LoadingPage";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Profile | Trove" }, { name: "description", content: "Your profile on Trove" }];
@@ -112,6 +113,8 @@ export default function Profile() {
             </Tabs>
           </article>
         </>
+      ) : account.isConnecting || account.isReconnecting ? (
+        <LoadingPage />
       ) : (
         <div className="px-4 text-center text-amber-500">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">

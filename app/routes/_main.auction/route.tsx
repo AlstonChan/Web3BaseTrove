@@ -2,7 +2,7 @@
 import type { MetaFunction } from "react-router";
 
 // External Modules
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useBlock } from "wagmi";
 
 // Internal Modules

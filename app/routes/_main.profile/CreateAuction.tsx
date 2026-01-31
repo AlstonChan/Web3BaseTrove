@@ -41,7 +41,10 @@ const formSchema = z.object({
   auctionId: z.preprocess(
     (args) => (args === "" ? undefined : args),
     z.coerce
-      .number({ invalid_type_error: "Auction ID must be a number" })
+      .number({
+        error: (issue) =>
+          issue.input === undefined ? "Action ID is required" : "Auction ID must be a number",
+      })
       .nonnegative("Auction ID must be not be negative"),
   ),
   startDate: z.date(),
@@ -49,44 +52,44 @@ const formSchema = z.object({
   startPrice: z
     .string()
     .refine((val) => nonNumberValidation(val), {
-      message: "This field must be a number",
+      error: "This field must be a number",
     })
     .refine((val) => invalidNumberFormat(val), {
-      message: "Invalid number format",
+      error: "Invalid number format",
     })
     .refine((val) => unParsableNumber(val), {
-      message: "Invalid input",
+      error: "Invalid input",
     })
     .refine((val) => negativeNumberValidation(val), {
-      message: "This field must be a positive number",
+      error: "This field must be a positive number",
     }),
   buyoutPrice: z
     .string()
     .refine((val) => nonNumberValidation(val), {
-      message: "This field must be a number",
+      error: "This field must be a number",
     })
     .refine((val) => invalidNumberFormat(val), {
-      message: "Invalid number format",
+      error: "Invalid number format",
     })
     .refine((val) => unParsableNumber(val), {
-      message: "Invalid input",
+      error: "Invalid input",
     })
     .refine((val) => negativeNumberValidation(val), {
-      message: "This field must be a positive number",
+      error: "This field must be a positive number",
     }),
   minimumPrice: z
     .string()
     .refine((val) => nonNumberValidation(val), {
-      message: "This field must be a number",
+      error: "This field must be a number",
     })
     .refine((val) => invalidNumberFormat(val), {
-      message: "Invalid number format",
+      error: "Invalid number format",
     })
     .refine((val) => unParsableNumber(val), {
-      message: "Invalid input",
+      error: "Invalid input",
     })
     .refine((val) => negativeNumberValidation(val), {
-      message: "This field must be a positive number",
+      error: "This field must be a positive number",
     }),
   troveURI: z.string(),
 });
@@ -95,7 +98,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
   const { data: blockData } = useBlock();
 
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<z.input<typeof formSchema>, unknown, z.output<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       auctionId: 0,
@@ -187,7 +190,8 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
   return (
     <Form {...form}>
       <form
-        onSubmit={() => void form.handleSubmit(onSubmit)()}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        onSubmit={form.handleSubmit(onSubmit)}
         className="bg-dark-blue mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3
           sm:p-5"
       >
@@ -206,7 +210,12 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
               <FormItem className="flex w-full flex-col gap-1.5">
                 <FormLabel>Auction ID</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="0" {...field} />
+                  <Input
+                    type="number"
+                    placeholder="0"
+                    {...field}
+                    value={field.value as number | string}
+                  />
                 </FormControl>
                 <FormMessage className="mt-0! text-xs" />
               </FormItem>

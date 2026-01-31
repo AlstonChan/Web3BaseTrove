@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import type { MetaFunction } from "react-router";
 
 import { Scale } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { getBaseScanUrlForSepoliaBase, headlineVariants } from "~/lib/utils";
 import useContractAddress from "~/hooks/useContractAddress";

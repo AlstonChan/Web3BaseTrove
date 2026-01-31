@@ -1,5 +1,5 @@
 import { type MetaFunction, useParams } from "react-router";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   useReadTrove,
   useReadTroveAuctionDecimals,
@@ -44,7 +44,7 @@ export default function AuctionDetails() {
       ? [BigInt(params.auction.split("-")[0]), BigInt(params.auction.split("-")[1])]
       : undefined,
   });
-  const { data: troveAuction } = useReadTroveAuctionGetAuction({
+  const { data: troveAuction, isLoading } = useReadTroveAuctionGetAuction({
     args: params.auction ? [BigInt(params.auction.split("-")[0])] : undefined,
   });
   const { data: auctionDecimal } = useReadTroveAuctionDecimals({});
@@ -54,6 +54,8 @@ export default function AuctionDetails() {
 
   const auctionId = params.auction.split("-")[0];
   const auctionIndex = params.auction.split("-")[1];
+
+  if (isLoading) return <LoadingPage />;
 
   // Check if the auction exists
   if (!troveAuction) return <AuctionNotExists auctionId={auctionId} auctionIndex={auctionIndex} />;

@@ -11,7 +11,6 @@ import { useReadTroveAuction, useWriteTroveAuction } from "~/generated";
 // Components
 import Stats from "~/components/Stats";
 import AuctionInfo from "./AuctionInfo";
-import LoadingPage from "~/components/LoadingPage";
 import { Button } from "~/components/ui/button";
 import { useToast } from "~/components/ui/use-toast";
 
@@ -151,10 +150,6 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
     }
   };
 
-  if (!account) {
-    return <LoadingPage />;
-  }
-
   let btnText = "Claim Bid";
   if (account.isConnected) {
     if (status === "passed") btnText = "Bid refunded";
@@ -205,7 +200,7 @@ export default function AuctionClaim({ bids, status, data, details }: AuctionCla
         size="lg"
         className="mt-3 w-full"
         disabled={account.isConnected ? status === "passed" : false}
-        onClick={handleBtnClick}
+        onClick={() => void handleBtnClick()}
       >
         {btnText}
       </Button>

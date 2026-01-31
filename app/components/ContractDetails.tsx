@@ -1,4 +1,3 @@
-// External Modules
 import { useState } from "react";
 import { Copy } from "lucide-react";
 
@@ -13,7 +12,7 @@ export default function ContractDetails({ name, value, copy }: ContractDetailsPr
   const [copied, setCopied] = useState(false);
 
   const handleCopy = (item: string) => {
-    navigator.clipboard.writeText(item).then(() => {
+    void navigator.clipboard.writeText(item).then(() => {
       setCopied(true);
       setTimeout(() => {
         setCopied(false);
@@ -30,7 +29,9 @@ export default function ContractDetails({ name, value, copy }: ContractDetailsPr
           <button
             data-tip={copied ? "Copied!" : "Copy"}
             className="pointer daisy-tooltip daisy-tooltip-primary ml-1"
-            onClick={() => handleCopy(copy)}
+            onClick={() => {
+              handleCopy(copy);
+            }}
             type="button"
           >
             <Copy size={16} />

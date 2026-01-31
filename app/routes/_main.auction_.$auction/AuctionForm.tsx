@@ -131,7 +131,7 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
 
     if (trv2Amount === undefined || trv2Allowance === undefined) return;
 
-    if (matched === false)
+    if (!matched)
       return toast({
         title: "Unsupported chain",
         description: "This chain is not supported!",
@@ -291,7 +291,9 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
       <div className="mt-2 flex gap-2">
         <Button
           type="button"
-          onClick={() => void setBidAmount(minimumBid)}
+          onClick={() => {
+            setBidAmount(minimumBid);
+          }}
           className="h-auto w-1/3 flex-col overflow-hidden"
           variant="outline-orange"
         >
@@ -303,7 +305,9 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
         </Button>
         <Button
           type="button"
-          onClick={() => void setBidAmount(doubleMinimumBid)}
+          onClick={() => {
+            setBidAmount(doubleMinimumBid);
+          }}
           className="h-auto w-1/3 flex-col overflow-hidden"
           variant="outline-orange"
         >
@@ -315,9 +319,9 @@ export default function AuctionForm({ data, details, bids }: AuctionFormProps) {
         </Button>
         <Button
           type="button"
-          onClick={() =>
-            void setBidAmount(Number(formatUnits(data.buyoutPrice, Number(details.auctionDecimal))))
-          }
+          onClick={() => {
+            setBidAmount(Number(formatUnits(data.buyoutPrice, Number(details.auctionDecimal))));
+          }}
           className="h-auto w-1/3 flex-col overflow-hidden"
           variant="outline-orange"
         >

@@ -25,7 +25,7 @@ export const rainbowKitTheme = (() => {
   return {
     ...base,
     fonts: {
-      ...(base.fonts ?? {}),
+      ...base.fonts,
       body: "Poppins, sans-serif",
     },
   } as Theme;

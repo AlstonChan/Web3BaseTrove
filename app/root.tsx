@@ -92,7 +92,7 @@ export function ErrorBoundary() {
       </head>
       <body className="bg-background font-poppins flex h-full min-h-dvh flex-col">
         {isRouteErrorResponse(error) ? (
-          <ErrorPage code={error.status} title={error.statusText} message={error.data} />
+          <ErrorPage code={error.status} title={error.statusText} message={error.data as string} />
         ) : error instanceof Error ? (
           <ErrorPage code={500} title={error.name} message={error.message} />
         ) : (

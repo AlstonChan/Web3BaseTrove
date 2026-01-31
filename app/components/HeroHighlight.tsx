@@ -1,8 +1,6 @@
-// External Modules
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import type { ReactNode, MouseEvent } from "react";
 
-// Internal Modules
 import { cn } from "~/lib/utils";
 
 // SVG to Data URI helper
@@ -24,7 +22,6 @@ export const HeroHighlight = ({
   const mouseY = useMotionValue(0);
 
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent<HTMLDivElement>) {
-    if (!currentTarget) return;
     const { left, top } = currentTarget.getBoundingClientRect();
 
     mouseX.set(clientX - left);

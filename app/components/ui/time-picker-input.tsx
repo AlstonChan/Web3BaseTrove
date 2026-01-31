@@ -75,7 +75,9 @@ export function TimePickerInput({
       setFlag(false);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [flag]);
 
   const calculatedValue = useMemo(() => {

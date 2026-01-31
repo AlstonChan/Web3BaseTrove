@@ -1,10 +1,6 @@
-// External Modules
 import { useConnection } from "wagmi";
 
-// Internal Modules
-import { useReadTrove } from "~/generated";
-
-// Components
+import { useReadTroveBalanceOf } from "~/generated";
 import LoadingPage from "~/components/LoadingPage";
 import ProfileNftCard from "./ProfileNftCard";
 
@@ -12,8 +8,7 @@ export default function AllNft() {
   const account = useConnection();
   const address = account.address;
 
-  const { data: nftAmount } = useReadTrove({
-    functionName: "balanceOf",
+  const { data: nftAmount } = useReadTroveBalanceOf({
     args: address ? [address] : undefined,
   });
 

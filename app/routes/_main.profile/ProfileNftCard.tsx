@@ -1,5 +1,4 @@
-// Internal Modules
-import { useReadTrove } from "~/generated";
+import { useReadTrove, useReadTroveTokenUri } from "~/generated";
 
 interface ProfileNftCardProps {
   tokenIndex: number;
@@ -21,8 +20,7 @@ interface NftCardProps {
 }
 
 function NftCard({ tokenIndex, nftIndex }: NftCardProps) {
-  const { data: tokenURI } = useReadTrove({
-    functionName: "tokenURI",
+  const { data: tokenURI } = useReadTroveTokenUri({
     args: [nftIndex],
   });
 

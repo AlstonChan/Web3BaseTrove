@@ -1,17 +1,11 @@
-// Remix Modules
 import type { MetaFunction } from "react-router";
-
-// External Modules
 import { motion } from "framer-motion";
 import { useConnection, useBalance } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { formatEther } from "viem";
 
-// Internal Modules
 import { headlineVariants } from "~/lib/utils";
 import { useReadTroveAuction } from "~/generated";
-
-// Components
 import BurnTokenCard from "./BurnTokenCard";
 import AllStakes from "./AllStakes";
 import CardsSection from "./CardsSection";
@@ -19,7 +13,6 @@ import CreateAuction from "./CreateAuction";
 import AllNft from "./AllNft";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 
-// Assets Imports
 import basePng from "~/assets/base/base.png";
 import baseWebp from "~/assets/base/base.webp";
 import baseAvif from "~/assets/base/base.avif";

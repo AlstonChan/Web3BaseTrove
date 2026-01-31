@@ -1,13 +1,16 @@
-// External Modules
 import { useState } from "react";
-import { useReadTrove1, useReadTrove2, useWriteTrove1, useWriteTrove2 } from "~/generated";
+import {
+  useReadTrove1,
+  useReadTrove1BalanceOf,
+  useReadTrove2,
+  useReadTrove2BalanceOf,
+  useWriteTrove1,
+  useWriteTrove2,
+} from "~/generated";
 import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
-// Internal Modules
 import { formatFloatToBigInt, isSimulateContractErrorType } from "~/lib/utils";
-
-// Components
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
@@ -25,24 +28,14 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
   const [burnError, setBurnError] = useState("");
 
   const trv1Write = useWriteTrove1();
-  const trv1AmountAbi = useReadTrove1({
-    functionName: "balanceOf",
-    args: account.address ? [account.address] : undefined,
-  });
   const { data: trv1Decimals } = useReadTrove1({ functionName: "decimals" });
-  const { data: trv1Amount } = useReadTrove1({
-    functionName: "balanceOf",
+  const { data: trv1Amount, refetch: refetchTrv1 } = useReadTrove1BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
 
   const trv2Write = useWriteTrove2();
-  const trv2AmountAbi = useReadTrove2({
-    functionName: "balanceOf",
-    args: account.address ? [account.address] : undefined,
-  });
   const { data: trv2Decimals } = useReadTrove2({ functionName: "decimals" });
-  const { data: trv2Amount } = useReadTrove2({
-    functionName: "balanceOf",
+  const { data: trv2Amount, refetch: refetchTrv2 } = useReadTrove2BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
 
@@ -101,7 +94,7 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
     try {
       if (type === "trv1") {
         if (!trv1Decimals) return;
-        const result = await trv1Write.writeContractAsync({
+        const result = await trv1Write.mutateAsync({
           functionName: "burn",
           args: [formatFloatToBigInt(burnAmount, trv1Decimals)],
         });
@@ -111,11 +104,11 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
           variant: "success",
         });
 
-        await trv1AmountAbi.refetch();
+        await refetchTrv1();
       } else {
         if (!trv2Decimals) return;
 
-        const result = await trv2Write.writeContractAsync({
+        const result = await trv2Write.mutateAsync({
           functionName: "burn",
           args: [formatFloatToBigInt(burnAmount, trv2Decimals)],
         });
@@ -125,7 +118,7 @@ function BurnTokenCard({ type }: BurnTokenCardProps) {
           variant: "success",
         });
 
-        await trv2AmountAbi.refetch();
+        await refetchTrv2();
       }
       setBurnAmount(``);
     } catch (error) {

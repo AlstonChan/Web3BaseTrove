@@ -1,10 +1,6 @@
-// External Modules
 import { useConnection } from "wagmi";
 
-// Internal Modules
-import { useReadTroveStake } from "~/generated";
-
-// Components
+import { useReadTroveStakeStakeStatus } from "~/generated";
 import StakeCard from "./StakeCard";
 import LoadingPage from "~/components/LoadingPage";
 
@@ -12,8 +8,7 @@ export default function AllStakes() {
   const account = useConnection();
   const address = account.address;
 
-  const { data: stakeDetails } = useReadTroveStake({
-    functionName: "stakeStatus",
+  const { data: stakeDetails } = useReadTroveStakeStakeStatus({
     args: address ? [address] : undefined,
   });
 

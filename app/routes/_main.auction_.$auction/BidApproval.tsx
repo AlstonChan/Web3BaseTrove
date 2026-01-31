@@ -93,7 +93,7 @@ export default function BidApproval() {
     setInputValue(value);
   };
 
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (account.isDisconnected || approvalError) return;

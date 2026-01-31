@@ -85,7 +85,7 @@ export default function StakeDetailsForm({ address, id, stake }: StakeDetailsFor
   /**
    * Handle claim reward button click
    */
-  const handleClaimReward = async (e: React.FormEvent) => {
+  const handleClaimReward = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (account.isDisconnected) return;

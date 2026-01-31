@@ -1,4 +1,4 @@
-import type { MetaFunction } from "react-router";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import { motion } from "motion/react";
 import { useConnection, useBalance } from "wagmi";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -18,8 +18,21 @@ import baseWebp from "~/assets/base/base.webp";
 import baseAvif from "~/assets/base/base.avif";
 import LoadingPage from "~/components/LoadingPage";
 
-export const meta: MetaFunction = () => {
-  return [{ title: "Profile | Trove" }, { name: "description", content: "Your profile on Trove" }];
+export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+
+  return { canonical: url.href };
+}
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
+  return [
+    {
+      title: "Profile | Trove",
+    },
+    { name: "description", content: "Your profile on Trove" },
+    { tagName: "link", rel: "canonical", href: loaderData?.canonical },
+    { property: "og:url", content: loaderData?.canonical },
+    { name: "twitter:url", content: loaderData?.canonical },
+  ];
 };
 
 export default function Profile() {

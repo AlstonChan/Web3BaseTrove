@@ -104,7 +104,7 @@ This project has been marked as completed, but further improvement can be made.
 
 - [ ] Add a new tab at profile page to allow user to view the auctions that they have bid on
   - [ ] Allow user to see if they can claim bid or rewards without clicking in
-- [ ] Add social images/metadata
+- [x] Add social images/metadata
 - [ ] Add security headers
 - [ ] Auto refresh the relevant data of the operation once transaction has been included in the block
 - [ ] Configure Bridge

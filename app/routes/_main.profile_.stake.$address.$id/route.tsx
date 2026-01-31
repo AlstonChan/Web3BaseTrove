@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import type { MetaFunction } from "react-router";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import { motion } from "motion/react";
 import { formatUnits, isAddress } from "viem";
 
@@ -10,11 +10,22 @@ import StakeDetailsForm from "./StakeDetailsForm";
 import Withdrawal from "./Withdrawal";
 import MissingParam from "~/components/MissingParam";
 
-export const meta: MetaFunction = ({ params }) => {
+export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+
+  return { canonical: url.href };
+}
+export const meta: MetaFunction<typeof loader> = ({ loaderData, params }) => {
   const description = `Your Stake #${params.id} details on Trove`;
   if (!params.id)
     return [{ title: "Your Stake | Trove" }, { name: "description", content: description }];
-  return [{ title: `Stake #${params.id} | Trove` }, { name: "description", content: description }];
+  return [
+    { title: `Stake #${params.id} | Trove` },
+    { name: "description", content: description },
+    { tagName: "link", rel: "canonical", href: loaderData?.canonical },
+    { property: "og:url", content: loaderData?.canonical },
+    { name: "twitter:url", content: loaderData?.canonical },
+  ];
 };
 
 export default function StakeDetails() {

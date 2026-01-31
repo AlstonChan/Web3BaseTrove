@@ -1,4 +1,4 @@
-import { type MetaFunction, useParams } from "react-router";
+import { type LoaderFunctionArgs, type MetaFunction, useParams } from "react-router";
 import { motion } from "motion/react";
 import {
   useReadTrove,
@@ -22,7 +22,12 @@ import AuctionClaim from "./AuctionClaim";
 import MissingParam from "~/components/MissingParam";
 import { ZERO_ADDRESS } from "~/lib/constant";
 
-export const meta: MetaFunction = ({ params }) => {
+export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+
+  return { canonical: url.href };
+}
+export const meta: MetaFunction<typeof loader> = ({ loaderData, params }) => {
   if (!params.auction) return [{ title: "Auction | Trove" }];
 
   return [
@@ -31,6 +36,9 @@ export const meta: MetaFunction = ({ params }) => {
       name: "description",
       content: `Bid TRV2 token here at Auction ${params.auction} to participate in the Web 3 Auction to get yourself an NFT`,
     },
+    { tagName: "link", rel: "canonical", href: loaderData?.canonical },
+    { property: "og:url", content: loaderData?.canonical },
+    { name: "twitter:url", content: loaderData?.canonical },
   ];
 };
 

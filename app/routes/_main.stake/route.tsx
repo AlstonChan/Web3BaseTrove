@@ -1,5 +1,5 @@
 // Remix Modules
-import type { MetaFunction } from "react-router";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 
 // External Modules
 import { motion } from "motion/react";
@@ -18,7 +18,12 @@ import StakeLiquidity from "./StakeLiquidity";
 import StakeApproval from "./StakeApproval";
 import UserStakeStats from "./UserStakeStats";
 
-export const meta: MetaFunction = () => {
+export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+
+  return { canonical: url.href };
+}
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
   return [
     { title: "Stake | Trove" },
     {
@@ -26,6 +31,9 @@ export const meta: MetaFunction = () => {
       content:
         "Stake your TRV1 token to mint TRV2 token. Liquid staking with time and amount multiplier to boost your stakes.",
     },
+    { tagName: "link", rel: "canonical", href: loaderData?.canonical },
+    { property: "og:url", content: loaderData?.canonical },
+    { name: "twitter:url", content: loaderData?.canonical },
   ];
 };
 

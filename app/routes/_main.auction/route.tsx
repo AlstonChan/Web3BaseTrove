@@ -1,5 +1,5 @@
 // Remix Modules
-import type { MetaFunction } from "react-router";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 
 // External Modules
 import { motion } from "motion/react";
@@ -13,13 +13,21 @@ import { headlineVariants } from "~/lib/utils";
 import AuctionCard from "./AuctionCard";
 import AuctionPlaceholderGrid from "./AuctionPlaceholderGrid";
 
-export const meta: MetaFunction = () => {
+export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+
+  return { canonical: url.href };
+}
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
   return [
     { title: "Auction | Trove" },
     {
       name: "description",
       content: "Bid TRV2 token here to participate in the Web 3 Auction to get yourself an NFT",
     },
+    { tagName: "link", rel: "canonical", href: loaderData?.canonical },
+    { property: "og:url", content: loaderData?.canonical },
+    { name: "twitter:url", content: loaderData?.canonical },
   ];
 };
 

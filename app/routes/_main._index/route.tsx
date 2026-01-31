@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { MetaFunction } from "react-router";
+import type { MetaFunction, LoaderFunctionArgs } from "react-router";
 
 import { Scale } from "lucide-react";
 import { motion } from "motion/react";
@@ -25,10 +25,18 @@ import basePng from "~/assets/base/base.png";
 import baseWebp from "~/assets/base/base.webp";
 import baseAvif from "~/assets/base/base.avif";
 
-export const meta: MetaFunction = () => {
+export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+
+  return { canonical: url.href };
+}
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
   return [
     { title: "Home | Trove" },
     { name: "description", content: "Unlock the treasure: mint, stake, and win exclusive NFTs" },
+    { tagName: "link", rel: "canonical", href: loaderData?.canonical },
+    { property: "og:url", content: loaderData?.canonical },
+    { name: "twitter:url", content: loaderData?.canonical },
   ];
 };
 

@@ -43,6 +43,33 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
         <meta name="theme-color" content="#020817" />
 
+        {/* social meta tags */}
+        {/* <!-- Primary Meta Tags --> */}
+        <title>Web3 Trove</title>
+        <meta name="title" content="Web3 Trove" />
+        <meta
+          name="description"
+          content="Unlock the treasure: mint, stake, and win exclusive NFTs with Trove"
+        />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Web3 Trove" />
+        <meta
+          property="og:description"
+          content="Unlock the treasure: mint, stake, and win exclusive NFTs with Trove"
+        />
+        <meta property="og:image" content="/meta.png" />
+
+        {/* <!-- X (Twitter) --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="Web3 Trove" />
+        <meta
+          property="twitter:description"
+          content="Unlock the treasure: mint, stake, and win exclusive NFTs with Trove"
+        />
+        <meta property="twitter:image" content="/meta.png" />
+
         {/* page specific tag */}
         <Meta />
         <Links />

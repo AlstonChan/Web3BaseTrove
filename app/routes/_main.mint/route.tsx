@@ -1,5 +1,5 @@
 // Remix Modules
-import type { MetaFunction } from "react-router";
+import type { LoaderFunctionArgs, MetaFunction } from "react-router";
 import { motion } from "motion/react";
 
 // Internal Modules
@@ -10,13 +10,21 @@ import { headlineVariants, safeBigIntDecimalToNumber } from "~/lib/utils";
 import Stats from "~/components/Stats";
 import MintForm from "./MintForm";
 
-export const meta: MetaFunction = () => {
+export async function loader({ request }: LoaderFunctionArgs) {
+  const url = new URL(request.url);
+
+  return { canonical: url.href };
+}
+export const meta: MetaFunction<typeof loader> = ({ loaderData }) => {
   return [
     { title: "Mint | Trove" },
     {
       name: "description",
       content: "Mint TRV1 token now to enter the ecosystem of Web3 Trove on Base Blockchain",
     },
+    { tagName: "link", rel: "canonical", href: loaderData?.canonical },
+    { property: "og:url", content: loaderData?.canonical },
+    { name: "twitter:url", content: loaderData?.canonical },
   ];
 };
 

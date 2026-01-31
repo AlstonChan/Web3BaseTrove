@@ -20,6 +20,7 @@ import AuctionNotExists from "./AuctionNotExists";
 import AuctionStatus from "./AuctionStatus";
 import AuctionClaim from "./AuctionClaim";
 import MissingParam from "~/components/MissingParam";
+import { ZERO_ADDRESS } from "~/lib/constant";
 
 export const meta: MetaFunction = ({ params }) => {
   if (!params.auction) return [{ title: "Auction | Trove" }];
@@ -70,7 +71,7 @@ export default function AuctionDetails() {
     new Date(Number(blockData.timestamp) * 1000),
     add(Number(currentAuction.start) * 1000, { seconds: Number(currentAuction.duration) }),
   );
-  const hasWinner = currentAuction.winner !== "0x0000000000000000000000000000000000000000";
+  const hasWinner = currentAuction.winner !== ZERO_ADDRESS;
 
   return (
     <div className="mb-14 flex-1">

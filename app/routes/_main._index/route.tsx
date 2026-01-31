@@ -4,7 +4,7 @@ import type { MetaFunction } from "react-router";
 import { Scale } from "lucide-react";
 import { motion } from "framer-motion";
 
-import { headlineVariants } from "~/lib/utils";
+import { getBaseScanUrlForSepoliaBase, headlineVariants } from "~/lib/utils";
 import useContractAddress from "~/hooks/useContractAddress";
 
 import InfoCard from "./InfoCard";
@@ -137,7 +137,7 @@ export default function Index() {
                 <img src={etherscan} alt="etherscan" className="mx-auto h-auto w-10 md:w-14" />
               }
               cardTitle="BaseScan"
-              link={`https://sepolia.basescan.org/address/${contractAddress}`}
+              link={getBaseScanUrlForSepoliaBase(contractAddress)}
             />
             <InfoCard
               className="w-full flex-1 md:w-1/4"

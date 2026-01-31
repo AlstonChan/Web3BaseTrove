@@ -187,7 +187,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
   return (
     <Form {...form}>
       <form
-        onSubmit={void form.handleSubmit(onSubmit)}
+        onSubmit={() => void form.handleSubmit(onSubmit)()}
         className="bg-dark-blue mx-auto mb-8 flex max-w-(--breakpoint-xl) flex-col rounded-2xl p-3
           sm:p-5"
       >

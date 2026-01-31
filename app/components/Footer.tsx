@@ -4,6 +4,7 @@ import Github from "./GitHub";
 import logoPng from "~/assets/logo/logo-52.png";
 import logoWebp from "~/assets/logo/logo-52.webp";
 import logoAvif from "~/assets/logo/logo-52.avif";
+import ExternalLink from "./ExternalLink";
 
 const startingYear = 2024;
 
@@ -22,14 +23,9 @@ export default function Footer() {
           </div>
 
           <Button variant="ghost" size="icon" className="ml-5 flex items-center gap-2" asChild>
-            <a
-              href="https://github.com/AlstonChan/TokenTrove"
-              target="_blank"
-              rel="noreferrer noopener"
-              referrerPolicy="no-referrer"
-            >
+            <ExternalLink href="https://github.com/AlstonChan/TokenTrove">
               <Github className="p-2" />
-            </a>
+            </ExternalLink>
           </Button>
         </div>
         <p>

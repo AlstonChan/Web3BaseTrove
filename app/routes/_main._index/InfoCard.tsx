@@ -1,5 +1,6 @@
 import { CardBody, CardContainer, CardItem } from "~/components/3dCard";
 import type { ReactNode } from "react";
+import ExternalLink from "~/components/ExternalLink";
 
 interface InfoCardProps {
   cardTitle: string;
@@ -10,13 +11,7 @@ interface InfoCardProps {
 
 export default function InfoCard({ className, cardIllustration, cardTitle, link }: InfoCardProps) {
   return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noreferrer noopener"
-      referrerPolicy="no-referrer"
-      className={className}
-    >
+    <ExternalLink noDefaultStyles href={link} className={className}>
       <CardContainer containerClassName="w-full" className="w-full">
         <CardBody
           className="group/card relative h-auto w-full rounded-xl border border-black/10 bg-gray-50
@@ -36,6 +31,6 @@ export default function InfoCard({ className, cardIllustration, cardTitle, link 
           </CardItem>
         </CardBody>
       </CardContainer>
-    </a>
+    </ExternalLink>
   );
 }

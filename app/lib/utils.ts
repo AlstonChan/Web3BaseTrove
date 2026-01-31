@@ -174,3 +174,7 @@ export function negativeNumberValidation(value: string) {
 export function isSimulateContractErrorType(error: unknown): error is SimulateContractErrorType {
   return typeof error === "object" && error !== null && "name" in error;
 }
+
+export function getBaseScanUrlForSepoliaBase(addressOrTxHash: string) {
+  return `https://sepolia.basescan.org/address/${addressOrTxHash}`;
+}

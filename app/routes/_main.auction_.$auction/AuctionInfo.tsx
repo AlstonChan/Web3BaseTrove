@@ -1,12 +1,10 @@
-// External Modules
 import { formatUnits } from "viem";
 import { add, format, formatDistance } from "date-fns";
 
-// Internal Modules
 import useContractAddress from "~/hooks/useContractAddress";
-
-// Components
 import ContractDetails from "~/components/ContractDetails";
+import { getBaseScanUrlForSepoliaBase } from "~/lib/utils";
+import ExternalLink from "~/components/ExternalLink";
 
 interface AuctionInfoProps {
   // blockData: {
@@ -34,7 +32,11 @@ export default function AuctionInfo({ info }: AuctionInfoProps) {
     <div className="mx-2 mt-4 text-sm">
       <ContractDetails
         name="Contract address"
-        value={contractAddress.slice(0, 10) + "..."}
+        value={
+          <ExternalLink href={getBaseScanUrlForSepoliaBase(contractAddress)}>
+            {contractAddress.slice(0, 6)}...{contractAddress.slice(-4)}
+          </ExternalLink>
+        }
         copy={contractAddress}
       />
       <ContractDetails name="Auction ID" value={info.auctionId} />

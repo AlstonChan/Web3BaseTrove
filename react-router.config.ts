@@ -7,4 +7,7 @@ export default {
   async prerender() {
     return ["/"];
   },
+  future: {
+    v8_viteEnvironmentApi: true,
+  },
 } satisfies Config;

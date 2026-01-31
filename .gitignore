@@ -1,12 +1,25 @@
-node_modules
-
 /.cache
-/build
-.env
 
 contracts/broadcast/
 contracts/cache/
 contracts/out/
 
 .netlify
-.react-router
+
+.DS_Store
+.env
+/node_modules/
+*.tsbuildinfo
+
+# React Router
+/.react-router/
+/build/
+
+# Cloudflare
+.mf
+.wrangler
+.dev.vars*
+worker-configuration.d.ts
+
+!.dev.vars.example
+!.env.example

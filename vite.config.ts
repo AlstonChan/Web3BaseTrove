@@ -1,13 +1,14 @@
 import { reactRouter } from "@react-router/dev/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import netlifyReactRouter from "@netlify/vite-plugin-react-router";
-import netlify from "@netlify/vite-plugin";
-
-// For Netlify configuration, look at:
-// @see https://docs.netlify.com/build/frameworks/framework-setup-guides/react-router/
 
 export default defineConfig({
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths(), netlifyReactRouter(), netlify()],
+  plugins: [
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
+    tailwindcss(),
+    reactRouter(),
+    tsconfigPaths(),
+  ],
 });

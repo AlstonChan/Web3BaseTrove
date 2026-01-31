@@ -1,24 +1,20 @@
-// Remix Modules
 import { Link } from "react-router";
 import type { MetaFunction } from "react-router";
 
-// External Modules
-import { Scale, Github } from "lucide-react";
+import { Scale } from "lucide-react";
 import { motion } from "framer-motion";
 
-// Internal Modules
 import { headlineVariants } from "~/lib/utils";
 import useContractAddress from "~/hooks/useContractAddress";
 
-// Components
 import InfoCard from "./InfoCard";
 import { HeroHighlight, Highlight } from "~/components/HeroHighlight";
 import { Button } from "~/components/ui/button";
 import { Badge } from "~/components/ui/badge";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "~/components/ui/card";
 import AnimatedShinyText from "~/components/magicui/animated-shiny-text";
+import Github from "~/components/GitHub";
 
-// Assets Imports
 import etherscan from "~/assets/etherscan.svg";
 
 import ethereumPng from "~/assets/ethereum/ethereum.png";
@@ -36,32 +32,32 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+const featureCards = [
+  {
+    title: "Mint Your TRV1 Token",
+    description:
+      "Get started with Trove by minting your first TRV1 token. Simply pay the required amount of Ether, and our smart contract will generate TRV1 token, stored securely in your wallet. Begin your Trove journey today!",
+    "cta-text": "Mint now",
+    "cta-link": "/mint",
+  },
+  {
+    title: "Stake Your TRV1 for TRV2",
+    description:
+      "Take your Trove experience to the next level by staking your TRV1 tokens. Our smart contract will reward you with TRV2 tokens, generated hourly, and stored in your wallet. The more you stake, the more you earn!",
+    "cta-text": "Stake now",
+    "cta-link": "/stake",
+  },
+  {
+    title: "Bid on Exclusive NFTs",
+    description:
+      "Use your TRV2 tokens to bid on rare and exclusive NFTs, available only on Trove. Our auction system ensures a fair and transparent process, with winners receiving their NFTs instantly. Don't miss out on this opportunity to own a unique piece of digital art!",
+    "cta-text": "Bid now",
+    "cta-link": "/auction",
+  },
+] as const;
+
 export default function Index() {
   const { contractAddress } = useContractAddress("trove");
-
-  const featureCards = [
-    {
-      title: "Mint Your TRV1 Token",
-      description:
-        "Get started with Trove by minting your first TRV1 token. Simply pay the required amount of Ether, and our smart contract will generate TRV1 token, stored securely in your wallet. Begin your Trove journey today!",
-      "cta-text": "Mint now",
-      "cta-link": "/mint",
-    },
-    {
-      title: "Stake Your TRV1 for TRV2",
-      description:
-        "Take your Trove experience to the next level by staking your TRV1 tokens. Our smart contract will reward you with TRV2 tokens, generated hourly, and stored in your wallet. The more you stake, the more you earn!",
-      "cta-text": "Stake now",
-      "cta-link": "/stake",
-    },
-    {
-      title: "Bid on Exclusive NFTs",
-      description:
-        "Use your TRV2 tokens to bid on rare and exclusive NFTs, available only on Trove. Our auction system ensures a fair and transparent process, with winners receiving their NFTs instantly. Don't miss out on this opportunity to own a unique piece of digital art!",
-      "cta-text": "Bid now",
-      "cta-link": "/auction",
-    },
-  ] as const;
 
   return (
     <>

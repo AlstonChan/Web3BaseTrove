@@ -1,11 +1,14 @@
-// External Modules
 import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
-// Internal Modules
-import { useReadTrove1, useReadTrove2, useReadTroveStake } from "~/generated";
-
-// Components
+import {
+  useReadTrove1,
+  useReadTrove1BalanceOf,
+  useReadTrove2BalanceOf,
+  useReadTrove2,
+  useReadTroveStakeAccountActiveStakes,
+  useReadTroveStakeClaimableRewards,
+} from "~/generated";
 import Stats from "~/components/Stats";
 
 export default function CardsSection() {
@@ -14,21 +17,17 @@ export default function CardsSection() {
   // Read data from the smart contract
   const { data: trv1Decimal } = useReadTrove1({ functionName: "decimals" });
   const { data: trv2Decimal } = useReadTrove2({ functionName: "decimals" });
-  const { data: trv1Amount } = useReadTrove1({
-    functionName: "balanceOf",
+  const { data: trv1Amount } = useReadTrove1BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
-  const { data: trv2Amount } = useReadTrove2({
-    functionName: "balanceOf",
+  const { data: trv2Amount } = useReadTrove2BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
 
-  const { data: trvStakeActiveStakes } = useReadTroveStake({
-    functionName: "accountActiveStakes",
+  const { data: trvStakeActiveStakes } = useReadTroveStakeAccountActiveStakes({
     args: account.address && [account.address],
   });
-  const { data: trvStakeClaimableRewards } = useReadTroveStake({
-    functionName: "claimableRewards",
+  const { data: trvStakeClaimableRewards } = useReadTroveStakeClaimableRewards({
     args: account.address && [account.address],
   });
 

@@ -17,17 +17,21 @@ export default function NotificationBar({ className }: NotificationBarProps) {
   useEffect(() => {
     const handleOnScroll = () => {
       if (window.scrollY > 5) {
-        return setFloatTop(true);
+        setFloatTop(true);
+        return;
       }
       if (window.scrollY <= 5) {
-        return setFloatTop(false);
+        setFloatTop(false);
+        return;
       }
     };
 
     handleOnScroll();
 
     window.addEventListener("scroll", handleOnScroll);
-    return () => window.removeEventListener("scroll", handleOnScroll);
+    return () => {
+      window.removeEventListener("scroll", handleOnScroll);
+    };
   }, []);
 
   return (

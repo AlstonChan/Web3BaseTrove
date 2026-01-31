@@ -81,6 +81,7 @@ export const CardItem = ({
   rotateY = 0,
   rotateZ = 0,
   ref,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...rest
 }: {
   as?: ElementType;

@@ -1,8 +1,6 @@
-// Remix Modules
 import { NavLink, type NavLinkProps } from "react-router";
-
-// External Modules
 import React, { useEffect, useState } from "react";
+
 import { cn } from "~/lib/utils";
 // import { motion } from "framer-motion";
 
@@ -76,17 +74,21 @@ export const Menu = ({
   useEffect(() => {
     const handleOnScroll = () => {
       if (window.scrollY > 5) {
-        return setFloatTop(true);
+        setFloatTop(true);
+        return;
       }
       if (window.scrollY <= 5) {
-        return setFloatTop(false);
+        setFloatTop(false);
+        return;
       }
     };
 
     handleOnScroll();
 
     window.addEventListener("scroll", handleOnScroll);
-    return () => window.removeEventListener("scroll", handleOnScroll);
+    return () => {
+      window.removeEventListener("scroll", handleOnScroll);
+    };
   }, []);
 
   return (
@@ -96,7 +98,7 @@ export const Menu = ({
         `bg-opacity-70 shadow-input dark:bg-background fixed top-4 left-1/2 z-50 flex w-full
         -translate-x-1/2 justify-center space-x-2 rounded-full border-2 border-transparent bg-white
         px-4 py-6 transition-[width,padding] duration-1000 sm:space-x-4 sm:px-8`,
-        floatTop ? "fixed-fill z-40 mx-auto py-4 xl:w-[1200px] dark:border-white/20" : "",
+        floatTop ? "fixed-fill z-40 mx-auto py-4 xl:w-300 dark:border-white/20" : "",
         className,
       )}
     >

@@ -34,7 +34,10 @@ export default function Mint() {
       >
         Mint TRV1 Token
       </h1>
-      <article className="mx-auto mb-20 flex max-w-(--breakpoint-lg) flex-col gap-3 sm:gap-4 md:flex-row md:gap-5">
+      <article
+        className="mx-auto mb-20 flex max-w-(--breakpoint-lg) flex-col gap-3 sm:gap-4 md:flex-row
+          md:gap-5"
+      >
         <div className="flex w-full flex-col gap-4 md:w-1/3">
           <Stats
             title="Total Supply"

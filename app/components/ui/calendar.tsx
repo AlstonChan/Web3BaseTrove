@@ -23,8 +23,9 @@ function Calendar({
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn(
-        `bg-background group/calendar p-2 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(7)]
-        in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent`,
+        `bg-background group/calendar p-2 [--cell-radius:var(--radius-md)]
+        [--cell-size:--spacing(7)] in-data-[slot=card-content]:bg-transparent
+        in-data-[slot=popover-content]:bg-transparent`,
         String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
         String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
         className,
@@ -118,11 +119,15 @@ function Calendar({
         },
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === "left") {
-            return <ChevronLeftIcon className={cn("size-4 cursor-pointer", className)} {...props} />;
+            return (
+              <ChevronLeftIcon className={cn("size-4 cursor-pointer", className)} {...props} />
+            );
           }
 
           if (orientation === "right") {
-            return <ChevronRightIcon className={cn("size-4 cursor-pointer", className)} {...props} />;
+            return (
+              <ChevronRightIcon className={cn("size-4 cursor-pointer", className)} {...props} />
+            );
           }
 
           return <ChevronDownIcon className={cn("size-4 cursor-pointer", className)} {...props} />;
@@ -183,8 +188,8 @@ function CalendarDayButton({
         group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10
         group-data-[focused=true]/day:ring-[3px] data-[range-end=true]:rounded-(--cell-radius)
         data-[range-end=true]:rounded-r-(--cell-radius) data-[range-middle=true]:rounded-none
-        data-[range-start=true]:rounded-(--cell-radius) data-[range-start=true]:rounded-l-(--cell-radius)
-        [&>span]:text-xs [&>span]:opacity-70`,
+        data-[range-start=true]:rounded-(--cell-radius)
+        data-[range-start=true]:rounded-l-(--cell-radius) [&>span]:text-xs [&>span]:opacity-70`,
         defaultClassNames.day,
         className,
       )}

@@ -34,7 +34,8 @@ export const HeroHighlight = ({
   return (
     <div
       className={cn(
-        "group relative flex h-full min-h-120 w-full items-center justify-center bg-white dark:bg-black",
+        `group relative flex h-full min-h-120 w-full items-center justify-center bg-white
+        dark:bg-black`,
         containerClassName,
       )}
       onMouseMove={handleMouseMove}
@@ -52,7 +53,8 @@ export const HeroHighlight = ({
         }}
       />
       <motion.div
-        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 opacity-0 transition duration-300
+          group-hover:opacity-100"
         style={{
           backgroundImage: createDotPattern("rgb(99 102 241)"), // indigo-500
           WebkitMaskImage: useMotionTemplate`

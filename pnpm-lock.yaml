@@ -105,8 +105,8 @@ importers:
         specifier: ^7.12.0
         version: 7.13.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       tailwind-merge:
-        specifier: ^2.6.0
-        version: 2.6.0
+        specifier: ^3.4.0
+        version: 3.4.0
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.18)
@@ -175,11 +175,11 @@ importers:
         specifier: ^3.7.4
         version: 3.8.1
       prettier-plugin-classnames:
-        specifier: ^0.7.9
-        version: 0.7.9(prettier@3.8.1)
+        specifier: ^0.9.0
+        version: 0.9.0(prettier@3.8.1)
       prettier-plugin-merge:
-        specifier: ^0.7.4
-        version: 0.7.4(prettier@3.8.1)
+        specifier: ^0.9.0
+        version: 0.9.0(prettier@3.8.1)
       prettier-plugin-tailwindcss:
         specifier: ^0.7.2
         version: 0.7.2(prettier@3.8.1)
@@ -4554,24 +4554,27 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-classnames@0.7.9:
-    resolution: {integrity: sha512-UxyBThUBoxzaCUtU5WKe+lImhBAMJ8RkyHv4mS01O8Ckeick35CMJAXt4AkgYkKW5s5lgVbhqLhQbyVxiex2eQ==}
-    engines: {node: '>=14'}
+  prettier-plugin-classnames@0.9.0:
+    resolution: {integrity: sha512-xTTKf/us7YMcY4tuoQq0/WaFJzc/ZA0pPpWGphV1noLHX19mIMAJgqmy6ByX6ksVPtmcPDuAF36XVGr3DZYh4g==}
+    engines: {node: '>=18'}
     peerDependencies:
-      prettier: ^2 || ^3
+      '@prettier/plugin-oxc': '*'
+      prettier: ^3
       prettier-plugin-astro: '*'
       prettier-plugin-svelte: '*'
     peerDependenciesMeta:
+      '@prettier/plugin-oxc':
+        optional: true
       prettier-plugin-astro:
         optional: true
       prettier-plugin-svelte:
         optional: true
 
-  prettier-plugin-merge@0.7.4:
-    resolution: {integrity: sha512-cxuInnqaO8d/zZx/tk8PEKtab8QetiBsOlXH+kYqBF66lSwJoy491jQT3ocOdJ/8nzom40QGGq/wUblFe7zRxw==}
-    engines: {node: '>=14'}
+  prettier-plugin-merge@0.9.0:
+    resolution: {integrity: sha512-bWd9Gw05GC55wOiDL52CNM0GlvEww10oc+VhptbMhz091SrlM/F9M86WZ94VWnv732rUlu9i9FzZ4wWFzTYZsw==}
+    engines: {node: '>=18'}
     peerDependencies:
-      prettier: ^2 || ^3
+      prettier: ^3
 
   prettier-plugin-tailwindcss@0.7.2:
     resolution: {integrity: sha512-LkphyK3Fw+q2HdMOoiEHWf93fNtYJwfamoKPl7UwtjFQdei/iIBoX11G6j706FzN3ymX9mPVi97qIY8328vdnA==}
@@ -5083,8 +5086,8 @@ packages:
     resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
     engines: {node: '>=18'}
 
-  tailwind-merge@2.6.0:
-    resolution: {integrity: sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==}
+  tailwind-merge@3.4.0:
+    resolution: {integrity: sha512-uSaO4gnW+b3Y2aWoWfFpX62vn2sR3skfhbjsEnaBI81WD1wBLlHZe5sWf0AqjksNdYTbGBEd0UasQMT3SNV15g==}
 
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
@@ -5604,6 +5607,9 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       zod: ^3.25.0 || ^4.0.0
+
+  zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
@@ -10297,11 +10303,12 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-classnames@0.7.9(prettier@3.8.1):
+  prettier-plugin-classnames@0.9.0(prettier@3.8.1):
     dependencies:
       prettier: 3.8.1
+      zod: 3.22.4
 
-  prettier-plugin-merge@0.7.4(prettier@3.8.1):
+  prettier-plugin-merge@0.9.0(prettier@3.8.1):
     dependencies:
       diff: 5.1.0
       prettier: 3.8.1
@@ -10890,7 +10897,7 @@ snapshots:
 
   system-architecture@0.1.0: {}
 
-  tailwind-merge@2.6.0: {}
+  tailwind-merge@3.4.0: {}
 
   tailwindcss-animate@1.0.7(tailwindcss@4.1.18):
     dependencies:
@@ -11400,6 +11407,8 @@ snapshots:
   zod-validation-error@4.0.2(zod@3.25.76):
     dependencies:
       zod: 3.25.76
+
+  zod@3.22.4: {}
 
   zod@3.25.76: {}
 

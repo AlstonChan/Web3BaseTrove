@@ -189,9 +189,10 @@ export default function StakeForm() {
               <Input
                 type="text"
                 placeholder="0"
-                className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0 text-4xl font-medium
-                  ring-transparent! outline-hidden focus-visible:border-none! focus-visible:ring-offset-0!
-                  focus-visible:outline-hidden! md:h-12 md:text-5xl lg:h-14 lg:text-6xl"
+                className="focus !focus-visible:!shadow-none my-2 border-none! bg-transparent! pl-0
+                  text-4xl font-medium ring-transparent! outline-hidden focus-visible:border-none!
+                  focus-visible:ring-offset-0! focus-visible:outline-hidden! md:h-12 md:text-5xl
+                  lg:h-14 lg:text-6xl"
                 max={maxEligibleToken}
                 value={stakeAmount}
                 onChange={handleInputChange}

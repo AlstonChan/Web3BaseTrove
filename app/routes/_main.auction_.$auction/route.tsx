@@ -99,7 +99,8 @@ export default function AuctionDetails() {
               alt="NFT"
               width={128}
               height={128}
-              className="bg-dark-blue mx-auto h-auto w-full max-w-72 rounded-2xl object-cover md:max-w-none"
+              className="bg-dark-blue mx-auto h-auto w-full max-w-72 rounded-2xl object-cover
+                md:max-w-none"
             />
 
             {isPassed || isEnded ? (

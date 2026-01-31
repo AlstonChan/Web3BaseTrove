@@ -4,8 +4,8 @@ import { Skeleton } from "~/components/ui/skeleton";
 export default function AuctionPlaceholderGrid() {
   return (
     <div
-      className="mt-6 grid auto-rows-auto grid-cols-1 gap-4 min-[500px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
-        xl:grid-cols-5"
+      className="mt-6 grid auto-rows-auto grid-cols-1 gap-4 min-[500px]:grid-cols-2 sm:grid-cols-3
+        lg:grid-cols-4 xl:grid-cols-5"
     >
       <div className="bg-dark-blue flex w-full flex-col space-y-3 rounded-2xl p-2">
         <Skeleton className="aspect-square h-auto w-full rounded-xl bg-slate-900" />

@@ -44,8 +44,8 @@ export default function NavHeader() {
       <NotificationBar />
       <div className="w-full p-14"></div>
       <Menu
-        className={`flex grid-rows-1 items-center transition-all min-[880px]:grid min-[880px]:grid-cols-3 ${ message &&
-          "translate-y-9" }`}
+        className={`flex grid-rows-1 items-center transition-all min-[880px]:grid
+          min-[880px]:grid-cols-3 ${message && "translate-y-9"}`}
       >
         <div className="mr-auto">
           <Link to="/" className="flex items-center gap-2">
@@ -88,8 +88,8 @@ export default function NavHeader() {
                 <Link
                   to={route.link}
                   key={index}
-                  className="group bg-opacity-50 flex items-center justify-start pl-5 transition-colors duration-200
-                    hover:bg-slate-800"
+                  className="group bg-opacity-50 flex items-center justify-start pl-5
+                    transition-colors duration-200 hover:bg-slate-800"
                 >
                   <p className="mr-3 text-left transition-[margin] duration-600 group-hover:mr-6">
                     {route.name}

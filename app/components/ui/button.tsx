@@ -18,8 +18,8 @@ const buttonSettings = {
       orange: "bg-amber-500 text-black hover:bg-amber-500/90",
       blue: "bg-accent-dark-blue border-[5px] border-dark-blue",
       underline: " hover:underline",
-      "outline-orange":
-        "border-amber-500 bg-transparent text-white border-2 hover:bg-amber-500 hover:text-black transition-colors duration-200",
+      "outline-orange": `border-amber-500 bg-transparent text-white border-2 hover:bg-amber-500 
+        hover:text-black transition-colors duration-200`,
     },
     size: {
       default: "h-10 px-4 py-2",
@@ -35,7 +35,9 @@ const buttonSettings = {
 } as const;
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  `inline-flex items-center cursor-pointer justify-center whitespace-nowrap rounded-md text-sm
+   font-medium ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2
+   focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50`,
   buttonSettings,
 );
 
@@ -45,14 +47,27 @@ export interface ButtonProps
   className?: string;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return (
-      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
-    );
-  },
-);
-Button.displayName = "Button";
+function Button({
+  className,
+  variant = "default",
+  size = "default",
+  asChild = false,
+  ...props
+}: React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  }) {
+  const Comp = asChild ? Slot : "button";
+
+  return (
+    <Comp
+      data-slot="button"
+      data-variant={variant}
+      data-size={size}
+      className={cn(buttonVariants({ variant, size, className }))}
+      {...props}
+    />
+  );
+}
 
 export { Button, buttonVariants };

@@ -21,7 +21,10 @@ export default function AllNft() {
     <article className="pt-2">
       {nftAmount !== undefined ? (
         nftAmount > 0n && address !== undefined ? (
-          <div className="grid auto-rows-auto grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div
+            className="grid auto-rows-auto grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3
+              lg:grid-cols-4"
+          >
             {Array.from({ length: Number(nftAmount) }, (_, index) => index).map((nftIndex) => (
               <ProfileNftCard key={nftIndex} tokenIndex={nftIndex} address={address} />
             ))}

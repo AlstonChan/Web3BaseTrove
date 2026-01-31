@@ -226,7 +226,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                         variant={"outline"}
                         className={cn(
                           "justify-start text-left font-normal",
-                          !field.value && "text-muted-foreground",
+                          // !field.value && "text-muted-foreground",
                           "cursor-pointer",
                         )}
                         id="startDate"
@@ -246,7 +246,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      autoFocus
+                      // autoFocus
                       disabled={{ before: new Date() }}
                       {...field}
                     />
@@ -275,7 +275,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                         variant={"outline"}
                         className={cn(
                           "justify-start text-left font-normal",
-                          !field.value && "text-muted-foreground",
+                          // !field.value && "text-muted-foreground",
                           "cursor-pointer",
                         )}
                         id="startDate"
@@ -295,7 +295,7 @@ export default function CreateAuction({ decimals }: CreateAuctionProps) {
                       mode="single"
                       selected={field.value}
                       onSelect={field.onChange}
-                      autoFocus
+                      // autoFocus
                       disabled={{ before: new Date() }}
                       {...field}
                     />

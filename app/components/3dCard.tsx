@@ -1,8 +1,8 @@
-import { createContext, useState, useContext, useRef, useEffect } from "react";
+import { createContext, useState, useContext, useRef, useEffect, useCallback } from "react";
 
 import { cn } from "~/lib/utils";
 
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
@@ -66,7 +66,13 @@ export const CardContainer = ({
   );
 };
 
-export const CardBody = ({ children, className }: { children: ReactNode; className?: string }) => {
+export const CardBody = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return <div className={cn("h-96 w-96 transform-3d *:transform-3d", className)}>{children}</div>;
 };
 
@@ -80,12 +86,10 @@ export const CardItem = ({
   rotateX = 0,
   rotateY = 0,
   rotateZ = 0,
-  ref,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...rest
 }: {
-  as?: ElementType;
-  children: ReactNode;
+  as?: React.ElementType;
+  children: React.ReactNode;
   className?: string;
   translateX?: number | string;
   translateY?: number | string;
@@ -93,31 +97,27 @@ export const CardItem = ({
   rotateX?: number | string;
   rotateY?: number | string;
   rotateZ?: number | string;
-  ref?: React.Ref<HTMLElement>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }) => {
-  const internalRef = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [isMouseEntered] = useMouseEnter();
 
-  // Use the passed ref or fall back to internal ref
-  const elementRef = (ref as React.RefObject<HTMLElement>) || internalRef;
+  const handleAnimations = useCallback(() => {
+    if (!ref.current) return;
+    if (isMouseEntered) {
+      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+    } else {
+      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+    }
+  }, [isMouseEntered, rotateX, rotateY, rotateZ, translateX, translateY, translateZ]);
 
   useEffect(() => {
-    if (!elementRef.current) return;
-
-    if (isMouseEntered) {
-      elementRef.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
-    } else {
-      elementRef.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
-    }
-  }, [isMouseEntered, translateX, translateY, translateZ, rotateX, rotateY, rotateZ]);
+    handleAnimations();
+  }, [isMouseEntered, handleAnimations]);
 
   return (
-    <Tag
-      ref={elementRef}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}
-    >
+    <Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
       {children}
     </Tag>
   );

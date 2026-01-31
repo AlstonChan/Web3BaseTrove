@@ -1,21 +1,17 @@
-// External Modules
-import { Github } from "lucide-react";
-
-// Components
 import { Button } from "./ui/button";
+import Github from "./GitHub";
 
-// Assets Imports
 import logoPng from "~/assets/logo/logo-52.png";
 import logoWebp from "~/assets/logo/logo-52.webp";
 import logoAvif from "~/assets/logo/logo-52.avif";
 
-export default function Footer() {
-  const startingYear = 2024;
+const startingYear = 2024;
 
+export default function Footer() {
   return (
     <footer className="mb-10 flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
-        <div className="flex items-center">
+        <div className="flex h-auto items-center">
           <div className="flex items-center gap-2">
             <picture>
               <source srcSet={logoAvif} type="image/avif" />
@@ -32,7 +28,7 @@ export default function Footer() {
               rel="noreferrer noopener"
               referrerPolicy="no-referrer"
             >
-              <Github size={28} color="#fff" />
+              <Github className="p-2" />
             </a>
           </Button>
         </div>

@@ -3,7 +3,7 @@ import { useConnection } from "wagmi";
 import { formatUnits } from "viem";
 
 // Internal Modules
-import { useReadTrove1 } from "~/generated";
+import { useReadTrove1Allowance, useReadTrove1BalanceOf, useReadTrove1Decimals } from "~/generated";
 import useContractAddress from "~/hooks/useContractAddress";
 
 // Components
@@ -13,17 +13,13 @@ export default function UserStakeStats() {
   const account = useConnection();
   const { contractAddress } = useContractAddress("troveStake");
 
-  const { data: trv1Allowance } = useReadTrove1({
-    functionName: "allowance",
+  const { data: trv1Allowance } = useReadTrove1Allowance({
     args: account.address && [account.address, contractAddress],
   });
-  const { data: trv1Amount } = useReadTrove1({
-    functionName: "balanceOf",
+  const { data: trv1Amount } = useReadTrove1BalanceOf({
     args: account.address ? [account.address] : undefined,
   });
-  const { data: trv1Decimals } = useReadTrove1({
-    functionName: "decimals",
-  });
+  const { data: trv1Decimals } = useReadTrove1Decimals({});
 
   const eligibleStake =
     trv1Amount && trv1Allowance && trv1Decimals

@@ -2,7 +2,7 @@ import { createContext, useState, useContext, useRef, useEffect, useCallback } f
 
 import { cn } from "~/lib/utils";
 
-import type { ReactNode } from "react";
+import type { JSX, ReactNode } from "react";
 
 const MouseEnterContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | undefined
@@ -76,8 +76,22 @@ export const CardBody = ({
   return <div className={cn("h-96 w-96 transform-3d *:transform-3d", className)}>{children}</div>;
 };
 
-export const CardItem = ({
-  as: Tag = "div",
+interface BaseCardItemProps<T extends keyof JSX.IntrinsicElements> {
+  as?: T;
+  children: React.ReactNode;
+  className?: string;
+  translateX?: number | string;
+  translateY?: number | string;
+  translateZ?: number | string;
+  rotateX?: number | string;
+  rotateY?: number | string;
+  rotateZ?: number | string;
+}
+type CardItemProps<T extends keyof JSX.IntrinsicElements> = BaseCardItemProps<T> &
+  Omit<React.ComponentProps<T>, keyof BaseCardItemProps<T>>;
+
+export function CardItem<T extends keyof JSX.IntrinsicElements = "div">({
+  as,
   children,
   className,
   translateX = 0,
@@ -87,21 +101,12 @@ export const CardItem = ({
   rotateY = 0,
   rotateZ = 0,
   ...rest
-}: {
-  as?: React.ElementType;
-  children: React.ReactNode;
-  className?: string;
-  translateX?: number | string;
-  translateY?: number | string;
-  translateZ?: number | string;
-  rotateX?: number | string;
-  rotateY?: number | string;
-  rotateZ?: number | string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
-}) => {
-  const ref = useRef<HTMLDivElement>(null);
+}: CardItemProps<T>): JSX.Element {
+  const ref = useRef<HTMLElement>(null);
   const [isMouseEntered] = useMouseEnter();
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+  const Component = (as || "div") as any;
 
   const handleAnimations = useCallback(() => {
     if (!ref.current) return;
@@ -117,11 +122,15 @@ export const CardItem = ({
   }, [isMouseEntered, handleAnimations]);
 
   return (
-    <Tag ref={ref} className={cn("w-fit transition duration-200 ease-linear", className)} {...rest}>
+    <Component
+      ref={ref}
+      className={cn("w-fit transition duration-200 ease-linear", className)}
+      {...rest}
+    >
       {children}
-    </Tag>
+    </Component>
   );
-};
+}
 
 export const useMouseEnter = () => {
   const context = useContext(MouseEnterContext);

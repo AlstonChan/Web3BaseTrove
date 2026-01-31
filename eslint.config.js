@@ -23,6 +23,7 @@ export default defineConfig(
     "**/dist/**",
     "contracts/**",
     ".react-router",
+    "react-router.config.*",
     ".netlify",
   ]),
 

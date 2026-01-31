@@ -70,3 +70,19 @@ The root cause of these error is:
    1. `shamefully-hoist=true` is required to set in the `.npmrc`
    2. `node_modules` needs to be removed completely and reinstall cleanly
    3. re-generate `app/entry.client.tsx` and `app/entry.server.tsx` file by running `pnpx remix reveal`
+
+### Usage of shamefully-hoist to solve build issue
+
+To deploy on Netlify, create a `.npmrc` file with content:
+
+```text
+# Required for remix-vite to work with pnpm package manager
+# Related Issue - https://github.com/remix-run/remix/issues/4407#issuecomment-1288111977
+
+# After setting this, remove the node_modules and run `pnpm install` again
+# Generate a new `app/entry.client.tsx` and `app/entry.server.tsx` file by running
+# `pnpx remix reveal`. The server entry file should be using imports from package
+# `@remix-run/node` and client entry file should be using imports from package `@remix-run/react`.
+# Related Issue - https://github.com/remix-run/remix/issues/7722#issuecomment-1819967229
+shamefully-hoist=true
+```

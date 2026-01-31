@@ -228,7 +228,7 @@ export default function StakeForm() {
         </div>
         <Button
           type="button"
-          className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2"
+          className="pointer-events-none absolute -bottom-6 left-1/2 z-20 -translate-x-1/2"
           size="icon"
           variant="blue"
         >
